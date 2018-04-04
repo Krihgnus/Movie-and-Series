@@ -8,6 +8,9 @@ class InitialViewController: UIPageViewController {
     weak var initialDelegate: IconsViewControllerDelegate?
     
     override func viewDidLoad() {
+        
+        print("test")
+        
         super.viewDidLoad()
         dataSource = self
         delegate = self
