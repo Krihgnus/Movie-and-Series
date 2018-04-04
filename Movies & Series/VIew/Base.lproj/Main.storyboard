@@ -21,7 +21,7 @@
         <!--Initial1 View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="initial1VC" id="BYZ-38-t0r" userLabel="Initial1 View Controller" customClass="ButtonExploreCollection" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial1VC" id="BYZ-38-t0r" userLabel="Initial1 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies &amp; Series" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50u-sD-5jC" userLabel="Movies &amp; Series Label">
-                                        <rect key="frame" x="0.0" y="177" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="1Rz-Gl-646"/>
                                         </constraints>
@@ -42,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The world’s most popular and authoritative source for movies and series." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew6-xh-krl" userLabel="Description Label">
-                                        <rect key="frame" x="10" y="233" width="355" height="41"/>
+                                        <rect key="frame" x="10" y="296" width="355" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="N57-Fr-FDC"/>
                                         </constraints>
@@ -51,10 +51,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZP-ph-jns" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
-                                        <rect key="frame" x="17.5" y="578" width="340.5" height="39"/>
+                                        <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.2008194625377655" green="0.6508711576461792" blue="0.70570856332778931" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="39" id="U2S-94-seW"/>
+                                            <constraint firstAttribute="height" constant="43" id="U2S-94-seW"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="qpv-Py-74f"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -71,7 +71,7 @@
                                     <constraint firstAttribute="bottom" secondItem="v5K-im-5iC" secondAttribute="bottom" id="B1s-hf-Qzk"/>
                                     <constraint firstItem="Ew6-xh-krl" firstAttribute="top" secondItem="50u-sD-5jC" secondAttribute="bottom" constant="8" id="Ciu-39-Tsf"/>
                                     <constraint firstItem="Ew6-xh-krl" firstAttribute="leading" secondItem="Uxt-k2-ggj" secondAttribute="leading" constant="10" id="Ep3-Q2-4qf"/>
-                                    <constraint firstItem="50u-sD-5jC" firstAttribute="top" secondItem="Uxt-k2-ggj" secondAttribute="top" constant="177" id="HLN-bn-xdq"/>
+                                    <constraint firstItem="50u-sD-5jC" firstAttribute="top" secondItem="Uxt-k2-ggj" secondAttribute="top" constant="240" id="HLN-bn-xdq"/>
                                     <constraint firstAttribute="trailing" secondItem="qZP-ph-jns" secondAttribute="trailing" constant="17" id="N6c-dx-7Ts"/>
                                     <constraint firstItem="v5K-im-5iC" firstAttribute="leading" secondItem="Uxt-k2-ggj" secondAttribute="leading" id="OaJ-to-yej"/>
                                     <constraint firstItem="50u-sD-5jC" firstAttribute="leading" secondItem="Uxt-k2-ggj" secondAttribute="leading" id="PkB-3t-7nr"/>
@@ -142,7 +142,7 @@
         <!--Initial2 View Controller-->
         <scene sceneID="BOq-ZR-3qN">
             <objects>
-                <viewController storyboardIdentifier="initial2VC" id="0BH-XA-DrG" userLabel="Initial2 View Controller" customClass="ButtonExploreCollection" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial2VC" id="0BH-XA-DrG" userLabel="Initial2 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SZ6-Ca-cBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies &amp; Series" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSm-VJ-oBF" userLabel="Movies &amp; Series Label">
-                                        <rect key="frame" x="0.0" y="177" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Hvg-NH-ygp"/>
                                         </constraints>
@@ -163,7 +163,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The world’s most popular and authoritative source for movies and series." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rda-hY-Asn" userLabel="Description Label">
-                                        <rect key="frame" x="10" y="233" width="355" height="41"/>
+                                        <rect key="frame" x="10" y="296" width="355" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="o30-xk-jzr"/>
                                         </constraints>
@@ -172,11 +172,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weV-79-pO8" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
-                                        <rect key="frame" x="17.5" y="578" width="340.5" height="39"/>
+                                        <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.20081946249999999" green="0.65087115760000003" blue="0.70570856329999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="7ZV-55-DUI"/>
-                                            <constraint firstAttribute="height" constant="39" id="Hi7-wN-TiQ"/>
+                                            <constraint firstAttribute="height" constant="43" id="Hi7-wN-TiQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Explore Collection     &gt;">
@@ -189,7 +189,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="vSm-VJ-oBF" firstAttribute="top" secondItem="17C-3J-dww" secondAttribute="top" constant="177" id="6e8-si-Mrl"/>
+                                    <constraint firstItem="vSm-VJ-oBF" firstAttribute="top" secondItem="17C-3J-dww" secondAttribute="top" constant="240" id="6e8-si-Mrl"/>
                                     <constraint firstAttribute="trailing" secondItem="qdV-cd-9jf" secondAttribute="trailing" id="BYi-2V-MX6"/>
                                     <constraint firstItem="qdV-cd-9jf" firstAttribute="leading" secondItem="17C-3J-dww" secondAttribute="leading" id="Dsg-iX-bmF"/>
                                     <constraint firstAttribute="trailing" secondItem="vSm-VJ-oBF" secondAttribute="trailing" id="E60-VR-DyX"/>
@@ -350,7 +350,7 @@
         <!--Initial3 View Controller-->
         <scene sceneID="JxA-p6-P5l">
             <objects>
-                <viewController storyboardIdentifier="initial3VC" id="h0a-Ff-93Z" userLabel="Initial3 View Controller" customClass="ButtonExploreCollection" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial3VC" id="h0a-Ff-93Z" userLabel="Initial3 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vvP-Yd-dGi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies &amp; Series" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEZ-z0-Sl7" userLabel="Movies &amp; Series Label">
-                                        <rect key="frame" x="0.0" y="177" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="iZL-rT-lff"/>
                                         </constraints>
@@ -371,7 +371,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The world’s most popular and authoritative source for movies and series." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD0-td-U6y" userLabel="Description Label">
-                                        <rect key="frame" x="10" y="233" width="355" height="41"/>
+                                        <rect key="frame" x="10" y="296" width="355" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="1m3-Hd-hWG"/>
                                         </constraints>
@@ -380,11 +380,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON8-mo-8wf" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
-                                        <rect key="frame" x="17.5" y="578" width="340.5" height="39"/>
+                                        <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.20081946249999999" green="0.65087115760000003" blue="0.70570856329999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="FbC-w5-xBB"/>
-                                            <constraint firstAttribute="height" constant="39" id="M4p-F5-Q0k"/>
+                                            <constraint firstAttribute="height" constant="43" id="M4p-F5-Q0k"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Explore Collection     &gt;">
@@ -403,7 +403,7 @@
                                     <constraint firstItem="hD0-td-U6y" firstAttribute="top" secondItem="mEZ-z0-Sl7" secondAttribute="bottom" constant="8" id="TDG-9T-g7a"/>
                                     <constraint firstItem="hD0-td-U6y" firstAttribute="leading" secondItem="4yM-wr-eaV" secondAttribute="leading" constant="10" id="Vpa-Y6-VZC"/>
                                     <constraint firstItem="ON8-mo-8wf" firstAttribute="leading" secondItem="4yM-wr-eaV" secondAttribute="leading" constant="17.5" id="WdR-0S-8al"/>
-                                    <constraint firstItem="mEZ-z0-Sl7" firstAttribute="top" secondItem="4yM-wr-eaV" secondAttribute="top" constant="177" id="fwm-ok-oFp"/>
+                                    <constraint firstItem="mEZ-z0-Sl7" firstAttribute="top" secondItem="4yM-wr-eaV" secondAttribute="top" constant="240" id="fwm-ok-oFp"/>
                                     <constraint firstAttribute="trailing" secondItem="ON8-mo-8wf" secondAttribute="trailing" constant="17" id="hSO-XY-eqS"/>
                                     <constraint firstAttribute="bottom" secondItem="mtz-VY-9D5" secondAttribute="bottom" id="ikw-AI-dsM"/>
                                     <constraint firstAttribute="trailing" secondItem="mtz-VY-9D5" secondAttribute="trailing" id="laf-FZ-LOo"/>

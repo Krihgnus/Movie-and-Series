@@ -18,3 +18,4 @@ class SearchViewController: UIViewController {
         contentNavigationBar.titleView = titleNavigationBarView
     }
 }
+

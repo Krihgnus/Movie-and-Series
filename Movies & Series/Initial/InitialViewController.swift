@@ -14,10 +14,7 @@ class InitialViewController: UIPageViewController {
         
         //APRESENTANDO PRIMEIRAMENTE SEMPRE A INITIAL1
         if let firstViewController = views.first {
-            setViewControllers([firstViewController],
-                               direction: .forward,
-                               animated: true,
-                               completion: nil)
+            setViewControllers([firstViewController],direction: .forward, animated: true, completion: nil)
         }
         
         initialDelegate?.InitialViewController(InitialViewController: self, didUpdatePageCount: views.count)
@@ -40,7 +37,7 @@ extension InitialViewController: UIPageViewControllerDataSource {
         
         let previousIndex = viewControllerIndex - 1
         
-        guard previousIndex >= 0 else { return views.last }
+        guard previousIndex >= 0 else { return nil }
         
         guard views.count > previousIndex else { return nil }
         
@@ -52,7 +49,7 @@ extension InitialViewController: UIPageViewControllerDataSource {
         
         let nextIndex = viewControllerIndex + 1
         
-        guard views.count != nextIndex else { return views.first }
+        guard views.count != nextIndex else { return nil }
         
         guard views.count > nextIndex else { return nil }
         
@@ -64,8 +61,7 @@ extension InitialViewController: UIPageViewControllerDataSource {
 extension InitialViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if let firstViewController = viewControllers?.first,
-            let index = views.index(of: firstViewController) {
+        if let firstViewController = viewControllers?.first, let index = views.index(of: firstViewController) {
             initialDelegate?.InitialViewController(InitialViewController: self, didUpdatePageIndex: index)
         }
     }

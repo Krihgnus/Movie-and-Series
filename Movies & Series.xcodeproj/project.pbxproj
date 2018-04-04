@@ -23,7 +23,7 @@
 		1970FAA42062D81B009BE4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1970FAA22062D81B009BE4B4 /* LaunchScreen.storyboard */; };
 		19E2B6A9206D9674009061B5 /* FilmListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E2B6A8206D9674009061B5 /* FilmListTableView.swift */; };
 		19F93646206AA68A00E02A93 /* ArtistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F93645206AA68A00E02A93 /* ArtistDetailsViewController.swift */; };
-		19F9364E206AAF8200E02A93 /* ButtonExploreCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9364D206AAF8200E02A93 /* ButtonExploreCollection.swift */; };
+		19F9364E206AAF8200E02A93 /* ExploreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9364D206AAF8200E02A93 /* ExploreCollectionViewController.swift */; };
 		19F93651206AB4FF00E02A93 /* ButtonWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F93650206AB4FF00E02A93 /* ButtonWithRadius.swift */; };
 		19F93654206AB7E000E02A93 /* ClearSegmentedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F93653206AB7E000E02A93 /* ClearSegmentedBar.swift */; };
 		19FB4F27206BF8D40040DF69 /* TableViewSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FB4F26206BF8D40040DF69 /* TableViewSummaryCell.swift */; };
@@ -50,7 +50,7 @@
 		1970FAA52062D81B009BE4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19E2B6A8206D9674009061B5 /* FilmListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListTableView.swift; sourceTree = "<group>"; };
 		19F93645206AA68A00E02A93 /* ArtistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailsViewController.swift; sourceTree = "<group>"; };
-		19F9364D206AAF8200E02A93 /* ButtonExploreCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExploreCollection.swift; sourceTree = "<group>"; };
+		19F9364D206AAF8200E02A93 /* ExploreCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewController.swift; sourceTree = "<group>"; };
 		19F93650206AB4FF00E02A93 /* ButtonWithRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithRadius.swift; sourceTree = "<group>"; };
 		19F93653206AB7E000E02A93 /* ClearSegmentedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearSegmentedBar.swift; sourceTree = "<group>"; };
 		19FB4F26206BF8D40040DF69 /* TableViewSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSummaryCell.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				1970FA9B2062D81B009BE4B4 /* InitialViewController.swift */,
 				190C132420642CDA0027E452 /* IconsPageViewController.swift */,
 				190C1326206431F60027E452 /* IconsPageViewControlerProtocol.swift */,
-				19F9364D206AAF8200E02A93 /* ButtonExploreCollection.swift */,
+				19F9364D206AAF8200E02A93 /* ExploreCollectionViewController.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				190B62F92073E35E006E2D3D /* CategoryCell.swift in Sources */,
 				19F93646206AA68A00E02A93 /* ArtistDetailsViewController.swift in Sources */,
 				190F8CD82069827500696645 /* ArtistsCollectionViewController.swift in Sources */,
-				19F9364E206AAF8200E02A93 /* ButtonExploreCollection.swift in Sources */,
+				19F9364E206AAF8200E02A93 /* ExploreCollectionViewController.swift in Sources */,
 				190C134220645DC60027E452 /* GenresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
