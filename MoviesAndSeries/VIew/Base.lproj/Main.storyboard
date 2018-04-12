@@ -13,7 +13,7 @@
         <!--Initial Page View Controller-->
         <scene sceneID="hKh-U3-1lG">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="qmb-5s-P9e" userLabel="Initial Page View Controller" customClass="InitialViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="qmb-5s-P9e" userLabel="Initial Page View Controller" customClass="InitialViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snc-tl-eaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-660" y="-477"/>
@@ -21,7 +21,7 @@
         <!--Initial1 View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="initial1VC" id="BYZ-38-t0r" userLabel="Initial1 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial1VC" id="BYZ-38-t0r" userLabel="Initial1 View Controller" customClass="ExploreCollectionViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                         <color key="textColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZP-ph-jns" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZP-ph-jns" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.2008194625377655" green="0.6508711576461792" blue="0.70570856332778931" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -102,7 +102,7 @@
         <!--Container initial View Controller-->
         <scene sceneID="Gte-dT-WGG">
             <objects>
-                <viewController id="4EA-se-G83" userLabel="Container initial View Controller" customClass="IconesPageViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4EA-se-G83" userLabel="Container initial View Controller" customClass="IconesPageViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9wd-u9-XzL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,7 +142,7 @@
         <!--Initial2 View Controller-->
         <scene sceneID="BOq-ZR-3qN">
             <objects>
-                <viewController storyboardIdentifier="initial2VC" id="0BH-XA-DrG" userLabel="Initial2 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial2VC" id="0BH-XA-DrG" userLabel="Initial2 View Controller" customClass="ExploreCollectionViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SZ6-Ca-cBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +171,7 @@
                                         <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weV-79-pO8" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weV-79-pO8" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.20081946249999999" green="0.65087115760000003" blue="0.70570856329999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -223,7 +223,7 @@
         <!--Genres View Controller-->
         <scene sceneID="Leh-l5-Ju4">
             <objects>
-                <viewController storyboardIdentifier="genresVC" id="nTf-zB-u2q" userLabel="Genres View Controller" customClass="GenresViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="genresVC" id="nTf-zB-u2q" userLabel="Genres View Controller" customClass="GenresViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tVJ-rX-YJX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="170" id="ygt-cw-J3X" userLabel="Category Table View Cell" customClass="CategoryCell" customModule="Movies___Series" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="170" id="ygt-cw-J3X" userLabel="Category Table View Cell" customClass="CategoryCell" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ygt-cw-J3X" id="hHO-4i-bby">
@@ -308,7 +308,7 @@
         <!--Search View Controller-->
         <scene sceneID="7Jn-yo-yQ7">
             <objects>
-                <viewController storyboardIdentifier="searchVC" id="UAe-Ws-jDT" userLabel="Search View Controller" customClass="SearchViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchVC" id="UAe-Ws-jDT" userLabel="Search View Controller" customClass="SearchViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Re8-Xz-HUe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,7 +350,7 @@
         <!--Initial3 View Controller-->
         <scene sceneID="JxA-p6-P5l">
             <objects>
-                <viewController storyboardIdentifier="initial3VC" id="h0a-Ff-93Z" userLabel="Initial3 View Controller" customClass="ExploreCollectionViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial3VC" id="h0a-Ff-93Z" userLabel="Initial3 View Controller" customClass="ExploreCollectionViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vvP-Yd-dGi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,7 +379,7 @@
                                         <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON8-mo-8wf" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="Movies___Series" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON8-mo-8wf" userLabel="Explore Collection Button" customClass="ButtonWithRadius" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="17.5" y="574" width="340.5" height="43"/>
                                         <color key="backgroundColor" red="0.20081946249999999" green="0.65087115760000003" blue="0.70570856329999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -431,7 +431,7 @@
         <!--Artists View Controller-->
         <scene sceneID="Okv-IM-9mh">
             <objects>
-                <viewController storyboardIdentifier="artistsVC" id="m6l-74-81F" userLabel="Artists View Controller" customClass="ArtistsViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="artistsVC" id="m6l-74-81F" userLabel="Artists View Controller" customClass="ArtistsViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uma-0o-Qq2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,7 +454,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtistsCVC" id="P9q-ps-fby" userLabel="Artists Collection View Cell" customClass="ArtistsCollectionViewCell" customModule="Movies___Series" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtistsCVC" id="P9q-ps-fby" userLabel="Artists Collection View Cell" customClass="ArtistsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="112" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -533,7 +533,7 @@
         <!--Artist Details View Controller-->
         <scene sceneID="us3-un-fpA">
             <objects>
-                <viewController storyboardIdentifier="artistDetailsVC" id="oc6-gs-H1f" customClass="ArtistDetailsViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="artistDetailsVC" id="oc6-gs-H1f" customClass="ArtistDetailsViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="sK1-pm-cNz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -780,11 +780,11 @@
                                             <constraint firstAttribute="height" constant="5" id="sd4-40-Kwd"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-wl-qXJ" userLabel="Content Segmented Bar Table View" customClass="FilmList" customModule="Movies___Series" customModuleProvider="target">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-wl-qXJ" userLabel="Content Segmented Bar Table View" customClass="FilmList" customModule="MoviesAndSeries" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="403" width="375" height="264"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="86" id="gJb-Lz-oui" userLabel="Summary Cell" customClass="CellSummaryType" customModule="Movies___Series" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="summaryCell" rowHeight="86" id="gJb-Lz-oui" userLabel="Summary Cell" customClass="CellSummaryType" customModule="MoviesAndSeries" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gJb-Lz-oui" id="K9G-RJ-iew" userLabel="Content Summary Cell">
@@ -820,7 +820,7 @@
                                                     <outlet property="bornData" destination="AAF-yw-Nlc" id="WLI-Gw-VJD"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="186" id="Rna-oh-NjF" userLabel="Movie Cell" customClass="CellMoviesType" customModule="Movies___Series" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="186" id="Rna-oh-NjF" userLabel="Movie Cell" customClass="CellMoviesType" customModule="MoviesAndSeries" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="114" width="375" height="186"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rna-oh-NjF" id="FPW-uJ-1We" userLabel="Content Movie Cell">
@@ -961,7 +961,7 @@
         <!--Photo Albums View Controller-->
         <scene sceneID="eDQ-zw-pYS">
             <objects>
-                <viewController storyboardIdentifier="photoAlbumsVC" id="ZF6-L2-z5U" userLabel="Photo Albums View Controller" customClass="PhotoAlbumViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoAlbumsVC" id="ZF6-L2-z5U" userLabel="Photo Albums View Controller" customClass="PhotoAlbumViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MJc-fy-XXc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -992,7 +992,7 @@
         <!--Discover View Controller-->
         <scene sceneID="FBL-jP-EVA">
             <objects>
-                <viewController storyboardIdentifier="discoverVC" id="CdI-mP-c2Y" userLabel="Discover View Controller" customClass="DiscoverViewController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="discoverVC" id="CdI-mP-c2Y" userLabel="Discover View Controller" customClass="DiscoverViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gpr-y1-IML">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1075,7 +1075,7 @@
         <!--Artists Navigation Bar-->
         <scene sceneID="qcF-UQ-Wg3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HPs-Rm-NNV" userLabel="Artists Navigation Bar" customClass="CustomNavigationController" customModule="Movies___Series" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HPs-Rm-NNV" userLabel="Artists Navigation Bar" customClass="CustomNavigationController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Artists" image="Artists Tab Bar Icon" selectedImage="Artists Tab Bar Icon" id="was-Sj-oxM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Ah-pi-8nF">

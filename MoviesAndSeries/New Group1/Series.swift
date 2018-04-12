@@ -38,18 +38,18 @@ let serie1: Serie = Serie(identifier: 1,
                           nEpisodios: 14,
                           duracaoEpisodio: 38)
 
-//Capa Trevos
+//Capa Sala
 let serie2: Serie = Serie(identifier: 2,
                           nome: "SOTC Season 2",
                           trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
-                          categorias: ["Action", "Romance", "Fantasy"],
+                          categorias: ["Action", "Fantasy"],
                           mediaEstrelas: 4,
                           totalAvaliacoes: 14,
                           linguagensDisponiveis: ["English"],
                           dataLancamento: ["Dia": 4, "Mes": 4, "Ano": 2018],
                           siglaPaisLancamento: "USA",
                           descricao: "Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2",
-                          capa: URL(string: "http://juliannehough.com/wp-content/uploads/2016/02/jules-green-eyes.jpg")!,
+                          capa: URL(string: "http://houseoffraser.scene7.com/is/image/HOF/I_5011583175660_50_20150327")!,
                           atores: [artist1, artist2],
                           avaliacoes: [review2],
                           nEpisodios: 5,
@@ -70,15 +70,18 @@ class SeriesServer {
         }
     }
     
-    static func takeSerie(by id: Int, onCompletion completionHandler: @escaping (Serie?) -> Void) {
+    static func takeSeries(by ids: [Int], onCompletion completionHandler: @escaping ([Serie]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            var seriesId: [Serie] = []
             if arc4random_uniform(2) == 0 {
-                for serie in allSeries {
-                    if serie.identifier == id {
-                        completionHandler(serie)
-                        return
+                for id in ids {
+                    for serie in allSeries {
+                        if serie.identifier == id {
+                            seriesId.append(serie)
+                        }
                     }
                 }
+                completionHandler(seriesId)
             } else {
                 completionHandler(nil)
             }

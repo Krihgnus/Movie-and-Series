@@ -1,13 +1,7 @@
-//
-//  CustomNavigationController.swift
-//  Movies & Series
-//
-//  Created by Nodo Digital on 4/11/18.
-//  Copyright © 2018 Nodo Digital. All rights reserved.
-//
-
+import Foundation
 import UIKit
 
+//Classe que altera o tipo da Status Bar
 class CustomNavigationController: UINavigationController {
 
     var overridenPreferredStatusBarStyle: UIStatusBarStyle = .default {

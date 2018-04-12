@@ -18,4 +18,16 @@ class Utils {
             return "Month not found"
         }
     }
+    
+    static func listCategories(_ categories: [String]) -> String {
+        var categorias = ""
+        for categoria in categories {
+            if categorias != "" {
+                categorias += " | \(categoria)"
+            } else {
+                categorias = categoria
+            }
+        }
+        return categorias
+    }
 }

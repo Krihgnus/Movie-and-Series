@@ -4,8 +4,11 @@ import SDWebImage
 
 var clickedartistId = -1
 
+var filmsByArtist: [Film] = []
+var seriesByArtist: [Serie] = []
+
 class ArtistDetailsViewController: UIViewController {
-    
+
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var mainArtistPhoto: UIImageView!
     @IBOutlet weak var artistName: UILabel!
@@ -20,7 +23,6 @@ class ArtistDetailsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func toPhotoAlbum(_ sender: UIButton) {
-        //APEAS CHAMAR A VIEW DE PHOTO ALBUMS
         if let photoAlbunsViewController = self.storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController {
             navigationController?.pushViewController(photoAlbunsViewController, animated: true)
         }
@@ -44,7 +46,34 @@ class ArtistDetailsViewController: UIViewController {
             artistDetailsTableView.rowHeight = 150
             typeTableView = .movies
             starBarCurrentScreen = .noEvaluate
+            
+            if filmsByArtist.count == 0 && atrtistToFilmListTableView.filmesId.count != 0 {
+                //Request Filmes
+                FilmsSever.takeFilms(by: atrtistToFilmListTableView.filmesId) { filmsOptional in
+                    if let films = filmsOptional {
+                        filmsByArtist = films
+                        self.artistDetailsTableView.reloadData()
+                    } else {
+                        self.presentNetworkErrorAlert()
+                        print("Erro - Backend não retornou um array de filmes como esperado")
+                    }
+                }
+            }
+            
+            if seriesByArtist.count == 0 && atrtistToFilmListTableView.seriesId.count != 0 {
+                //Request Series
+                SeriesServer.takeSeries(by: atrtistToFilmListTableView.seriesId) { seriesOptional in
+                    if let series = seriesOptional {
+                        seriesByArtist = series
+                        self.artistDetailsTableView.reloadData()
+                    } else {
+                        self.presentNetworkErrorAlert()
+                        print("Erro - Backend não retornou um array de series como esperado")
+                    }
+                }
+            }
             artistDetailsTableView.reloadData()
+            
         case 2:
             //Terceira aba selecionada
             typeTableView = .more
@@ -56,6 +85,9 @@ class ArtistDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        seriesByArtist = []
+        filmsByArtist = []
         
         segmentedBar.clearSegmentedBar()
         segmentedBar.insertSegment(withTitle: "Summary", at: 0, animated: false)
@@ -93,6 +125,7 @@ class ArtistDetailsViewController: UIViewController {
                 self.navigationController?.navigationBar.tintColor = .white
                 self.contentView.isHidden = false
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
+                atrtistToFilmListTableView = artista
                 //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
                     artistNamePhotoAlbums = artista.nome
                 //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA

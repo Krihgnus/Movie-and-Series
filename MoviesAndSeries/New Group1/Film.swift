@@ -69,16 +69,18 @@ class FilmsSever {
         }
     }
     
-    static func takeFilm(by id: Int, onCompletion completionHandler: @escaping (Film?) -> Void) {
+    static func takeFilms(by ids: [Int], onCompletion completionHandler: @escaping ([Film]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            
+            var filmsId: [Film] = []
             if arc4random_uniform(2) == 0 {
-                for film in allFilms {
-                    if film.identifier == id {
-                        completionHandler(film)
-                        return
+                for id in ids {
+                    for film in allFilms {
+                        if film.identifier == id {
+                            filmsId.append(film)
+                        }
                     }
                 }
+                completionHandler(filmsId)
             } else {
                 completionHandler(nil)
             }
