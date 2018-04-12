@@ -538,7 +538,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="M9X-qG-VbP" userLabel="Activity Indicator">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="M9X-qG-VbP" userLabel="View Controller Activity Indicator">
                                 <rect key="frame" x="177" y="333.5" width="20" height="20"/>
                                 <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                             </activityIndicatorView>
@@ -901,6 +901,10 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-KU-udM" userLabel="Movies Tab Actiivity Indicator">
+                                        <rect key="frame" x="177" y="525" width="20" height="20"/>
+                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -909,6 +913,7 @@
                                     <constraint firstItem="qYU-a0-81I" firstAttribute="top" secondItem="maC-9f-TXc" secondAttribute="bottom" id="8aL-h3-mHF"/>
                                     <constraint firstAttribute="trailing" secondItem="Hs6-zO-yBm" secondAttribute="trailing" id="HwY-Dz-7by"/>
                                     <constraint firstItem="Hs6-zO-yBm" firstAttribute="top" secondItem="QZn-oQ-hta" secondAttribute="bottom" id="KIf-LR-6VK"/>
+                                    <constraint firstItem="aAX-KU-udM" firstAttribute="centerY" secondItem="8mC-wl-qXJ" secondAttribute="centerY" id="R2h-Vf-9wF"/>
                                     <constraint firstItem="maC-9f-TXc" firstAttribute="top" secondItem="Hs6-zO-yBm" secondAttribute="bottom" id="S7u-3K-p8W"/>
                                     <constraint firstAttribute="trailing" secondItem="maC-9f-TXc" secondAttribute="trailing" id="Sm4-YL-RtM"/>
                                     <constraint firstItem="qYU-a0-81I" firstAttribute="leading" secondItem="In8-HP-d8r" secondAttribute="leading" id="TUr-LF-PrD"/>
@@ -918,6 +923,7 @@
                                     <constraint firstAttribute="trailing" secondItem="8mC-wl-qXJ" secondAttribute="trailing" id="osG-qO-uj0"/>
                                     <constraint firstAttribute="trailing" secondItem="QZn-oQ-hta" secondAttribute="trailing" id="qQU-C5-klH"/>
                                     <constraint firstItem="maC-9f-TXc" firstAttribute="leading" secondItem="In8-HP-d8r" secondAttribute="leading" id="qYX-6k-QG9"/>
+                                    <constraint firstItem="aAX-KU-udM" firstAttribute="centerX" secondItem="8mC-wl-qXJ" secondAttribute="centerX" id="rDt-7b-7Ik"/>
                                     <constraint firstAttribute="bottom" secondItem="8mC-wl-qXJ" secondAttribute="bottom" id="sTW-N6-8CG"/>
                                     <constraint firstItem="QZn-oQ-hta" firstAttribute="top" secondItem="In8-HP-d8r" secondAttribute="top" id="u2I-Kr-wPB"/>
                                 </constraints>
@@ -935,7 +941,6 @@
                         <viewLayoutGuide key="safeArea" id="rYL-Xj-kmR"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="M9X-qG-VbP" id="1Lp-Dv-zkC"/>
                         <outlet property="artistDetailsTableView" destination="8mC-wl-qXJ" id="hgL-pT-4zj"/>
                         <outlet property="artistJobAndBornDate" destination="BJM-Bc-bVW" id="rXO-ls-Qzq"/>
                         <outlet property="artistName" destination="fhP-cX-vbM" id="Zy5-ft-Lfb"/>
@@ -943,9 +948,11 @@
                         <outlet property="contentView" destination="In8-HP-d8r" id="XQf-QF-ym8"/>
                         <outlet property="mainArtistPhoto" destination="Ac5-Cb-vax" id="sFp-om-PwY"/>
                         <outlet property="mainArtistPhotoHeight" destination="NOw-ix-s9E" id="400-eC-JAJ"/>
+                        <outlet property="movieTabActivityIndicator" destination="aAX-KU-udM" id="0Ya-fW-Miw"/>
                         <outlet property="photoAlbumsHeight" destination="uCY-mW-WvZ" id="lOV-VR-05z"/>
                         <outlet property="photosInOtherAlbums" destination="Tl3-YG-Wn5" id="AOR-hP-2ML"/>
                         <outlet property="segmentedBar" destination="maC-9f-TXc" id="1R5-mT-MoN"/>
+                        <outlet property="viewControllerActivityIndicator" destination="M9X-qG-VbP" id="Dfu-ex-SRC"/>
                         <outletCollection property="secondaryPhotoAlbum" destination="ILf-Ey-N7c" collectionClass="NSMutableArray" id="3hY-sf-OX3"/>
                         <outletCollection property="secondaryPhotoAlbum" destination="xPQ-kU-nfe" collectionClass="NSMutableArray" id="CCq-8I-hIW"/>
                         <outletCollection property="secondaryPhotoAlbum" destination="oVm-Se-m3T" collectionClass="NSMutableArray" id="a5e-n6-i6A"/>
@@ -967,7 +974,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuM-bH-DNQ" userLabel="Artist Name">
-                                <rect key="frame" x="0.0" y="325.5" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
