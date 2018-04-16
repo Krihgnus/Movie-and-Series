@@ -63,9 +63,9 @@ extension ArtistsViewController: UICollectionViewDataSource {
 //Atendendo ao protocolo UICollectionViewDelegate
 extension ArtistsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let artistDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "artistDetailsVC") as? ArtistDetailsViewController {
+        if let artistDetailViewController = storyboard?.instantiateViewController(withIdentifier: "artistDetailsVC") as? ArtistDetailsViewController {
+            artistDetailViewController.clickedartistId = indexPath.row + 1
             navigationController?.pushViewController(artistDetailViewController, animated: true)
-            clickedartistId = indexPath.item + 1
         }
     }
 }

@@ -53,26 +53,48 @@ let allArtists: [Artist] = [artist1, artist2]
 class ArtistsServer {
     static func takeAllArtists(onCompletion completionHandler: @escaping ([Artist]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            if arc4random_uniform(2) == 0 {
+            
+            let success = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+
+            if success {
+                
                  completionHandler(allArtists)
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
+            
         }
+        
     }
     
     static func takeArtist(byId: Int, onCompletion completionHandler: @escaping (Artist?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            if arc4random_uniform(2) == 0 {
+            
+            let success = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if  success {
+                
                 for artist in allArtists {
+                    
                     if artist.identifier == byId {
+                        
                         completionHandler(artist)
                         return
+                        
                     }
+                    
                 }
+                
             } else {
+                
                 completionHandler(nil)
             }
+            
         }
+        
     }
+    
 }

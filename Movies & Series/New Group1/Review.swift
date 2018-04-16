@@ -75,18 +75,31 @@ let allReviews: [Review] = [review1, review2, review3, review4]
 class ReviewsServer {
     static func takeReviewsToFilm(by filmId: Int, filmType: FilmeSerie, onCompletion completionHandler: @escaping ([Review]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
             var reviewsToFilmSerie: [Review] = []
-            if arc4random_uniform(2) == 0 {
+            
+            if sucesso {
+                
                 for review in allReviews {
+                    
                     if review.tipoFilmeSerie == filmType && review.filmeSerieIdentifier == filmId {
+                        
                         reviewsToFilmSerie.append(review)
                     }
+                    
                 }
+                
                 completionHandler(reviewsToFilmSerie)
+                
             } else {
+                
                 completionHandler(nil)
             }
+            
         }
+        
     }
+    
 }
 

@@ -18,8 +18,9 @@ let secondaryTestAlbum1: PhotoAlbum = PhotoAlbum(fotografo: "Alguem",
                                                  fotografadoId: 1,
                                                  data: ["Dia": 1, "Mes": 12, "Ano": 2008],
                                                  local: ["Estado": "Brasilia", "Pais": "Brazil"],
-                                                 fotos: [URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                                                 //COMENTADAS PARA TESTE DE MOSAICOS
+                                                 fotos: [//URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                                                         //URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
                                                          URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
                                                          URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
                                                          URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
@@ -73,32 +74,55 @@ let allSecondaryPhotoAlbums: [PhotoAlbum] = [secondaryTestAlbum1, secondaryTestA
 class PhotoAlbumServer {
     static func takeSecondaryAlbum(by artistId: Int, onCompletion completionHandler: @escaping (PhotoAlbum?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            if arc4random_uniform(2) == 0 {
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if sucesso {
+                
                 for album in allSecondaryPhotoAlbums {
+                    
                     if album.fotografadoId == artistId {
+                        
                         completionHandler(album)
                     }
+                    
                 }
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
+            
         }
+        
     }
     
     static func takeotherAlbums(by artistId: Int, onCompletion completionHandler: @escaping ([PhotoAlbum]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
             var outrosAlbuns: [PhotoAlbum] = []
-            if arc4random_uniform(2) == 0 {
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if sucesso {
+                
                 for album in allAlbums {
+                    
                     if album.fotografadoId == artistId {
                         outrosAlbuns.append(album)
+                        
                     }
+                    
                 }
                 completionHandler(outrosAlbuns)
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
         }
+        
     }
+    
 }
 

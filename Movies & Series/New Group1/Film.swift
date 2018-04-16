@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+var shouldRandomizeResults: Bool { return false }
+
 struct Film {
     let identifier: Int
     let nome: String
@@ -61,29 +63,47 @@ class FilmsSever {
     static func takeAllFilms(onCompletion completionHandler: @escaping ([Film]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
             
-            if  arc4random_uniform(2) == 0 {
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if  sucesso {
+                
                 completionHandler(allFilms)
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
+            
         }
+        
     }
     
     static func takeFilm(by id: Int, onCompletion completionHandler: @escaping (Film?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
             
-            if arc4random_uniform(2) == 0 {
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if sucesso {
+                
                 for film in allFilms {
+                    
                     if film.identifier == id {
+                        
                         completionHandler(film)
                         return
+                        
                     }
+                    
                 }
+                
             } else {
+                
                 completionHandler(nil)
             }
             
         }
+        
     }
     
 }

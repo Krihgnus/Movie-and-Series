@@ -62,26 +62,49 @@ let allSeries: [Serie] = [serie1, serie2]
 class SeriesServer {
     static func takeAllSeries(onCompletion completionHandler: @escaping ([Serie]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            if arc4random_uniform(2) == 0 {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if sucesso {
+                
                 completionHandler(allSeries)
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
+            
         }
+        
     }
     
     static func takeSerie(by id: Int, onCompletion completionHandler: @escaping (Serie?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            if arc4random_uniform(2) == 0 {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            
+            if sucesso {
+                
                 for serie in allSeries {
+                    
                     if serie.identifier == id {
+                        
                         completionHandler(serie)
                         return
+                        
                     }
+                    
                 }
+                
             } else {
+                
                 completionHandler(nil)
+                
             }
+            
         }
+        
     }
+    
 }
