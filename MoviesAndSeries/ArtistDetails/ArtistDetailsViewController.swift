@@ -24,25 +24,32 @@ class ArtistDetailsViewController: UIViewController {
     @IBOutlet weak var movieTabActivityIndicator: UIActivityIndicatorView!
     
     @IBAction func toPhotoAlbum(_ sender: UIButton) {
+        
         if let photoAlbunsViewController = self.storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController {
+            
             navigationController?.pushViewController(photoAlbunsViewController, animated: true)
+            
         }
+        
     }
-    
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         
         UIView.animate(withDuration: 0.3) {
+            
             self.buttonBar.frame.origin.x = (self.segmentedBar.frame.width / 3) * CGFloat(self.segmentedBar.selectedSegmentIndex)
+            
         }
         
         switch segmentedBar.selectedSegmentIndex {
+            
         case 0:
             //Primeira aba selecionada
             artistDetailsTableView.rowHeight = artistDetailsTableView.frame.height
             typeTableView = .summary
             movieTabActivityIndicator.stopAnimating()
             artistDetailsTableView.reloadData()
+            
         case 1:
             //Segunda aba selecionada
             artistDetailsTableView.rowHeight = 150
@@ -51,51 +58,70 @@ class ArtistDetailsViewController: UIViewController {
             movieTabActivityIndicator.startAnimating()
             artistDetailsTableView.isHidden = true
             
-            //ARRUMAR ORDEM DE EVENTOS, ABA DE MOVIES NAO SE ATUALIZA DE ACORDO
-            if filmsByArtist.count == 0 && atrtistToFilmListTableView.filmesId.count != 0  || seriesByArtist.count == 0 && atrtistToFilmListTableView.seriesId.count != 0 {
-                //Request Filmes
-                FilmsSever.takeFilms(by: atrtistToFilmListTableView.filmesId) { filmsOptional in
-                    if let films = filmsOptional {
-                        filmsByArtist = films
-                        if seriesByArtist.count == atrtistToFilmListTableView.seriesId.count {
-                            self.movieTabActivityIndicator.stopAnimating()
-                            self.artistDetailsTableView.reloadData()
-                            self.artistDetailsTableView.isHidden = false
-                        } else {
-                            self.presentNetworkErrorAlert()
-                            print("Erro - Filmes ou séries retornaram nil")
-                            self.movieTabActivityIndicator.stopAnimating()
-                        }
-                    } else {
-                        self.presentNetworkErrorAlert()
-                        print("Erro - Filmes ou séries retornaram nil")
-                        self.movieTabActivityIndicator.stopAnimating()
-                    }
-                }
-                
+            if atrtistToFilmListTableView.seriesId.count != seriesByArtist.count {
+                    
                 //Request Series
                 SeriesServer.takeSeries(by: atrtistToFilmListTableView.seriesId) { seriesOptional in
+                        
                     if let series = seriesOptional {
+                            
                         seriesByArtist = series
+                            
                         if filmsByArtist.count == atrtistToFilmListTableView.filmesId.count {
-                            self.movieTabActivityIndicator.stopAnimating()
+                                
                             self.artistDetailsTableView.reloadData()
-                            self.artistDetailsTableView.isHidden = false
-                        } else {
-                            self.presentNetworkErrorAlert()
-                            print("Erro - Filmes ou séries retornaram nil")
                             self.movieTabActivityIndicator.stopAnimating()
+                            self.artistDetailsTableView.isHidden = false
+                                
                         }
+                            
                     } else {
-                        self.presentNetworkErrorAlert()
-                        print("Erro - Filmes ou séries retornaram nil")
+                            
                         self.movieTabActivityIndicator.stopAnimating()
+                        self.presentNetworkErrorAlert()
+                        print("Erro - Array de séries retornou nil")
+                            
                     }
+                        
                 }
+                    
+            }
+            
+            if atrtistToFilmListTableView.filmesId.count != filmsByArtist.count {
+                    
+                //Request Filmes
+                FilmsSever.takeFilms(by: atrtistToFilmListTableView.filmesId) { filmsOptional in
+                        
+                    if let films = filmsOptional {
+                            
+                        filmsByArtist = films
+                            
+                        if seriesByArtist.count == atrtistToFilmListTableView.seriesId.count {
+                                
+                            self.artistDetailsTableView.reloadData()
+                            self.movieTabActivityIndicator.stopAnimating()
+                            self.artistDetailsTableView.isHidden = false
+                                
+                        }
+                            
+                    } else {
+                            
+                        self.movieTabActivityIndicator.stopAnimating()
+                        self.presentNetworkErrorAlert()
+                        print("Erro - Array de filmes retornou nil")
+                            
+                    }
+                    
+                }
+                    
+            }
+            
+            if filmsByArtist.count == atrtistToFilmListTableView.filmesId.count && seriesByArtist.count == atrtistToFilmListTableView.seriesId.count {
                 
-                if filmsByArtist.count == atrtistToFilmListTableView.filmesId.count && seriesByArtist.count == atrtistToFilmListTableView.seriesId.count {
-                    artistDetailsTableView.reloadData()
-                }
+                artistDetailsTableView.reloadData()
+                movieTabActivityIndicator.stopAnimating()
+                artistDetailsTableView.isHidden = false
+                
             }
             
         case 2:
@@ -103,12 +129,16 @@ class ArtistDetailsViewController: UIViewController {
             typeTableView = .more
             movieTabActivityIndicator.stopAnimating()
             artistDetailsTableView.reloadData()
+            
         default:
             return
+            
         }
+        
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         seriesByArtist = []
@@ -136,17 +166,25 @@ class ArtistDetailsViewController: UIViewController {
         viewControllerActivityIndicator.startAnimating()
         //Request
         ArtistsServer.takeArtist(byId: clickedartistId) { artistOptional in
+            
             if let artista = artistOptional {
+                
                 self.mainArtistPhoto.sd_setImage(with: artista.imagemCapa, completed: nil)
                 self.artistName.text = artista.nome
                 self.artistJobAndBornDate.text = "\(artista.profissao) | \(Utils.numberToMonth(artista.dataNascimento["Mes"])) \(artista.dataNascimento["Dia"]!), \(artista.dataNascimento["Ano"]!)"
                 self.photosInOtherAlbums.text = "\(Utils.photoCount(artista.outrosAlbuns)) +"
+                
                 if Utils.photoCount(artista.outrosAlbuns) < 10 {
+                    
                     self.photosInOtherAlbums.text = "0\(Utils.photoCount(artista.outrosAlbuns)) +"
+                    
                 }
+                
                 for indx in 0...5 {
                     self.secondaryPhotoAlbum[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                    
                 }
+                
                 self.navigationController?.navigationBar.tintColor = .white
                 self.contentView.isHidden = false
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
@@ -157,16 +195,25 @@ class ArtistDetailsViewController: UIViewController {
                 //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
                     //VAR GLOBAL OTHERALBUMSARTIST = ARTISTA.OUTROSALBUNS
                 //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
+                
             } else {
+                
                 self.presentNetworkErrorAlert()
                 print("Erro - Nil como resposta do backend")
+                
             }
+            
             self.viewControllerActivityIndicator.stopAnimating()
+            
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
+        
     }
+    
 }
