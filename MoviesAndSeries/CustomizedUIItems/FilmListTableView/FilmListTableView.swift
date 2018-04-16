@@ -8,6 +8,7 @@ enum TableViewType {
 }
 
 var typeTableView: TableViewType = .summary
+var atrtistToFilmListTableView: Artist!
 
 class FilmList: UITableView {
     static let sharedTableView = FilmList()
@@ -34,7 +35,7 @@ extension FilmList: UITableViewDataSource {
         case .summary:
             return 1
         case .movies:
-            return 3 //MOVIESQFEZ.COUNT
+            return seriesByArtist.count + filmsByArtist.count //MOVIESQFEZ.COUNT - ATUALIZADO
         case .more:
             return 0
         }
@@ -42,6 +43,7 @@ extension FilmList: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch typeTableView {
+            
         case .summary:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell") as? CellSummaryType else {
                 print("Erro - Retornando célula não configurada")
@@ -49,13 +51,19 @@ extension FilmList: UITableViewDataSource {
             }
             cell.configure(artista) //CELL.CONFIGURE(OBJ ARTISTA)
             return cell
+            
         case .movies:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? CellMoviesType else {
                 print("Erro - Retornando célula não configurada")
                 return UITableViewCell()
             }
-            cell.configure(filme) //CELL.CONFIGURE(OBJ FILME)
+            if indexPath.row <= filmsByArtist.count - 1{
+                cell.configureFilm(filmsByArtist[indexPath.row])
+            } else {
+                cell.configureSerie(seriesByArtist[indexPath.row - filmsByArtist.count])
+            }
             return cell
+            
         case .more:
             return UITableViewCell()
         }
@@ -63,7 +71,6 @@ extension FilmList: UITableViewDataSource {
 }
 
 extension FilmList: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //PROVISORIO - APRIMORAR
         if typeTableView == .movies {

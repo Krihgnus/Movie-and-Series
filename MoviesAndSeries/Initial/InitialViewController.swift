@@ -12,7 +12,7 @@ class InitialViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        //APRESENTANDO PRIMEIRAMENTE SEMPRE A INITIAL1
+        //Apresentando primeiramente sempre a initial1
         if let firstViewController = views.first {
             setViewControllers([firstViewController],direction: .forward, animated: true, completion: nil)
         }
@@ -21,7 +21,7 @@ class InitialViewController: UIPageViewController {
         
     }
     
-    //FUNC QUE RETORNA UMA VIEWCONTROLLER A PARTIR DE UM IDENTIFIER
+    //Func que retorna uma UIViewController a partir de um identifier
     static func viewControllerGenerate(_ nome: String) -> UIViewController {
         let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: nome)
         return view
@@ -29,7 +29,7 @@ class InitialViewController: UIPageViewController {
 }
 
 
-//ATENDENDO AO PROTOCOLO UIPageViewControllerDataSource
+//Atendendo ao protocolo UIPageViewControllerDataSource
 extension InitialViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -57,7 +57,7 @@ extension InitialViewController: UIPageViewControllerDataSource {
     }
 }
 
-//ATENDENDO AO PROTOCOLO UIPageViewControllerDelegate
+//Atendendo ao protocolo UIPageViewControllerDelegate
 extension InitialViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
