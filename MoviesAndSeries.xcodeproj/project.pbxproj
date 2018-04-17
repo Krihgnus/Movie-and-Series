@@ -54,7 +54,7 @@
 		19239A4B208007DB00A7DADD /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 		19613C19207E833700F3DA41 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsViewController.swift; sourceTree = "<group>"; };
-		1970FA962062D81B009BE4B4 /* Movies & Series.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies & Series.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1970FA962062D81B009BE4B4 /* MoviesAndSeries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesAndSeries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1970FA992062D81B009BE4B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1970FA9B2062D81B009BE4B4 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		1970FA9E2062D81B009BE4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		1970FA972062D81B009BE4B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1970FA962062D81B009BE4B4 /* Movies & Series.app */,
+				1970FA962062D81B009BE4B4 /* MoviesAndSeries.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,9 +294,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1970FA952062D81B009BE4B4 /* Movies & Series */ = {
+		1970FA952062D81B009BE4B4 /* MoviesAndSeries */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1970FAA82062D81B009BE4B4 /* Build configuration list for PBXNativeTarget "Movies & Series" */;
+			buildConfigurationList = 1970FAA82062D81B009BE4B4 /* Build configuration list for PBXNativeTarget "MoviesAndSeries" */;
 			buildPhases = (
 				12C34F8B3C79763C8E820C92 /* [CP] Check Pods Manifest.lock */,
 				1970FA922062D81B009BE4B4 /* Sources */,
@@ -309,9 +309,9 @@
 			);
 			dependencies = (
 			);
-			name = "Movies & Series";
+			name = MoviesAndSeries;
 			productName = "Movies & Series";
-			productReference = 1970FA962062D81B009BE4B4 /* Movies & Series.app */;
+			productReference = 1970FA962062D81B009BE4B4 /* MoviesAndSeries.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -330,7 +330,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1970FA912062D81B009BE4B4 /* Build configuration list for PBXProject "Movies & Series" */;
+			buildConfigurationList = 1970FA912062D81B009BE4B4 /* Build configuration list for PBXProject "MoviesAndSeries" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -343,7 +343,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1970FA952062D81B009BE4B4 /* Movies & Series */,
+				1970FA952062D81B009BE4B4 /* MoviesAndSeries */,
 			);
 		};
 /* End PBXProject section */
@@ -616,7 +616,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1970FA912062D81B009BE4B4 /* Build configuration list for PBXProject "Movies & Series" */ = {
+		1970FA912062D81B009BE4B4 /* Build configuration list for PBXProject "MoviesAndSeries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1970FAA62062D81B009BE4B4 /* Debug */,
@@ -625,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1970FAA82062D81B009BE4B4 /* Build configuration list for PBXNativeTarget "Movies & Series" */ = {
+		1970FAA82062D81B009BE4B4 /* Build configuration list for PBXNativeTarget "MoviesAndSeries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1970FAA92062D81B009BE4B4 /* Debug */,
