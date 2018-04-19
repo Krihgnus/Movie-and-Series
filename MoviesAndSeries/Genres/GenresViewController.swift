@@ -17,6 +17,7 @@ class GenresViewController: UIViewController {
         categoryTableView.rowHeight = 170
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
+        categoryTableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 }
 

@@ -9,8 +9,8 @@ struct Serie {
     let mediaEstrelas: Int
     let totalAvaliacoes: Int
     let linguagensDisponiveis: [String]
-    let dataLancamento: [String: Int] // "Dia": 00, "Mes": 00, "Ano": 0000
-    let siglaPaisLancamento: String //BR
+    let dataLancamento: [String: Int]
+    let siglaPaisLancamento: String
     let descricao: String
     let capa: URL
     let atores: [Artist]
@@ -38,7 +38,7 @@ let serie1: Serie = Serie(identifier: 1,
                           nEpisodios: 14,
                           duracaoEpisodio: 38)
 
-//Capa Trevos
+//Capa Luminosa
 let serie2: Serie = Serie(identifier: 2,
                           nome: "SOTC Season 2",
                           trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
@@ -49,7 +49,7 @@ let serie2: Serie = Serie(identifier: 2,
                           dataLancamento: ["Dia": 4, "Mes": 4, "Ano": 2018],
                           siglaPaisLancamento: "USA",
                           descricao: "Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2",
-                          capa: URL(string: "http://juliannehough.com/wp-content/uploads/2016/02/jules-green-eyes.jpg")!,
+                          capa: URL(string: "https://i0.wallpaperscraft.com/image/paint_art_stripes_stains_117030_300x168.jpg")!,
                           atores: [artist1, artist2],
                           avaliacoes: [review2],
                           nEpisodios: 5,
@@ -60,6 +60,7 @@ let allSeries: [Serie] = [serie1, serie2]
 
 //Class ficticia que representa o servidor que puxa os dados dos filmes de um banco de dados atraves de requests
 class SeriesServer {
+    
     static func takeAllSeries(onCompletion completionHandler: @escaping ([Serie]?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
             
@@ -101,6 +102,40 @@ class SeriesServer {
                 
                 completionHandler(nil)
                 
+            }
+            
+        }
+        
+    }
+    
+    static func takeSeries(by ids: [Int], onCompletion completionHandler: @escaping ([Serie]?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+        
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            var series: [Serie] = []
+        
+            if sucesso {
+            
+                for serie in allSeries {
+                
+                    for id in ids {
+                    
+                        if serie.identifier == id {
+                        
+                            series.append(serie)
+                        
+                        }
+                    
+                    }
+                
+                }
+            
+                completionHandler(series)
+            
+            } else {
+            
+            completionHandler(nil)
+            
             }
             
         }

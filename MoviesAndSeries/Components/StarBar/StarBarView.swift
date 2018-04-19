@@ -8,8 +8,8 @@ enum StarBarType {
 
 var starBarCurrentScreen: StarBarType!
 
-private var imageOn: UIImage = UIImage(imageLiteralResourceName: "star-on")
-private var imageOff: UIImage = UIImage(imageLiteralResourceName: "star-off")
+private var imageOn: UIImage = UIImage(imageLiteralResourceName: "starOn")
+private var imageOff: UIImage = UIImage(imageLiteralResourceName: "starOff")
 
 class StarBarView: UIView {
     
