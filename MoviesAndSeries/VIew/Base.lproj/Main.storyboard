@@ -331,7 +331,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-LE-Cky">
-                            <rect key="frame" x="0.0" y="20" width="200" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
                             <color key="tintColor" red="0.024422621354460716" green="0.58026111125946045" blue="0.64688342809677124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -623,13 +623,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Born Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAF-yw-Nlc" userLabel="Born Data">
-                                                            <rect key="frame" x="11" y="10" width="578" height="15"/>
+                                                            <rect key="frame" x="11" y="10" width="353" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.29016751050949097" green="0.29021432995796204" blue="0.2901572585105896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="History" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33h-Gu-Nc3" userLabel="History">
-                                                            <rect key="frame" x="11" y="33" width="578" height="17"/>
+                                                            <rect key="frame" x="11" y="35" width="353" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.29016751050949097" green="0.29021432995796204" blue="0.2901572585105896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -638,7 +638,6 @@
                                                     <constraints>
                                                         <constraint firstItem="AAF-yw-Nlc" firstAttribute="leading" secondItem="K9G-RJ-iew" secondAttribute="leading" constant="11" id="09T-Mn-NAH"/>
                                                         <constraint firstItem="33h-Gu-Nc3" firstAttribute="leading" secondItem="K9G-RJ-iew" secondAttribute="leading" constant="11" id="IwH-1M-9mt"/>
-                                                        <constraint firstAttribute="bottom" secondItem="33h-Gu-Nc3" secondAttribute="bottom" constant="36" id="KBS-Vt-3kB"/>
                                                         <constraint firstAttribute="trailing" secondItem="AAF-yw-Nlc" secondAttribute="trailing" constant="11" id="UrL-Bo-lAr"/>
                                                         <constraint firstItem="33h-Gu-Nc3" firstAttribute="top" secondItem="AAF-yw-Nlc" secondAttribute="bottom" constant="8" id="caX-h6-qjM"/>
                                                         <constraint firstAttribute="trailing" secondItem="33h-Gu-Nc3" secondAttribute="trailing" constant="11" id="uhg-OU-b2j"/>
@@ -659,7 +658,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50l-yX-3cg" userLabel="Main View">
-                                                            <rect key="frame" x="10" y="10" width="580" height="166"/>
+                                                            <rect key="frame" x="10" y="10" width="355" height="166"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hRm-yW-71w" userLabel="Movie Image">
                                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="117"/>
@@ -685,7 +684,7 @@
                                                                             </subviews>
                                                                         </stackView>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-96-cDL" userLabel="Stars">
-                                                                            <rect key="frame" x="476" y="9" width="94" height="15"/>
+                                                                            <rect key="frame" x="251" y="9" width="94" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="15" id="JF4-9a-So4"/>
                                                                                 <constraint firstAttribute="width" constant="94" id="mr4-Ul-lb9"/>
@@ -818,16 +817,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Hs6-zO-yBm" userLabel="Photos">
-                            <rect key="frame" x="0.0" y="20" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-A9-hUA" userLabel="To Photo Album">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oVm-Se-m3T" userLabel="Photo 1">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApO-KM-H7y" userLabel="Background View">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <color key="backgroundColor" red="0.024422621354460716" green="0.58026111125946045" blue="0.64688342809677124" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 +" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tl3-YG-Wn5">
@@ -843,7 +842,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wq-07-KeN" userLabel="To Photo Albums">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <connections>
                                                 <action selector="toPhotoAlbum:" destination="oc6-gs-H1f" eventType="touchUpInside" id="UH3-Ku-xvd"/>
                                             </connections>
@@ -872,13 +871,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-rD-RIR" userLabel="Photo 2">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-kU-nfe" userLabel="Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYk-Oi-QyF" userLabel="Expand Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -894,7 +893,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="e2H-Io-aWy" userLabel="More Photos">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="250" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xR1-HE-Gn1" userLabel="Photo 3 and 4">
                                             <rect key="frame" x="0.0" y="0.0" width="62.5" height="110"/>
@@ -1016,16 +1015,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YTe-t0-Tl8" userLabel="Photos">
-                            <rect key="frame" x="0.0" y="20" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEm-H2-zBg" userLabel="To Photo Album">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DGj-Mv-oUq" userLabel="Photo 1">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXY-OZ-hdR" userLabel="Background View">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <color key="backgroundColor" red="0.02442262135" green="0.58026111130000002" blue="0.64688342809999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 +" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-LE-Tfz">
@@ -1041,7 +1040,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0I-Ex-tWr" userLabel="To Photo Albums">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <connections>
                                                 <action selector="toPhotoAlbum:" destination="oc6-gs-H1f" eventType="touchUpInside" id="FsH-zP-IaD"/>
                                             </connections>
@@ -1070,16 +1069,16 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qcu-jF-e8I" userLabel="Photo 2 and 3">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1f-tR-anK" userLabel="Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-4Z-15L" userLabel="Photo 2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4h1-9z-D1B" userLabel="Expand Photo 2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1095,13 +1094,13 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9P-Ho-qnV" userLabel="Photo 3">
-                                            <rect key="frame" x="0.0" y="45" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="55" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMC-JJ-QqO" userLabel="Photo 3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfK-lz-sl4" userLabel="Expand Photo 3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1119,16 +1118,16 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FHt-j6-n98" userLabel="Photo 4 and 5">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="250" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2p-5y-e0U" userLabel="Photo 4">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34Y-dy-gVX" userLabel="Photo 4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hql-uz-UeD" userLabel="Expand Photo 4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1144,13 +1143,13 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dt-oH-MFu" userLabel="Photo 5">
-                                            <rect key="frame" x="0.0" y="45" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="55" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Eb-CGl" userLabel="Photo 5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7g3-SF-6Ng" userLabel="Expand Photo 5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1187,16 +1186,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3t5-2A-wOa" userLabel="Photos">
-                            <rect key="frame" x="0.0" y="20" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYX-ns-g7J" userLabel="To Photo Album">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zij-pz-Bzc" userLabel="Photo 1">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bh1-uO-Vy4" userLabel="Background View">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <color key="backgroundColor" red="0.02442262135" green="0.58026111130000002" blue="0.64688342809999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 +" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbi-Db-W7f">
@@ -1212,7 +1211,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vW-yo-NCd" userLabel="To Photo Albums">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <connections>
                                                 <action selector="toPhotoAlbum:" destination="oc6-gs-H1f" eventType="touchUpInside" id="Er9-cc-hBE"/>
                                             </connections>
@@ -1241,13 +1240,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0X-0K-2C1" userLabel="Photo 2">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3Z-EN-mol" userLabel="Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBV-qk-HvX" userLabel="Expand Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1263,16 +1262,16 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BtI-jI-FXH" userLabel="Photo 3 and 4">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="250" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFo-ef-2R5" userLabel="Photo 3">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-Ln-kCr" userLabel="Photo 3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUJ-rt-n2q" userLabel="Expand Photo 3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1288,13 +1287,13 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqD-ai-is1" userLabel="Photo 4">
-                                            <rect key="frame" x="0.0" y="45" width="125" height="45"/>
+                                            <rect key="frame" x="0.0" y="55" width="125" height="55"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sDs-p2-iYh" userLabel="Photo 4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-aY-rCP" userLabel="Expand Photo 4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1331,16 +1330,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vle-0U-UgW" userLabel="Photos">
-                            <rect key="frame" x="0.0" y="20" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-lC-n8Y" userLabel="To Photo Album">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xDR-ek-kFR" userLabel="Photo 1">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usH-tw-4wL" userLabel="Background View">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <color key="backgroundColor" red="0.02442262135" green="0.58026111130000002" blue="0.64688342809999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 +" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znE-QM-Etr">
@@ -1356,7 +1355,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqq-DK-wwE" userLabel="To Photo Albums">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                             <connections>
                                                 <action selector="toPhotoAlbum:" destination="oc6-gs-H1f" eventType="touchUpInside" id="NbA-oC-39l"/>
                                             </connections>
@@ -1385,13 +1384,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6r-pm-jQH" userLabel="Photo 2">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5AC-do-1mr" userLabel="Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOM-8F-KNS" userLabel="Expand Photo 2">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1407,13 +1406,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWL-4C-RlS" userLabel="Photo 3">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="90"/>
+                                    <rect key="frame" x="250" y="0.0" width="125" height="110"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vcd-F5-goZ" userLabel="Photo 3">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygy-jq-po6" userLabel="Expand Photo 3">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

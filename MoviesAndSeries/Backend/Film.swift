@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-var shouldRandomizeResults: Bool { return false }
+var shouldRandomizeResults: Bool { return true }
 
 struct Film {
     let identifier: Int

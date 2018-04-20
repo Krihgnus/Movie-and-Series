@@ -16,17 +16,6 @@ class FilmList: UITableView {
     var seriesByArtist: [Serie] = []
     var filmsByArtist: [Film] = []
     
-//ATUALIZAR COM O BANCO DE DADOS
-    //STATIC VAR ARTISTA = ARTISTA! ESTE ARTISTA JA VAI CONTER O ARRAY FILMES QUE FEZ COMO UMA DE SUAS PROPRIEDADES
-    //A PARTIR DESTES DADOS MONTAR AS CELULAS CORRESPONDENTES
-//ATUALIZAR COM O BANCO DE DADOS
-    
-    //DELETAR COM BANCO DE DADOS
-    let artista: [String] = ["TEST NAME", "DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST, DESCRIPTION TEST"]
-    let filme: [String: String] = ["name": "TESTE", "categories": "Action | Romance"]
-    
-    //DELETAR COM BANCO DE DADOS
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -74,7 +63,13 @@ extension FilmList: UITableViewDataSource {
                 
             }
             
-            cell.configure(artista) //CELL.CONFIGURE(OBJ ARTISTA)
+            if artistToTableView == nil {
+                
+                return UITableViewCell()
+                
+            }
+            
+            cell.configure(artistToTableView)
             return cell
             
         case .movies:

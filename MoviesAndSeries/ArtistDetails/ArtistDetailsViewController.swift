@@ -41,9 +41,6 @@ class ArtistDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
         
-        segmentedBar.selectedSegmentIndex = 0
-        indexChanged(segmentedBar)
-        
         spaceBetweenSegmentedBarAndMainImageConstraint.constant = 110
         
         screenActivityIndicator.startAnimating()
@@ -126,6 +123,8 @@ class ArtistDetailsViewController: UIViewController {
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                 
                 self.artistDetailsTableView.artistToTableView = artista
+                self.segmentedBar.selectedSegmentIndex = 0
+                self.indexChanged(self.segmentedBar)
                 
                 //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
                     artistNamePhotoAlbums = artista.nome
@@ -187,6 +186,8 @@ class ArtistDetailsViewController: UIViewController {
             artistDetailsTableView.rowHeight = artistDetailsTableView.frame.height
             artistDetailsTableView.tbvType = .summary
             artistDetailsTableView.reloadData()
+            artistDetailsTableView.isHidden = false
+            tableViewActivityIndicator.stopAnimating()
             
         case 1:
             //Segunda aba selecionada
@@ -213,6 +214,8 @@ class ArtistDetailsViewController: UIViewController {
             //Terceira aba selecionada
             artistDetailsTableView.tbvType = .more
             artistDetailsTableView.reloadData()
+            artistDetailsTableView.isHidden = false
+            tableViewActivityIndicator.stopAnimating()
             
         default:
             return
@@ -243,10 +246,14 @@ class ArtistDetailsViewController: UIViewController {
                     
                 } else {
                     
-                    self.presentNetworkErrorAlert()
-                    self.tableViewActivityIndicator.stopAnimating()
-                    
-                    print("Erro - Array de séries retornou nil do backend")
+                    if self.artistDetailsTableView.tbvType == .movies {
+                        
+                        self.presentNetworkErrorAlert()
+                        self.tableViewActivityIndicator.stopAnimating()
+                        
+                        print("Erro - Array de séries retornou nil do backend")
+                        
+                    }
                     
                 }
     
@@ -274,10 +281,14 @@ class ArtistDetailsViewController: UIViewController {
                     
                 } else {
                     
-                    self.presentNetworkErrorAlert()
-                    self.tableViewActivityIndicator.stopAnimating()
-                    
-                    print("Erro - Array de filmes retornou nil do backend")
+                    if self.artistDetailsTableView.tbvType == .movies {
+                        
+                        self.presentNetworkErrorAlert()
+                        self.tableViewActivityIndicator.stopAnimating()
+                        
+                        print("Erro - Array de filmes retornou nil do backend")
+                        
+                    }
                     
                 }
                 
