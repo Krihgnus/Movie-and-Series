@@ -25,6 +25,7 @@
 		1970FAA42062D81B009BE4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1970FAA22062D81B009BE4B4 /* LaunchScreen.storyboard */; };
 		198AC160208A454D00AD0225 /* ClearSegmentedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AC15F208A454D00AD0225 /* ClearSegmentedBar.swift */; };
 		198AC162208A455200AD0225 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AC161208A455200AD0225 /* GradientBackgroundView.swift */; };
+		198AC166208A94B900AD0225 /* ListOfGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AC165208A94B900AD0225 /* ListOfGenreViewController.swift */; };
 		19B90F5120758001003C5811 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F5020758001003C5811 /* PhotoAlbum.swift */; };
 		19B90F532075802D003C5811 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F522075802D003C5811 /* Artist.swift */; };
 		19B90F55207581D4003C5811 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F54207581D4003C5811 /* Film.swift */; };
@@ -62,6 +63,7 @@
 		1970FAA52062D81B009BE4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198AC15F208A454D00AD0225 /* ClearSegmentedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearSegmentedBar.swift; sourceTree = "<group>"; };
 		198AC161208A455200AD0225 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
+		198AC165208A94B900AD0225 /* ListOfGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGenreViewController.swift; sourceTree = "<group>"; };
 		19B90F5020758001003C5811 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
 		19B90F522075802D003C5811 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		19B90F54207581D4003C5811 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				19D866592062FC0E00241749 /* Initial */,
 				190B630020742E2D006E2D3D /* Discover */,
 				190C134020645DAE0027E452 /* Genres */,
+				198AC164208A948500AD0225 /* ListOfGenre */,
 				1938585D206598A30057D384 /* Artists */,
 				19F93644206AA64E00E02A93 /* ArtistDetails */,
 				19613C1B207E8E4D00F3DA41 /* PhotoAlbums */,
@@ -193,6 +196,14 @@
 				198AC161208A455200AD0225 /* GradientBackgroundView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		198AC164208A948500AD0225 /* ListOfGenre */ = {
+			isa = PBXGroup;
+			children = (
+				198AC165208A94B900AD0225 /* ListOfGenreViewController.swift */,
+			);
+			path = ListOfGenre;
 			sourceTree = "<group>";
 		};
 		19B90F4F20757FDC003C5811 /* Backend */ = {
@@ -440,6 +451,7 @@
 				190C132520642CDA0027E452 /* IconsPageViewController.swift in Sources */,
 				19B90F55207581D4003C5811 /* Film.swift in Sources */,
 				19FB4F2B206C04020040DF69 /* TableViewMoviesCell.swift in Sources */,
+				198AC166208A94B900AD0225 /* ListOfGenreViewController.swift in Sources */,
 				190B62F92073E35E006E2D3D /* CategoryCell.swift in Sources */,
 				19F93646206AA68A00E02A93 /* ArtistDetailsViewController.swift in Sources */,
 				190F8CD82069827500696645 /* ArtistsCollectionViewController.swift in Sources */,

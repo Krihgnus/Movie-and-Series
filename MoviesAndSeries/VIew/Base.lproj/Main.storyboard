@@ -229,7 +229,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-bB-fyp" userLabel="Category Table View">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bdj-wR-zir" userLabel="Activity Indicator">
+                                <rect key="frame" x="177" y="331" width="20" height="20"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-bB-fyp" userLabel="Category Table View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -284,7 +288,9 @@
                         <constraints>
                             <constraint firstItem="dbJ-bB-fyp" firstAttribute="bottom" secondItem="lRM-rT-ook" secondAttribute="bottom" id="Lcb-CF-Cjb"/>
                             <constraint firstItem="dbJ-bB-fyp" firstAttribute="trailing" secondItem="lRM-rT-ook" secondAttribute="trailing" id="MwQ-9P-Vah"/>
+                            <constraint firstItem="bdj-wR-zir" firstAttribute="centerX" secondItem="lRM-rT-ook" secondAttribute="centerX" id="QUd-VS-wsY"/>
                             <constraint firstItem="dbJ-bB-fyp" firstAttribute="leading" secondItem="lRM-rT-ook" secondAttribute="leading" id="SPI-zV-RhD"/>
+                            <constraint firstItem="bdj-wR-zir" firstAttribute="centerY" secondItem="lRM-rT-ook" secondAttribute="centerY" id="Zwg-6s-M9K"/>
                             <constraint firstItem="dbJ-bB-fyp" firstAttribute="top" secondItem="lRM-rT-ook" secondAttribute="top" id="bI0-2I-Y4G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lRM-rT-ook"/>
@@ -300,11 +306,41 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryTableView" destination="dbJ-bB-fyp" id="ttc-g9-RR7"/>
+                        <outlet property="tableViewActivityIndicator" destination="bdj-wR-zir" id="448-qR-Tyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOL-zz-9HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2497" y="-477"/>
+        </scene>
+        <!--List of Gender View Controller-->
+        <scene sceneID="tH9-c3-rYZ">
+            <objects>
+                <viewController storyboardIdentifier="listOfGenreVC" id="aGX-uh-4na" userLabel="List of Gender View Controller" customClass="ListOfGenre" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tiO-g1-kuq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LISTA COM FILMES DE UM GENERO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fen-cc-jL2">
+                                <rect key="frame" x="0.0" y="307.5" width="375" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fen-cc-jL2" firstAttribute="trailing" secondItem="cZV-6t-wzM" secondAttribute="trailing" id="2fa-Cd-1UI"/>
+                            <constraint firstItem="fen-cc-jL2" firstAttribute="leading" secondItem="cZV-6t-wzM" secondAttribute="leading" id="Xah-TP-ZaO"/>
+                            <constraint firstItem="fen-cc-jL2" firstAttribute="centerX" secondItem="cZV-6t-wzM" secondAttribute="centerX" id="aUO-eP-RWO"/>
+                            <constraint firstItem="fen-cc-jL2" firstAttribute="centerY" secondItem="cZV-6t-wzM" secondAttribute="centerY" id="qXZ-WP-SzN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cZV-6t-wzM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skC-nj-ZOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3329" y="-477"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="7Jn-yo-yQ7">
@@ -1589,6 +1625,6 @@
         <image name="searchNavigationBarIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UQT-fk-bdf"/>
+        <segue reference="PZX-bY-i6w"/>
     </inferredMetricsTieBreakers>
 </document>
