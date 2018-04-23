@@ -17,7 +17,7 @@ class CategoryCell: UITableViewCell {
         
     }
     
-    func configure(name: String, image: URL) {//FUNC CONFIGURE(_ FILM: OBJ FILME) {
+    func configure(name: String, image: URL) {
         
         self.selectionStyle = .none
         

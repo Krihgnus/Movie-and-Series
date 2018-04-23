@@ -19,7 +19,6 @@ class FilmList: UITableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        delegate = self
         dataSource = self
         
         self.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -45,7 +44,7 @@ extension FilmList: UITableViewDataSource {
             return 1
             
         case .movies:
-            return artistToTableView.filmesId.count + artistToTableView.seriesId.count
+            return filmsByArtist.count + seriesByArtist.count
             
         case .more:
             return 0
@@ -83,7 +82,7 @@ extension FilmList: UITableViewDataSource {
                 
             }
             
-            if filmsByArtist.count == 0  || seriesByArtist.count == 0 {
+            if filmsByArtist.count + seriesByArtist.count == 0 {
                 
                 return UITableViewCell()
             
@@ -107,20 +106,3 @@ extension FilmList: UITableViewDataSource {
     }
     
 }
-
-extension FilmList: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //PROVISORIO - APRIMORAR
-        if tbvType == .movies {
-            
-            //IR PARA A TELA DE DETALHES DO DETERMINADO FILME
-            print("Filme número \(indexPath.row) selecionado")
-            
-        }
-        
-    }
-    
-}
-

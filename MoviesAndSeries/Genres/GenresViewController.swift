@@ -58,7 +58,6 @@ class GenresViewController: UIViewController {
                             
                             if existingCategories == 0 {
                                 
-                                print("CATEGORIA: \(categorie) ADICIONADO")
                                 self.arrCategories.append(categorie)
                                 self.arrImages.append(film.capa)
                                 
@@ -179,11 +178,39 @@ extension GenresViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let categoria = arrCategories[indexPath.row]
+        
         if let listOfGenreReference = storyboard?.instantiateViewController(withIdentifier: "listOfGenreVC") as? ListOfGenre {
             
+            for film in allFilms {
+                
+                for categorie in film.categorias {
+                    
+                    if categoria == categorie {
+                        
+                        listOfGenreReference.genreFilms.append(film)
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            for serie in allSeries {
+                
+                for categorie in serie.categorias {
+                    
+                    if categoria == categorie {
+                        
+                        listOfGenreReference.genreSeries.append(serie)
+                        
+                    }
+                    
+                }
+                
+            }
+            
             navigationController?.pushViewController(listOfGenreReference, animated: true)
-            print("Categoria \(arrCategories[indexPath.row]) selecionada!")
-            //PASSAR DADOS
             
         }
         

@@ -419,12 +419,40 @@
                         <viewLayoutGuide key="safeArea" id="cZV-6t-wzM"/>
                     </view>
                     <connections>
-                        <outlet property="listFilmsTableView" destination="eha-NW-Eop" id="tDf-Cr-7vC"/>
+                        <outlet property="listFilmsTableView" destination="eha-NW-Eop" id="g0n-5Z-ds3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skC-nj-ZOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3329" y="-477"/>
+        </scene>
+        <!--Movie Details-->
+        <scene sceneID="AK2-Yt-33V">
+            <objects>
+                <viewController storyboardIdentifier="movieDetailsVC" id="IzW-4g-6ap" userLabel="Movie Details" customClass="MovieDetailsViewController" customModule="MoviesAndSeries" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ESH-6U-oE6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETALHES DE UM FILME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOR-ec-Mou">
+                                <rect key="frame" x="0.0" y="325.5" width="375" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YOR-ec-Mou" firstAttribute="centerY" secondItem="G23-fO-9ym" secondAttribute="centerY" id="5mm-tk-flu"/>
+                            <constraint firstItem="YOR-ec-Mou" firstAttribute="leading" secondItem="G23-fO-9ym" secondAttribute="leading" id="Kta-GN-5j4"/>
+                            <constraint firstItem="YOR-ec-Mou" firstAttribute="trailing" secondItem="G23-fO-9ym" secondAttribute="trailing" id="Non-wy-eIw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G23-fO-9ym"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsH-Bp-cNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4222" y="-477"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="7Jn-yo-yQ7">

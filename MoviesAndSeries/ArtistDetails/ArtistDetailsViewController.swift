@@ -44,6 +44,8 @@ class ArtistDetailsViewController: UIViewController {
         
         contentTableViewMoviesLoad = 0
         
+        artistDetailsTableView.delegate = self
+        
         //Request
         ArtistsServer.takeArtist(byId: clickedartistId) { artistOptional in
             
@@ -293,6 +295,24 @@ class ArtistDetailsViewController: UIViewController {
             
         }
 
+    }
+    
+}
+
+extension ArtistDetailsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if artistDetailsTableView.tbvType == .movies {
+            
+            if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
+                
+                navigationController?.pushViewController(movieDetailsReference, animated: true)
+                
+            }
+            
+        }
+        
     }
     
 }
