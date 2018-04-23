@@ -34,9 +34,6 @@ class ArtistDetailsViewController: UIViewController {
         segmentedBar.insertSegment(withTitle: "Movies", at: 1, animated: false)
         segmentedBar.insertSegment(withTitle: "More", at: 2, animated: false)
         
-        artistDetailsTableView.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
-        artistDetailsTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)

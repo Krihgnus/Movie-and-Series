@@ -22,6 +22,9 @@ class FilmList: UITableView {
         delegate = self
         dataSource = self
         
+        self.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
+        
     }
     
 }

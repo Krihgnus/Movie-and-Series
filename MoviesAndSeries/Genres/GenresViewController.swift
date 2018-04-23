@@ -114,7 +114,6 @@ class GenresViewController: UIViewController {
                             
                             if existingCategories == 0 {
                                 
-                                print("CATEGORIA: \(categorie) ADICIONADO")
                                 self.arrCategories.append(categorie)
                                 self.arrImages.append(serie.capa)
                                 
