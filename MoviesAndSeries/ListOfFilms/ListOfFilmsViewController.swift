@@ -1,9 +1,10 @@
 import Foundation
 import UIKit
 
-class ListOfGenre: UIViewController {
+class ListOfFilms: UIViewController {
     
     @IBOutlet weak var listFilmsTableView: FilmList!
+
     var genreFilms: [Film] = []
     var genreSeries: [Serie] = []
     
@@ -17,22 +18,21 @@ class ListOfGenre: UIViewController {
         listFilmsTableView.seriesByArtist = genreSeries
         listFilmsTableView.delegate = self
         
+        navigationItem.title = " "
+        
     }
     
 }
 
-extension ListOfGenre: UITableViewDelegate {
+extension ListOfFilms: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if listFilmsTableView.tbvType == .movies {
             
-            if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
+        if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
                 
-               navigationController?.pushViewController(movieDetailsReference, animated: true)
+            movieDetailsReference.backWithColor = .blue
+            navigationController?.pushViewController(movieDetailsReference, animated: true)
                 
-            }
-            
         }
         
     }

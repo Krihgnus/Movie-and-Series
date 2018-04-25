@@ -180,7 +180,7 @@ extension GenresViewController: UITableViewDelegate {
         
         let categoria = arrCategories[indexPath.row]
         
-        if let listOfGenreReference = storyboard?.instantiateViewController(withIdentifier: "listOfGenreVC") as? ListOfGenre {
+        if let listOfGenreReference = storyboard?.instantiateViewController(withIdentifier: "listOfFIlmsVC") as? ListOfFilms {
             
             for film in allFilms {
                 

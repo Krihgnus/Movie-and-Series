@@ -2,8 +2,6 @@ import Foundation
 import UIKit
 import SDWebImage
 
-
-
 class ArtistDetailsViewController: UIViewController {
     var clickedartistId: Int!
     @IBOutlet weak var contentView: UIView!
@@ -45,6 +43,8 @@ class ArtistDetailsViewController: UIViewController {
         contentTableViewMoviesLoad = 0
         
         artistDetailsTableView.delegate = self
+        
+        navigationItem.title = " "
         
         //Request
         ArtistsServer.takeArtist(byId: clickedartistId) { artistOptional in
@@ -307,6 +307,7 @@ extension ArtistDetailsViewController: UITableViewDelegate {
             
             if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
                 
+                movieDetailsReference.backWithColor = .white
                 navigationController?.pushViewController(movieDetailsReference, animated: true)
                 
             }
