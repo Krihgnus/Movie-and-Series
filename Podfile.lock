@@ -1,4 +1,5 @@
 PODS:
+  - ExpandableLabel (0.3.1)
   - libwebp (0.6.0):
     - libwebp/core (= 0.6.0)
     - libwebp/dec (= 0.6.0)
@@ -29,12 +30,20 @@ PODS:
     - SDWebImage/Core
 
 DEPENDENCIES:
+  - ExpandableLabel
   - SDWebImage/WebP (~> 4.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ExpandableLabel
+    - libwebp
+    - SDWebImage
+
 SPEC CHECKSUMS:
+  ExpandableLabel: a622f4ffb99d6a0bc36bd180ef7209540dc1b88e
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
 
-PODFILE CHECKSUM: e52d4d9b86f3ec74546c2e991c216c51a05304cb
+PODFILE CHECKSUM: f5adde9722dbb013d0e82fba5153875ff60574d5
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

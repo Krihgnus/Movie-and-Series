@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="StarBarView" customModule="Movies___Series" customModuleProvider="target">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="StarBarView" customModule="MoviesAndSeries" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="94" height="15"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -24,35 +24,35 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sb-ta-dJU" userLabel="Star 1">
                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="star-off"/>
+                                    <state key="normal" image="starOff"/>
                                     <connections>
                                         <action selector="star1:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="9au-8U-bvU"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yav-47-oRg" userLabel="Star 2">
                                     <rect key="frame" x="20" y="0.0" width="14.5" height="15"/>
-                                    <state key="normal" image="star-off"/>
+                                    <state key="normal" image="starOff"/>
                                     <connections>
                                         <action selector="star2:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="RrU-QS-LZ7"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SO0-N2-5xr" userLabel="Star 3">
                                     <rect key="frame" x="39.5" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="star-off"/>
+                                    <state key="normal" image="starOff"/>
                                     <connections>
                                         <action selector="star3:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="YHp-Cr-rFT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5H-36-8oo" userLabel="Star 4">
                                     <rect key="frame" x="59.5" y="0.0" width="14.5" height="15"/>
-                                    <state key="normal" image="star-off"/>
+                                    <state key="normal" image="starOff"/>
                                     <connections>
                                         <action selector="star4:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Ms8-9n-jki"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3u-5C-b9d" userLabel="Star 5">
                                     <rect key="frame" x="79" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="star-off"/>
+                                    <state key="normal" image="starOff"/>
                                     <connections>
                                         <action selector="star5:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Qif-jy-dEh"/>
                                     </connections>
@@ -88,6 +88,6 @@
         </view>
     </objects>
     <resources>
-        <image name="star-off" width="17" height="16"/>
+        <image name="starOff" width="17" height="16"/>
     </resources>
 </document>

@@ -8,7 +8,7 @@ struct Serie {
     let categorias: [String]
     let mediaEstrelas: Int
     let totalAvaliacoes: Int
-    let linguagensDisponiveis: [String]
+    let linguagemOriginal: String
     let dataLancamento: [String: Int]
     let siglaPaisLancamento: String
     let descricao: String
@@ -24,11 +24,11 @@ struct Serie {
 //Capa Vermelha
 let serie1: Serie = Serie(identifier: 1,
                           nome: "SOTC Season 1",
-                          trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
+                          trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                           categorias: ["Action", "Romance", "Fantasy"],
                           mediaEstrelas: 5,
                           totalAvaliacoes: 23,
-                          linguagensDisponiveis: ["English", "Portuguese", "Spanish"],
+                          linguagemOriginal: "English",
                           dataLancamento: ["Dia": 1, "Mes": 4, "Ano": 2009],
                           siglaPaisLancamento: "USA",
                           descricao: "Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1",
@@ -41,15 +41,15 @@ let serie1: Serie = Serie(identifier: 1,
 //Capa Luminosa
 let serie2: Serie = Serie(identifier: 2,
                           nome: "SOTC Season 2",
-                          trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
+                          trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                           categorias: ["Romance", "Fantasy", "Comedy"],
                           mediaEstrelas: 4,
                           totalAvaliacoes: 14,
-                          linguagensDisponiveis: ["English"],
+                          linguagemOriginal: "English",
                           dataLancamento: ["Dia": 4, "Mes": 4, "Ano": 2018],
                           siglaPaisLancamento: "USA",
                           descricao: "Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2",
-                          capa: URL(string: "https://i0.wallpaperscraft.com/image/paint_art_stripes_stains_117030_300x168.jpg")!,
+                          capa: URL(string: "https://i.pinimg.com/736x/f5/56/bf/f556bfd4d04657f967547934d1149a83--turquoise-iphone-wallpaper-iphone-wallpaper-pattern-black.jpg")!,
                           atores: [artist1, artist2],
                           avaliacoes: [review2],
                           nEpisodios: 5,

@@ -24,21 +24,8 @@ class CellMoviesType: UITableViewCell {
         
         movieImage.sd_setImage(with: film.capa, completed: nil)
         movieName.text = film.nome
+        movieCategories.text = Utils.arrCategoriesToString(film.categorias)
         
-        for (indx, texto) in film.categorias.enumerated() {
-            
-            if indx == 0 {
-                
-                movieCategories.text = "\(texto)"
-                
-            } else {
-                
-                movieCategories.text! += " | \(texto)"
-                
-            }
-            
-        }
-
         guard let starBarViewReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
         stars.addSubview(starBarViewReference)
         starBarViewReference.fillStars(film.mediaEstrelas)

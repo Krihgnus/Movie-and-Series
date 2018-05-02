@@ -148,7 +148,7 @@ class ArtistDetailsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
-        overlay.setGradientBackground()
+        overlay.setGradientBackground(.gray)
         
     }
     
@@ -306,6 +306,18 @@ extension ArtistDetailsViewController: UITableViewDelegate {
         if artistDetailsTableView.tbvType == .movies {
             
             if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
+                
+                if indexPath.row < artistDetailsTableView.filmsByArtist.count {
+                    
+                    movieDetailsReference.idToRequest = artistDetailsTableView.filmsByArtist[indexPath.row].identifier
+                    movieDetailsReference.requestType = .filme
+                    
+                } else {
+                    
+                    movieDetailsReference.idToRequest = artistDetailsTableView.seriesByArtist[indexPath.row - artistDetailsTableView.filmsByArtist.count].identifier
+                    movieDetailsReference.requestType = .serie
+                    
+                }
                 
                 movieDetailsReference.backWithColor = .white
                 navigationController?.pushViewController(movieDetailsReference, animated: true)

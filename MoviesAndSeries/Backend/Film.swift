@@ -10,7 +10,7 @@ struct Film {
     let categorias: [String]
     let mediaEstrelas: Int
     let totalAvaliacoes: Int
-    let linguagensDisponiveis: [String]
+    let linguagemOriginal: String
     let duracao: String 
     let dataLancamento: [String: Int]
     let siglaPaisLancamento: String
@@ -25,11 +25,11 @@ struct Film {
 //Capa Cinza
 let film1: Film = Film(identifier: 1,
                        nome: "The other",
-                       trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
+                       trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                        categorias: ["Suspense", "Horror"],
                        mediaEstrelas: 4,
                        totalAvaliacoes: 7,
-                       linguagensDisponiveis: ["English, Portuguese"],
+                       linguagemOriginal: "English",
                        duracao: "2h 56m",
                        dataLancamento: ["Dia": 5, "Mes": 3, "Ano": 2016],
                        siglaPaisLancamento: "USA",
@@ -41,11 +41,11 @@ let film1: Film = Film(identifier: 1,
 //Capa Amarela
 let film2: Film = Film(identifier: 2,
                        nome: "Park",
-                       trailer: URL(string: "https://www.youtube.com/watch?v=C0DPdy98e4c")!,
+                       trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                        categorias: ["Animation"],
                        mediaEstrelas: 2,
                        totalAvaliacoes: 15,
-                       linguagensDisponiveis: ["Spanish", "Portuguese"],
+                       linguagemOriginal: "Portuguese",
                        duracao: "1h 44m",
                        dataLancamento: ["Dia": 22, "Mes": 6, "Ano": 2013],
                        siglaPaisLancamento: "BR",
