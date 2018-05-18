@@ -24,35 +24,35 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sb-ta-dJU" userLabel="Star 1">
                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="starOff"/>
+                                    <state key="normal" backgroundImage="starOff"/>
                                     <connections>
                                         <action selector="star1:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="9au-8U-bvU"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yav-47-oRg" userLabel="Star 2">
                                     <rect key="frame" x="20" y="0.0" width="14.5" height="15"/>
-                                    <state key="normal" image="starOff"/>
+                                    <state key="normal" backgroundImage="starOff"/>
                                     <connections>
                                         <action selector="star2:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="RrU-QS-LZ7"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SO0-N2-5xr" userLabel="Star 3">
                                     <rect key="frame" x="39.5" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="starOff"/>
+                                    <state key="normal" backgroundImage="starOff"/>
                                     <connections>
                                         <action selector="star3:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="YHp-Cr-rFT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5H-36-8oo" userLabel="Star 4">
                                     <rect key="frame" x="59.5" y="0.0" width="14.5" height="15"/>
-                                    <state key="normal" image="starOff"/>
+                                    <state key="normal" backgroundImage="starOff"/>
                                     <connections>
                                         <action selector="star4:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Ms8-9n-jki"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3u-5C-b9d" userLabel="Star 5">
                                     <rect key="frame" x="79" y="0.0" width="15" height="15"/>
-                                    <state key="normal" image="starOff"/>
+                                    <state key="normal" backgroundImage="starOff"/>
                                     <connections>
                                         <action selector="star5:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Qif-jy-dEh"/>
                                     </connections>

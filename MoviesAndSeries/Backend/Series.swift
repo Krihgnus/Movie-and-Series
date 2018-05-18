@@ -6,15 +6,13 @@ struct Serie {
     let nome: String
     let trailer: URL
     let categorias: [String]
-    let mediaEstrelas: Int
-    let totalAvaliacoes: Int
     let linguagemOriginal: String
     let dataLancamento: [String: Int]
     let siglaPaisLancamento: String
     let descricao: String
     let capa: URL
     let atores: [Artist]
-    let avaliacoes: [Review]
+    var avaliacoes: [Review]
     let nEpisodios: Int
     let duracaoEpisodio: Int
 }
@@ -26,8 +24,6 @@ let serie1: Serie = Serie(identifier: 1,
                           nome: "SOTC Season 1",
                           trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                           categorias: ["Action", "Romance", "Fantasy"],
-                          mediaEstrelas: 5,
-                          totalAvaliacoes: 23,
                           linguagemOriginal: "English",
                           dataLancamento: ["Dia": 1, "Mes": 4, "Ano": 2009],
                           siglaPaisLancamento: "USA",
@@ -43,15 +39,13 @@ let serie2: Serie = Serie(identifier: 2,
                           nome: "SOTC Season 2",
                           trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                           categorias: ["Romance", "Fantasy", "Comedy"],
-                          mediaEstrelas: 4,
-                          totalAvaliacoes: 14,
                           linguagemOriginal: "English",
                           dataLancamento: ["Dia": 4, "Mes": 4, "Ano": 2018],
                           siglaPaisLancamento: "USA",
                           descricao: "Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2, Description SOTC Season 2",
                           capa: URL(string: "https://i.pinimg.com/736x/f5/56/bf/f556bfd4d04657f967547934d1149a83--turquoise-iphone-wallpaper-iphone-wallpaper-pattern-black.jpg")!,
                           atores: [artist1, artist2],
-                          avaliacoes: [review2],
+                          avaliacoes: [review3],
                           nEpisodios: 5,
                           duracaoEpisodio: 42)
 

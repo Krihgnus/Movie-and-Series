@@ -193,7 +193,6 @@ class ArtistDetailsViewController: UIViewController {
             tableViewActivityIndicator.startAnimating()
             artistDetailsTableView.rowHeight = 150
             artistDetailsTableView.tbvType = .movies
-            starBarCurrentScreen = .noEvaluate
             artistDetailsTableView.isHidden = true
             artistDetailsTableView.reloadData()
             

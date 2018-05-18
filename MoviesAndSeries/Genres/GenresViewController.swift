@@ -8,6 +8,8 @@ class GenresViewController: UIViewController {
     
     var arrCategories: [String] = []
     var arrImages: [URL] = []
+    var allF: [Film] = []
+    var allS: [Serie] = []
     var filmsRequestSuccess: Bool = false
     var seriesRequestSuccess: Bool = false
     
@@ -41,6 +43,8 @@ class GenresViewController: UIViewController {
             //Request Filmes
             FilmsSever.takeAllFilms { allFilms in
                 if let films = allFilms {
+                    
+                    self.allF = films
                     
                     for film in films {
                         
@@ -96,6 +100,8 @@ class GenresViewController: UIViewController {
             //Request Serie
             SeriesServer.takeAllSeries { allSeries in
                 if let series = allSeries {
+                    
+                    self.allS = series
                     
                     for serie in series {
                         
@@ -182,7 +188,7 @@ extension GenresViewController: UITableViewDelegate {
         
         if let listOfGenreReference = storyboard?.instantiateViewController(withIdentifier: "listOfFIlmsVC") as? ListOfFilms {
             
-            for film in allFilms {
+            for film in allF {
                 
                 for categorie in film.categorias {
                     
@@ -196,7 +202,7 @@ extension GenresViewController: UITableViewDelegate {
                 
             }
             
-            for serie in allSeries {
+            for serie in allS {
                 
                 for categorie in serie.categorias {
                     

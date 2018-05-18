@@ -1,15 +1,13 @@
 import Foundation
 import UIKit
 
-var shouldRandomizeResults: Bool { return true }
+var shouldRandomizeResults: Bool { return false }
 
 struct Film {
     let identifier: Int
     let nome: String
     let trailer: URL
     let categorias: [String]
-    let mediaEstrelas: Int
-    let totalAvaliacoes: Int
     let linguagemOriginal: String
     let duracao: String 
     let dataLancamento: [String: Int]
@@ -17,7 +15,7 @@ struct Film {
     let descricao: String
     let capa: URL
     let atores: [Artist]
-    let avaliacoes: [Review]
+    var avaliacoes: [Review]
 }
 
 //Banco de dados de filmes ficticios
@@ -27,8 +25,6 @@ let film1: Film = Film(identifier: 1,
                        nome: "The other",
                        trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                        categorias: ["Suspense", "Horror"],
-                       mediaEstrelas: 4,
-                       totalAvaliacoes: 7,
                        linguagemOriginal: "English",
                        duracao: "2h 56m",
                        dataLancamento: ["Dia": 5, "Mes": 3, "Ano": 2016],
@@ -36,15 +32,13 @@ let film1: Film = Film(identifier: 1,
                        descricao: "Description The other, Description The other, Description The other, Description The other, Description The other, Description The other, Description The other",
                        capa: URL(string: "https://cdn-images-1.medium.com/max/2000/1*gd1Ol3uoy7v-q1MqPF-3Xw.jpeg")!,
                        atores: [artist1],
-                       avaliacoes: [review1])
+                       avaliacoes: [review4])
 
 //Capa Amarela
 let film2: Film = Film(identifier: 2,
                        nome: "Park",
                        trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
                        categorias: ["Animation"],
-                       mediaEstrelas: 2,
-                       totalAvaliacoes: 15,
                        linguagemOriginal: "Portuguese",
                        duracao: "1h 44m",
                        dataLancamento: ["Dia": 22, "Mes": 6, "Ano": 2013],

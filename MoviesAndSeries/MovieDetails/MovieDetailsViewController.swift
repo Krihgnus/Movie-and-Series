@@ -30,15 +30,52 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var screenActivityIndicator: UIActivityIndicatorView!
     //FAZER OUTLET DA MOVIE DETAILS TABLE VIEW
+    
     var backWithColor: FilmDetailsBackColor!
     var idToRequest: Int!
     var requestType: FilmeSerie!
     var trailer: URL!
     var runningVideo: Bool = false
+    var film: Film!
+    var serie: Serie!
     
     @IBAction func playVideoButton(_ sender: Any) {
         
         playVideo()
+        
+    }
+    
+    @objc func threePointsButtonClicked(sender:UIButton!) {
+        
+        let actionSheet = UIAlertController(title: nil, message: "Choose your action", preferredStyle: .actionSheet)
+        
+        let writeAction = UIAlertAction(title: "Write a Review", style: .default, handler: {
+            
+            (alert: UIAlertAction!) -> Void  in
+            
+            if let writeReviewViewControllerReference = self.storyboard?.instantiateViewController(withIdentifier: "writeReviewVC") as? WriteReviewViewController {
+                
+                if let sendFilm = self.film {
+                    
+                    writeReviewViewControllerReference.filmReview = sendFilm
+                    
+                } else {
+                    
+                    writeReviewViewControllerReference.serieReview = self.serie
+                    
+                }
+                
+                self.navigationController?.pushViewController(writeReviewViewControllerReference, animated: true)
+
+            }
+            
+        })
+        
+        actionSheet.addAction(writeAction)
+        actionSheet.addAction(UIAlertAction(title: "Share", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        self.present(actionSheet , animated: true , completion: nil)
         
     }
     
@@ -48,12 +85,14 @@ class MovieDetailsViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+        navigationItem.title = " "
         (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
         
-        let threePointsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 6))
-        threePointsButton.setBackgroundImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .normal)
-        threePointsButton.setBackgroundImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .highlighted)
+        let threePointsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        threePointsButton.setImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .normal)
+        threePointsButton.setImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .highlighted)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: threePointsButton)
+        threePointsButton.addTarget(self, action: #selector(threePointsButtonClicked), for: .touchUpInside)
         
         segmentedBar.clearSegmentedBar()
         segmentedBar.insertSegment(withTitle: "Cast", at: 0, animated: false)
@@ -79,7 +118,7 @@ class MovieDetailsViewController: UIViewController {
                     self.nameLabel.text = film.nome
                     self.genresLabel.text = Utils.arrCategoriesToString(film.categorias)
                     self.lenguageLabel.text = "Lenguage: \(film.linguagemOriginal)"
-                    self.mediaAndTotalReviewsLabel.text = "\(film.mediaEstrelas).0  /  \(film.avaliacoes.count)"
+                    self.mediaAndTotalReviewsLabel.text = "\(Utils.reviewsToAverageStar(film.avaliacoes)).0  /  \(film.avaliacoes.count)"
                     self.launchLabel.text = "\(Utils.numberToMonth(film.dataLancamento["Mes"])) \(String(film.dataLancamento["Dia"]!)), \(String(film.dataLancamento["Ano"]!) ) (\(film.siglaPaisLancamento)) \(film.duracao)"
                     self.trailer = film.trailer
                     
@@ -93,17 +132,21 @@ class MovieDetailsViewController: UIViewController {
                     self.descriptionLabel.text = film.descricao
                     
                     guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
-                    starBarCurrentScreen = .noEvaluate
-                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
-                    self.starsView.frame.size = CGSize(width: 94, height: 15)
-                    starBarReference.bounds = self.starsView.bounds
                     self.starsView.addSubview(starBarReference)
-                    starBarReference.fillStars(film.mediaEstrelas)
+                    
+                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
+                    starBarReference.topAnchor.constraint(equalTo: self.starsView.topAnchor, constant: 0).isActive = true
+                    starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
+                    starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
+                    starBarReference.trailingAnchor.constraint(equalTo: self.starsView.trailingAnchor, constant: 0).isActive = true
+                    starBarReference.fillStars(Utils.reviewsToAverageStar(film.avaliacoes))
                     
                     self.contentView.isHidden = false
                     self.navigationController?.navigationBar.tintColor = .white
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                     self.screenActivityIndicator.stopAnimating()
+                    
+                    self.film = film
                 
                 } else {
                 
@@ -126,7 +169,7 @@ class MovieDetailsViewController: UIViewController {
                     self.nameLabel.text = serie.nome
                     self.genresLabel.text = Utils.arrCategoriesToString(serie.categorias)
                     self.lenguageLabel.text = "Lenguage: \(serie.linguagemOriginal)"
-                    self.mediaAndTotalReviewsLabel.text = "\(serie.mediaEstrelas).0  /  \(serie.avaliacoes.count)"
+                    self.mediaAndTotalReviewsLabel.text = "\(Utils.reviewsToAverageStar(serie.avaliacoes)).0  /  \(serie.avaliacoes.count)"
                     self.launchLabel.text = "\(Utils.numberToMonth(serie.dataLancamento["Mes"])) \(String(serie.dataLancamento["Dia"]!)), \(String(serie.dataLancamento["Ano"]!) ) (\(serie.siglaPaisLancamento)) \(serie.nEpisodios) ep / \(serie.duracaoEpisodio) min"
                     self.trailer = serie.trailer
                     
@@ -140,17 +183,21 @@ class MovieDetailsViewController: UIViewController {
                     self.descriptionLabel.text = serie.descricao
                     
                     guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
-                    starBarCurrentScreen = .noEvaluate
-                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
-                    self.starsView.frame.size = CGSize(width: 94, height: 15)
-                    starBarReference.bounds = self.starsView.bounds
                     self.starsView.addSubview(starBarReference)
-                    starBarReference.fillStars(serie.mediaEstrelas)
+                    
+                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
+                    starBarReference.topAnchor.constraint(equalTo: self.starsView.topAnchor, constant: 0).isActive = true
+                    starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
+                    starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
+                    starBarReference.trailingAnchor.constraint(equalTo: self.starsView.trailingAnchor, constant: 0).isActive = true
+                    starBarReference.fillStars(Utils.reviewsToAverageStar(serie.avaliacoes))
                     
                     self.contentView.isHidden = false
                     self.navigationController?.navigationBar.tintColor = .white
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                     self.screenActivityIndicator.stopAnimating()
+                    
+                    self.serie = serie
                     
                 } else {
                     
@@ -204,6 +251,7 @@ class MovieDetailsViewController: UIViewController {
             (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
             
         }
+
         
     }
     

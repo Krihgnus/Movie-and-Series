@@ -28,7 +28,7 @@ class CellMoviesType: UITableViewCell {
         
         guard let starBarViewReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
         stars.addSubview(starBarViewReference)
-        starBarViewReference.fillStars(film.mediaEstrelas)
+        starBarViewReference.fillStars(Utils.reviewsToAverageStar(film.avaliacoes))
         
         self.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
         self.selectionStyle = .none
@@ -56,7 +56,7 @@ class CellMoviesType: UITableViewCell {
         
         guard let starBarViewReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
         stars.addSubview(starBarViewReference)
-        starBarViewReference.fillStars(serie.mediaEstrelas)
+        starBarViewReference.fillStars(Utils.reviewsToAverageStar(serie.avaliacoes))
         
         self.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
         self.selectionStyle = .none

@@ -46,4 +46,18 @@ class Utils {
         
     }
     
+    static func reviewsToAverageStar(_ array: [Review]) -> Int {
+        
+        var media = 0
+        
+        for review in array {
+            
+            media += review.estrelas
+            
+        }
+        
+        return media / array.count
+        
+    }
+    
 }

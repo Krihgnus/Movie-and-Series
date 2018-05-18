@@ -15,6 +15,7 @@
 		190C134220645DC60027E452 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C134120645DC60027E452 /* GenresViewController.swift */; };
 		190F8CD82069827500696645 /* ArtistsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F8CD72069827500696645 /* ArtistsCollectionViewController.swift */; };
 		190F8CDA2069829E00696645 /* ArtistsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F8CD92069829E00696645 /* ArtistsCollectionViewCell.swift */; };
+		192F8B86209A2CB60099EC33 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F8B85209A2CB60099EC33 /* WriteReviewViewController.swift */; };
 		194F7742208E78E30009E87F /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F7741208E78E30009E87F /* MovieDetailsViewController.swift */; };
 		19613C1A207E833700F3DA41 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19613C19207E833700F3DA41 /* CustomNavigationController.swift */; };
 		19613C1D207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */; };
@@ -54,6 +55,7 @@
 		190C134120645DC60027E452 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		190F8CD72069827500696645 /* ArtistsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsCollectionViewController.swift; sourceTree = "<group>"; };
 		190F8CD92069829E00696645 /* ArtistsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsCollectionViewCell.swift; sourceTree = "<group>"; };
+		192F8B85209A2CB60099EC33 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		194F7741208E78E30009E87F /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		19613C19207E833700F3DA41 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavigationController.swift; path = ../CustomizedUIItems/CustomNavigationController.swift; sourceTree = "<group>"; };
 		19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 			path = Genres;
 			sourceTree = "<group>";
 		};
+		192F8B84209A2BF70099EC33 /* WriteReview */ = {
+			isa = PBXGroup;
+			children = (
+				192F8B85209A2CB60099EC33 /* WriteReviewViewController.swift */,
+			);
+			path = WriteReview;
+			sourceTree = "<group>";
+		};
 		1938585D206598A30057D384 /* Artists */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				194F7741208E78E30009E87F /* MovieDetailsViewController.swift */,
+				192F8B84209A2BF70099EC33 /* WriteReview */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -444,6 +455,7 @@
 				198AC160208A454D00AD0225 /* ClearSegmentedBar.swift in Sources */,
 				19FB4F33206C3A360040DF69 /* StarBarView.swift in Sources */,
 				190B630220742E4C006E2D3D /* DiscoverViewController.swift in Sources */,
+				192F8B86209A2CB60099EC33 /* WriteReviewViewController.swift in Sources */,
 				19613C1A207E833700F3DA41 /* CustomNavigationController.swift in Sources */,
 				19B90F5120758001003C5811 /* PhotoAlbum.swift in Sources */,
 				1970FA9A2062D81B009BE4B4 /* AppDelegate.swift in Sources */,
@@ -599,6 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7463GHQCGZ;
 				INFOPLIST_FILE = "$(SRCROOT)/MoviesAndSeries/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com..MoviesAndSeries;
@@ -614,6 +627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7463GHQCGZ;
 				INFOPLIST_FILE = "$(SRCROOT)/MoviesAndSeries/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com..MoviesAndSeries;
