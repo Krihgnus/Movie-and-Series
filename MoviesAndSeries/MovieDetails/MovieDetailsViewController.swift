@@ -29,7 +29,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var screenActivityIndicator: UIActivityIndicatorView!
-    //FAZER OUTLET DA MOVIE DETAILS TABLE VIEW
+    @IBOutlet weak var movieDetailsTableView: FilmList!
     
     var backWithColor: FilmDetailsBackColor!
     var idToRequest: Int!
@@ -66,7 +66,7 @@ class MovieDetailsViewController: UIViewController {
                 }
                 
                 self.navigationController?.pushViewController(writeReviewViewControllerReference, animated: true)
-
+                
             }
             
         })
@@ -74,7 +74,7 @@ class MovieDetailsViewController: UIViewController {
         actionSheet.addAction(writeAction)
         actionSheet.addAction(UIAlertAction(title: "Share", style: .default))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
+        
         self.present(actionSheet , animated: true , completion: nil)
         
     }
@@ -104,15 +104,15 @@ class MovieDetailsViewController: UIViewController {
         
         contentView.isHidden = true
         screenActivityIndicator.startAnimating()
-
+        
         switch requestType {
             
         case .filme:
             //Request Filme
             FilmsSever.takeFilm(by: idToRequest) { filmRequest in
-            
-                if let film = filmRequest {
                 
+                if let film = filmRequest {
+                    
                     self.thumbnailView.sd_setImage(with: film.capa, completed: nil)
                     self.capaView.sd_setImage(with: film.capa, completed: nil)
                     self.nameLabel.text = film.nome
@@ -147,15 +147,15 @@ class MovieDetailsViewController: UIViewController {
                     self.screenActivityIndicator.stopAnimating()
                     
                     self.film = film
-                
+                    
                 } else {
-                
+                    
                     self.presentNetworkErrorAlert()
                     print("Erro - Request de filme pelo ID retornou nil")
                     self.screenActivityIndicator.stopAnimating()
-                
+                    
                 }
-            
+                
             }
             
         case .serie:
@@ -225,7 +225,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         super.viewWillAppear(true)
         
         if runningVideo == true {
@@ -233,7 +233,7 @@ class MovieDetailsViewController: UIViewController {
             runningVideo = false
             
         }
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -251,7 +251,7 @@ class MovieDetailsViewController: UIViewController {
             (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
             
         }
-
+        
         
     }
     
@@ -275,8 +275,79 @@ class MovieDetailsViewController: UIViewController {
             
         case 2:
             //ABA MORE SELECIONADA
-            break
+            var categoriaToSearch: String!
+            movieDetailsTableView.tbvType = .movies
             
+            if let _ = film {
+                categoriaToSearch = film.categorias[0]
+            } else {
+                categoriaToSearch = serie.categorias[0]
+            }
+            
+            if self.movieDetailsTableView.filmsByArtist.isEmpty {
+                //Request todos filmes
+                FilmsSever.takeAllFilms { allFilms in
+                    
+                    if let todosFilmes = allFilms {
+                        
+                        for film in todosFilmes {
+                            for categoria in film.categorias {
+                                if categoria == categoriaToSearch {
+                                    self.movieDetailsTableView.filmsByArtist.append(film)
+                                }
+                            }
+                            
+                            if let _ = self.film {
+                                if self.film.identifier == film.identifier {
+                                    self.movieDetailsTableView.filmsByArtist.removeLast()
+                                }
+                            }
+                        }
+                        
+                        self.movieDetailsTableView.reloadData()
+                        
+                    } else {
+                        print("Erro - Request de todos os filmes retornou nil")
+                        self.movieDetailsTableView.isHidden = true
+                    }
+                    
+                }
+                
+            }
+            
+        if self.movieDetailsTableView.seriesByArtist.isEmpty {
+            //Request todas series
+            SeriesServer.takeAllSeries { allSeries in
+                
+                if let todasSeries = allSeries {
+                    
+                    for serie in todasSeries {
+                        for categoria in serie.categorias {
+                            if categoria == categoriaToSearch {
+                                self.movieDetailsTableView.seriesByArtist.append(serie)
+                            }
+                        }
+                        
+                        if let _ = self.serie {
+                            if self.serie.identifier == serie.identifier {
+                                self.movieDetailsTableView.seriesByArtist.removeLast()
+                            }
+                        }
+                    }
+                    
+                    self.movieDetailsTableView.reloadData()
+                    
+                } else {
+                    print("Erro - Request de todos as séries retornou nil")
+                    self.movieDetailsTableView.isHidden = true
+                }
+                
+            }
+            
+        }
+        
+    break
+    
         default:
             break
             
@@ -293,7 +364,7 @@ class MovieDetailsViewController: UIViewController {
         playerViewController.player = player
         
         self.present(playerViewController, animated: true) {
-        
+            
             playerViewController.player!.play()
             
         }
