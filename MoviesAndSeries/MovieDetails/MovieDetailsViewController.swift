@@ -30,6 +30,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var screenActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var movieDetailsTableView: FilmList!
+    @IBOutlet weak var movieDetailsCollectionView: UICollectionView!
     
     var backWithColor: FilmDetailsBackColor!
     var idToRequest: Int!
@@ -38,6 +39,8 @@ class MovieDetailsViewController: UIViewController {
     var runningVideo: Bool = false
     var film: Film!
     var serie: Serie!
+    var contentLoad = 0
+    var artistas: [Artist] = []
     
     @IBAction func playVideoButton(_ sender: Any) {
         
@@ -81,6 +84,10 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        movieDetailsTableView.delegate = self
+        movieDetailsCollectionView.dataSource = self
+        movieDetailsCollectionView.delegate = self
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -147,6 +154,8 @@ class MovieDetailsViewController: UIViewController {
                     self.screenActivityIndicator.stopAnimating()
                     
                     self.film = film
+                    self.artistas = film.atores
+                    self.movieDetailsCollectionView.reloadData()
                     
                 } else {
                     
@@ -198,6 +207,8 @@ class MovieDetailsViewController: UIViewController {
                     self.screenActivityIndicator.stopAnimating()
                     
                     self.serie = serie
+                    self.artistas = serie.atores
+                    self.movieDetailsCollectionView.reloadData()
                     
                 } else {
                     
@@ -267,6 +278,8 @@ class MovieDetailsViewController: UIViewController {
             
         case 0:
             //ABA CAST SELECIONADA
+            movieDetailsTableView.isHidden = true
+            
             break
             
         case 1:
@@ -275,6 +288,7 @@ class MovieDetailsViewController: UIViewController {
             
         case 2:
             //ABA MORE SELECIONADA
+            movieDetailsCollectionView.isHidden = true
             var categoriaToSearch: String!
             movieDetailsTableView.tbvType = .movies
             
@@ -284,7 +298,7 @@ class MovieDetailsViewController: UIViewController {
                 categoriaToSearch = serie.categorias[0]
             }
             
-            if self.movieDetailsTableView.filmsByArtist.isEmpty {
+            if contentLoad == 0 || contentLoad == 2 {
                 //Request todos filmes
                 FilmsSever.takeAllFilms { allFilms in
                     
@@ -302,20 +316,25 @@ class MovieDetailsViewController: UIViewController {
                                     self.movieDetailsTableView.filmsByArtist.removeLast()
                                 }
                             }
+                        
                         }
                         
                         self.movieDetailsTableView.reloadData()
+                        self.contentLoad += 1
+                        
+                        if self.contentLoad == 3 {
+                            self.movieDetailsTableView.isHidden = false
+                        }
                         
                     } else {
                         print("Erro - Request de todos os filmes retornou nil")
-                        self.movieDetailsTableView.isHidden = true
                     }
                     
                 }
                 
             }
             
-        if self.movieDetailsTableView.seriesByArtist.isEmpty {
+        if contentLoad < 2 {
             //Request todas series
             SeriesServer.takeAllSeries { allSeries in
                 
@@ -336,14 +355,22 @@ class MovieDetailsViewController: UIViewController {
                     }
                     
                     self.movieDetailsTableView.reloadData()
+                    self.contentLoad += 2
+                    
+                    if self.contentLoad == 3 {
+                        self.movieDetailsTableView.isHidden = false
+                    }
                     
                 } else {
                     print("Erro - Request de todos as séries retornou nil")
-                    self.movieDetailsTableView.isHidden = true
                 }
                 
             }
             
+        }
+            
+        if self.contentLoad == 3 {
+            self.movieDetailsTableView.isHidden = false
         }
         
     break
@@ -366,6 +393,87 @@ class MovieDetailsViewController: UIViewController {
         self.present(playerViewController, animated: true) {
             
             playerViewController.player!.play()
+            
+        }
+        
+    }
+    
+}
+
+//Atendendo ao protocolo UITableViewDelegate
+extension MovieDetailsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if movieDetailsTableView.tbvType == .movies {
+            
+            if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
+                
+                if indexPath.row < movieDetailsTableView.filmsByArtist.count {
+                    
+                    movieDetailsReference.idToRequest = movieDetailsTableView.filmsByArtist[indexPath.row].identifier
+                    movieDetailsReference.requestType = .filme
+                    
+                } else {
+                    
+                    movieDetailsReference.idToRequest = movieDetailsTableView.seriesByArtist[indexPath.row - movieDetailsTableView.filmsByArtist.count].identifier
+                    movieDetailsReference.requestType = .serie
+                    
+                }
+                
+                movieDetailsReference.backWithColor = .white
+                navigationController?.pushViewController(movieDetailsReference, animated: true)
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+//Atendendo ao protocolo UICollectionViewDataSource
+extension MovieDetailsViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 1
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return artistas.count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistsCollectionViewCell.identifier, for: indexPath) as? ArtistsCollectionViewCell else {
+            
+            print("Erro - Retornando célula não configurada")
+            return UICollectionViewCell()
+            
+        }
+        
+        cell.layer.cornerRadius = 4
+        cell.artistImage.sd_setImage(with: artistas[indexPath.row].imagemCollection, completed: nil)
+        cell.artistName.text = artistas[indexPath.row].nome
+        return cell
+        
+    }
+    
+}
+
+//Atendendo ao protocolo UICollectionViewDelegate
+extension MovieDetailsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let artistDetailViewController = storyboard?.instantiateViewController(withIdentifier: "artistDetailsVC") as? ArtistDetailsViewController {
+            
+            artistDetailViewController.clickedartistId = artistas[indexPath.row].identifier
+            navigationController?.pushViewController(artistDetailViewController, animated: true)
             
         }
         
