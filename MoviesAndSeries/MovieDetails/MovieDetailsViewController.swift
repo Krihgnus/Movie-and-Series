@@ -474,6 +474,7 @@ extension MovieDetailsViewController: UICollectionViewDelegate {
             
             artistDetailViewController.clickedartistId = artistas[indexPath.row].identifier
             navigationController?.pushViewController(artistDetailViewController, animated: true)
+            artistDetailViewController.backWithColor = .white
             
         }
         

@@ -23,6 +23,7 @@ class ArtistDetailsViewController: UIViewController {
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var spaceBetweenSegmentedBarAndMainImageConstraint: NSLayoutConstraint!
     var contentTableViewMoviesLoad = 0
+    var backWithColor: FilmDetailsBackColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,9 +154,13 @@ class ArtistDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
         super.viewWillDisappear(animated)
-        (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
+        
+        if backWithColor == .blue {
+            (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
+        } else {
+            (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
+        }
         
     }
     

@@ -95,6 +95,7 @@ extension ArtistsViewController: UICollectionViewDelegate {
         if let artistDetailViewController = storyboard?.instantiateViewController(withIdentifier: "artistDetailsVC") as? ArtistDetailsViewController {
             
             artistDetailViewController.clickedartistId = indexPath.row + 1
+            artistDetailViewController.backWithColor = .blue
             navigationController?.pushViewController(artistDetailViewController, animated: true)
             
         }
