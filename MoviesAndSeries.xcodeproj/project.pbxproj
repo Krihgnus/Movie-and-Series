@@ -30,6 +30,7 @@
 		19B90F5120758001003C5811 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F5020758001003C5811 /* PhotoAlbum.swift */; };
 		19B90F532075802D003C5811 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F522075802D003C5811 /* Artist.swift */; };
 		19B90F55207581D4003C5811 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F54207581D4003C5811 /* Film.swift */; };
+		19BD227720B37168000886EC /* TableViewReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD227620B37168000886EC /* TableViewReviewCell.swift */; };
 		19CB0ACE207BDF480045A16C /* AlertNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CB0ACD207BDF480045A16C /* AlertNetworkError.swift */; };
 		19CB0AD1207C02DC0045A16C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CB0AD0207C02DC0045A16C /* Utils.swift */; };
 		19E2B6A9206D9674009061B5 /* FilmListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E2B6A8206D9674009061B5 /* FilmListTableView.swift */; };
@@ -72,6 +73,7 @@
 		19B90F5020758001003C5811 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
 		19B90F522075802D003C5811 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		19B90F54207581D4003C5811 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		19BD227620B37168000886EC /* TableViewReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewReviewCell.swift; sourceTree = "<group>"; };
 		19CB0ACD207BDF480045A16C /* AlertNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertNetworkError.swift; path = ../CustomizedUIItems/AlertNetworkError.swift; sourceTree = "<group>"; };
 		19CB0AD0207C02DC0045A16C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		19E2B6A8206D9674009061B5 /* FilmListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilmListTableView.swift; path = ../../CustomizedUIItems/FilmListTableView/FilmListTableView.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				19FB4F26206BF8D40040DF69 /* TableViewSummaryCell.swift */,
 				19FB4F2A206C04020040DF69 /* TableViewMoviesCell.swift */,
+				19BD227620B37168000886EC /* TableViewReviewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				19FD60DD20767F3600CD47B7 /* Review.swift in Sources */,
 				19613C1D207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift in Sources */,
 				19E2B6A9206D9674009061B5 /* FilmListTableView.swift in Sources */,
+				19BD227720B37168000886EC /* TableViewReviewCell.swift in Sources */,
 				19FD60DB20767DF900CD47B7 /* Series.swift in Sources */,
 				198AC160208A454D00AD0225 /* ClearSegmentedBar.swift in Sources */,
 				19FB4F33206C3A360040DF69 /* StarBarView.swift in Sources */,

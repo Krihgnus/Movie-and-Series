@@ -39,7 +39,8 @@ class MovieDetailsViewController: UIViewController {
     var runningVideo: Bool = false
     var film: Film!
     var serie: Serie!
-    var contentLoad = 0
+    var contentMoreLoaded = 0
+    var contentReviewsLoaded = false
     var artistas: [Artist] = []
     
     @IBAction func playVideoButton(_ sender: Any) {
@@ -106,11 +107,13 @@ class MovieDetailsViewController: UIViewController {
         segmentedBar.insertSegment(withTitle: "Reviews", at: 1, animated: false)
         segmentedBar.insertSegment(withTitle: "More", at: 2, animated: false)
         segmentedBar.selectedSegmentIndex = 0
+        indexChanged(self.segmentedBar)
         
         scrollView.contentInsetAdjustmentBehavior = .never
         
         contentView.isHidden = true
         screenActivityIndicator.startAnimating()
+        movieDetailsCollectionView.backgroundColor = UIColor(red: 234, green: 234, blue: 234, alpha: 1.0)
         
         switch requestType {
             
@@ -140,7 +143,6 @@ class MovieDetailsViewController: UIViewController {
                     
                     guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
                     self.starsView.addSubview(starBarReference)
-                    
                     self.starsView.translatesAutoresizingMaskIntoConstraints = true
                     starBarReference.topAnchor.constraint(equalTo: self.starsView.topAnchor, constant: 0).isActive = true
                     starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
@@ -279,11 +281,72 @@ class MovieDetailsViewController: UIViewController {
         case 0:
             //ABA CAST SELECIONADA
             movieDetailsTableView.isHidden = true
+            movieDetailsCollectionView.isHidden = false
             
             break
             
         case 1:
             //ABA REVIEW SELECIONADA
+            movieDetailsCollectionView.isHidden = true
+            movieDetailsTableView.tbvType = .reviews
+            
+            if contentReviewsLoaded == false {
+                if let _ = film {
+                    //Request reviews
+                    ReviewsServer.takeReviewsToFilm(by: self.film.identifier, filmType: .filme) { reviewsToFilm in
+                        
+                        if let todasReviews = reviewsToFilm {
+                            
+                            for review in todasReviews {
+                                
+                                self.movieDetailsTableView.reviewsByFilm.append(review)
+                                
+                            }
+                            
+                            self.movieDetailsTableView.reloadData()
+                            self.movieDetailsTableView.isHidden = false
+                            self.contentReviewsLoaded = true
+                            
+                        } else {
+                            
+                            print("Erro - Request de reviews da série retornou nil")
+                            
+                        }
+                        
+                    }
+                    
+                } else {
+                    //Request reviews
+                    ReviewsServer.takeReviewsToFilm(by: self.serie.identifier, filmType: .serie) { reviewsToSerie in
+                        
+                        if let todasReviews = reviewsToSerie {
+                            
+                            for review in todasReviews {
+                                
+                                self.movieDetailsTableView.reviewsByFilm.append(review)
+                                
+                            }
+                            
+                            self.movieDetailsTableView.reloadData()
+                            self.movieDetailsTableView.isHidden = false
+                            self.contentReviewsLoaded = true
+                            
+                        } else {
+                            
+                            print("Erro - Request de reviews da série retornou nil")
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            } else {
+                movieDetailsCollectionView.isHidden = true
+                movieDetailsTableView.reloadData()
+                movieDetailsTableView.isHidden = false
+            }
+            
             break
             
         case 2:
@@ -291,6 +354,7 @@ class MovieDetailsViewController: UIViewController {
             movieDetailsCollectionView.isHidden = true
             var categoriaToSearch: String!
             movieDetailsTableView.tbvType = .movies
+            movieDetailsTableView.rowHeight = 200
             
             if let _ = film {
                 categoriaToSearch = film.categorias[0]
@@ -298,7 +362,7 @@ class MovieDetailsViewController: UIViewController {
                 categoriaToSearch = serie.categorias[0]
             }
             
-            if contentLoad == 0 || contentLoad == 2 {
+            if contentMoreLoaded == 0 || contentMoreLoaded == 2 {
                 //Request todos filmes
                 FilmsSever.takeAllFilms { allFilms in
                     
@@ -320,9 +384,9 @@ class MovieDetailsViewController: UIViewController {
                         }
                         
                         self.movieDetailsTableView.reloadData()
-                        self.contentLoad += 1
+                        self.contentMoreLoaded += 1
                         
-                        if self.contentLoad == 3 {
+                        if self.contentMoreLoaded == 3 {
                             self.movieDetailsTableView.isHidden = false
                         }
                         
@@ -334,7 +398,7 @@ class MovieDetailsViewController: UIViewController {
                 
             }
             
-        if contentLoad < 2 {
+        if contentMoreLoaded < 2 {
             //Request todas series
             SeriesServer.takeAllSeries { allSeries in
                 
@@ -355,9 +419,9 @@ class MovieDetailsViewController: UIViewController {
                     }
                     
                     self.movieDetailsTableView.reloadData()
-                    self.contentLoad += 2
+                    self.contentMoreLoaded += 2
                     
-                    if self.contentLoad == 3 {
+                    if self.contentMoreLoaded == 3 {
                         self.movieDetailsTableView.isHidden = false
                     }
                     
@@ -369,8 +433,9 @@ class MovieDetailsViewController: UIViewController {
             
         }
             
-        if self.contentLoad == 3 {
+        if self.contentMoreLoaded == 3 {
             self.movieDetailsTableView.isHidden = false
+            self.movieDetailsTableView.reloadData()
         }
         
     break

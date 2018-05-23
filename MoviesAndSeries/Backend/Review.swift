@@ -41,7 +41,7 @@ let review2: Review = Review(nomeUsuario: "User133",
                              estrelas: 3,
                              tipoFilmeSerie: .filme,
                              filmeSerieIdentifier: 2,
-                             comentario: "O FILME PARK ... Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133",
+                             comentario: "O FILME PARK ... Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133 Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133, Comment User133",
                              likes: 8,
                              userLike: false
 )
@@ -65,7 +65,7 @@ let review4: Review = Review(nomeUsuario: "Anonymous",
                              estrelas: 1,
                              tipoFilmeSerie: .filme,
                              filmeSerieIdentifier: 1,
-                             comentario: "O FILME THE OTHER ... 01001010101000010101101101101100001010101",
+                             comentario: "O FILME THE OTHER ... 01001010101 0000101011011011011 00001010101",
                              likes: 0,
                              userLike: false
 )

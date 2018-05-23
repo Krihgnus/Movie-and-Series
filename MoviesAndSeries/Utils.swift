@@ -22,7 +22,7 @@ class Utils {
         
         if let numero = number {
 
-            let month = (numero >= 0 && numero < 13) ? months[numero] : "Month not found"
+            let month = (numero - 1 >= 0 && numero - 1 < 12) ? months[numero - 1] : "Month not found"
             
             return month
 

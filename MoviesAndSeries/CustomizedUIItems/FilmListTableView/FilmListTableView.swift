@@ -6,6 +6,7 @@ enum TableViewType {
     case summary
     case movies
     case more
+    case reviews
     
 }
 
@@ -15,6 +16,7 @@ class FilmList: UITableView {
     var artistToTableView: Artist!
     var seriesByArtist: [Serie] = []
     var filmsByArtist: [Film] = []
+    var reviewsByFilm: [Review] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +47,9 @@ extension FilmList: UITableViewDataSource {
             
         case .movies:
             return filmsByArtist.count + seriesByArtist.count
+            
+        case .reviews:
+            return reviewsByFilm.count
             
         case .more:
             return 0
@@ -87,11 +92,9 @@ extension FilmList: UITableViewDataSource {
                 return UITableViewCell()
             
             } else if indexPath.row < filmsByArtist.count {
-                
                 cell.configureFilm(filmsByArtist[indexPath.row])
                 
             } else {
-                
                 cell.configureSerie(seriesByArtist[indexPath.row - filmsByArtist.count])
                     
             }
@@ -100,9 +103,24 @@ extension FilmList: UITableViewDataSource {
             
         case .more:
             return UITableViewCell()
+        
+        case .reviews:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell") as? CellReviewType else {
+                print("Erro - Retornando célula não configurada")
+                return UITableViewCell()
+            
+            }
+        
+            if reviewsByFilm.count == 0 {
+                return UITableViewCell()
+            } else {
+                cell.configure(reviewsByFilm[indexPath.row])
+                cell.tableView = self
+                return cell
+            }
             
         }
-        
-    }
     
+    }
+
 }
