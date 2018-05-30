@@ -63,6 +63,7 @@ extension FilmList: UITableViewDataSource {
         switch tbvType {
             
         case .summary:
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell") as? CellSummaryType else {
                 
                 print("Erro - Retornando célula não configurada")
@@ -80,6 +81,7 @@ extension FilmList: UITableViewDataSource {
             return cell
             
         case .movies:
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? CellMoviesType else {
                 
                 print("Erro - Retornando célula não configurada")
@@ -102,6 +104,7 @@ extension FilmList: UITableViewDataSource {
             return cell
             
         case .more:
+            
             return UITableViewCell()
         
         case .reviews:
@@ -110,12 +113,14 @@ extension FilmList: UITableViewDataSource {
                 return UITableViewCell()
             
             }
-        
+            
             if reviewsByFilm.count == 0 {
                 return UITableViewCell()
             } else {
-                cell.configure(reviewsByFilm[indexPath.row])
+                cell.delegate = self
                 cell.tableView = self
+                cell.setIndex(indexPath.row)
+                cell.configure(reviewsByFilm[indexPath.row])
                 return cell
             }
             
@@ -123,4 +128,24 @@ extension FilmList: UITableViewDataSource {
     
     }
 
+}
+
+extension FilmList: CellReviewTypeDelegate {
+    
+    func didPressLikeButton(atIndex index: Int?) {
+        guard let index = index else { return }
+        
+        var reviewChanged: Review = reviewsByFilm[index]
+        
+        reviewChanged.userLike = !reviewChanged.userLike
+        
+        reviewsByFilm[index] = reviewChanged
+        self.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        
+        ReviewsServer.updateReview(reviewChanged) { success in
+            if success == false {
+                //TRATAR O ERRO POIS A ATUALIZACAO DA REVIEW NAO OBTEVE SUCESSO
+            }
+        }
+    }
 }

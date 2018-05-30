@@ -7,8 +7,10 @@ class WriteReviewViewController: UIViewController {
     @IBOutlet weak var writeTextField: UITextField!
     
     var textInTextField = ""
-    var filmReview: Film!
-    var serieReview: Serie!
+    var starBarReference: StarBarView!
+    var filmeSerieId: Int = 0
+    var filmSerieType: FilmeSerie!
+    var sendReview: Review!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +20,9 @@ class WriteReviewViewController: UIViewController {
         writeTextField.attributedPlaceholder = NSAttributedString(string: "Write Your Review", attributes: [NSAttributedStringKey.foregroundColor: UIColor.black])
         writeTextField.tintColor = UIColor(red: 2 / 255.0, green: 149 / 255.0, blue: 165 / 255.0, alpha: 1)
         
-        guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
-        starBarCurrentScreen = .evaluate
+        guard let starBar = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
+        starBarReference = starBar
+
         starView.addSubview(starBarReference)
         
         let sendButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 21))
@@ -45,6 +48,11 @@ class WriteReviewViewController: UIViewController {
         (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
         navigationController?.navigationBar.tintColor = UIColor(red: 2 / 255.0, green: 149 / 255.0, blue: 165 / 255.0, alpha: 1)
         
+        starBarReference.fillStars(1)
+        
+        writeTextField.text = ""
+        writeTextField.becomeFirstResponder()
+        starBarCurrentScreen = .evaluate
     }
    
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,44 +73,52 @@ class WriteReviewViewController: UIViewController {
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
         
-        guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
-        let fillStars: Int = starBarReference.filledStars
+        textFieldShouldEndEditing(writeTextField)
         
-        var sendReview = Review(nomeUsuario: "Some User", fotoUsuario: URL(string: "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png")!, dataReview: ["Dia": day, "Mes": month, "Ano": year], estrelas: fillStars, tipoFilmeSerie: .filme, filmeSerieIdentifier: 1, comentario: textInTextField, likes: 0, userLike: false)
+        ReviewsServer.countReviews { count in
+            if let contagem = count {
+                self.sendReview.identifier = contagem + 1
+            } else {
+                //CONFIGURAR ALERTA DE ERRO POIS A REVIEW NAO FOI ADICIONADA COM SUCESSO NO ARRAY DE ALLREVIEWSMOCK
+            }
+        }
+    
+        sendReview.nomeUsuario = "You"
+        sendReview.fotoUsuario = URL(string: "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png")!
+        sendReview.dataReview = ["Dia": day, "Mes": month, "Ano": year]
+        sendReview.estrelas = starBarReference.filledStars
+        sendReview.comentario = textInTextField
+        sendReview.likes = 0
+        sendReview.userLike = false
         
-        if var _ = filmReview {
-            
+        if filmSerieType == .filme {
             sendReview.tipoFilmeSerie = .filme
-            sendReview.filmeSerieIdentifier = filmReview.identifier
-            filmReview.avaliacoes.append(sendReview)
-            
-        } else if var _ = serieReview {
-            
+            sendReview.filmeSerieIdentifier = filmeSerieId
+        } else {
             sendReview.tipoFilmeSerie = .serie
-            sendReview.filmeSerieIdentifier = serieReview.identifier
-            serieReview.avaliacoes.append(sendReview)
-            
+            sendReview.filmeSerieIdentifier = filmeSerieId
         }
         
-        let alert = UIAlertController(title: "Successfully Added", message: "Thank you. Your review has been successfully added.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
-        navigationController?.popViewController(animated: true)
-        
-        self.parent?.present(alert, animated: true, completion: nil)
-        
+        ReviewsServer.addReview(sendReview) { success in
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            
+            if success {
+                alert.title = "Successfully Added"
+                alert.message = "Thank you. Your review has been successfully added."
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.navigationController?.popViewController(animated: true)
+                self.parent?.present(alert, animated: true, completion: nil)
+            } else {
+                //CONFIGURAR ALERTA DE ERRO POIS A REVIEW NAO FOI ADICIONADA COM SUCESSO NO ARRAY DE ALLREVIEWSMOCK
+                //REMOVER REVIEW DO ACTREVIEWS 
+            }
+        }
     }
-    
 }
 
 extension WriteReviewViewController: UITextFieldDelegate {
-    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
         textInTextField = writeTextField.text!
-        
         return true
-        
     }
-    
 }

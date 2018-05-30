@@ -2,99 +2,115 @@ import Foundation
 import UIKit
     
 struct PhotoAlbum {
-    let fotografo: String
-    let fotografado: String
-    let fotografadoId: Int
-    let data: [String: Int]
-    let local: [String: String]
-    let fotos: [URL]
+    var fotografo: String
+    var fotografado: String
+    var fotografadoId: Int
+    var data: [String: Int]
+    var local: [String: String]
+    var fotos: [URL]
+    
+    fileprivate init(withPhotoAlbum mock: PhotoAlbumMock) {
+        fotografo = mock.fotografo
+        fotografado = mock.fotografado
+        fotografadoId = mock.fotografadoId
+        data = mock.data
+        local = mock.local
+        fotos = mock.fotos
+    }
 }
 
-//Banco de dados de albums de fotos ficticios
+private class PhotoAlbumMock {
+    var fotografo: String
+    var fotografado: String
+    var fotografadoId: Int
+    var data: [String: Int]
+    var local: [String: String]
+    var fotos: [URL]
+    
+    init(fotografo: String,
+         fotografado: String,
+         fotografadoId: Int,
+         data: [String: Int],
+         local: [String: String],
+         fotos: [URL]) {
+        self.fotografo = fotografo
+        self.fotografado = fotografado
+        self.fotografadoId = fotografadoId
+        self.data = data
+        self.local = local
+        self.fotos = fotos
+    }
+}
 
-//Fotos Laranja
-let secondaryTestAlbum1: PhotoAlbum = PhotoAlbum(fotografo: "Alguem",
-                                                 fotografado: "Joao Silva",
-                                                 fotografadoId: 1,
-                                                 data: ["Dia": 1, "Mes": 12, "Ano": 2008],
-                                                 local: ["Estado": "Brasilia", "Pais": "Brazil"],
-                                                 //COMENTADAS PARA TESTE DE MOSAICOS
-                                                 fotos: [//URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         //URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
-                                                         URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!]
-)
+private var allPhotoAlbumsMocks: [PhotoAlbumMock] = [
+    PhotoAlbumMock(fotografo: "Alguem",
+                   fotografado: "Chris Scott",
+                   fotografadoId: 1,
+                   data: ["Dia": 1, "Mes": 12, "Ano": 2008],
+                   local: ["Estado": "Brasilia", "Pais": "Brazil"],
+                   fotos: [URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                           URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                           URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                           URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!,
+                           URL(string: "https://wallpapercave.com/wp/DVoCGdt.jpg")!]
+    ),
+    PhotoAlbumMock(fotografo: "Outro Alguem",
+                   fotografado: "Chris Scott",
+                   fotografadoId: 1,
+                   data: ["Dia": 2, "Mes": 12, "Ano": 2008],
+                   local: ["Estado": "Brasilia", "Pais": "Brazil"],
+                   fotos: [URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!,
+                           URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!,
+                           URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!]
+    ),
+    PhotoAlbumMock(fotografo: "Alguem2",
+                   fotografado: "Maria Silva",
+                   fotografadoId: 2,
+                   data: ["Dia": 3, "Mes": 11, "Ano": 2015],
+                   local: ["Estado": "Rio de Janeiro", "Pais": "Brazil"],
+                   fotos: [URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
+                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
+                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
+                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
+                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
+                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!]
+    ),
+    PhotoAlbumMock(fotografo: "Outro Alguem2",
+                   fotografado: "Maria Silva",
+                   fotografadoId: 2,
+                   data: ["Dia": 4, "Mes": 11, "Ano": 2015],
+                   local: ["Estado": "Rio de Janeiro", "Pais": "Brazil"],
+                   fotos: [URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
+                           URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
+                           URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!]
+    )
+]
 
-//Fotos Ciano
-let otherAlbum1: PhotoAlbum = PhotoAlbum(fotografo: "Outro Alguem",
-                                         fotografado: "Joao Silva",
-                                         fotografadoId: 1,
-                                         data: ["Dia": 2, "Mes": 12, "Ano": 2008],
-                                         local: ["Estado": "Brasilia", "Pais": "Brazil"],
-                                         fotos: [URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!,
-                                                 URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!,
-                                                 URL(string: "https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Wallpapers-HD-Cyan-PIC-WPB0011264.jpg")!]
-)
+var allAlbums: [PhotoAlbum] {
+    return [PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[1]), PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[3])]
+}
 
-//Fotos Ciano - Ladrinho
-let secondaryTestAlbum2: PhotoAlbum = PhotoAlbum(fotografo: "Alguem2",
-                                                 fotografado: "Maria Silva",
-                                                 fotografadoId: 2,
-                                                 data: ["Dia": 3, "Mes": 11, "Ano": 2015],
-                                                 local: ["Estado": "Rio de Janeiro", "Pais": "Brazil"],
-                                                 fotos: [URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                                                         URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                                                         URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                                                         URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                                                         URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                                                         URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!]
-)
+var allSecondaryAlbums: [PhotoAlbum] {
+    return [PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[0]), PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[2])]
+}
 
-//Fotos Preto
-let otherAlbum2: PhotoAlbum = PhotoAlbum(fotografo: "Outro Alguem2",
-                                         fotografado: "Maria Silva",
-                                         fotografadoId: 2,
-                                         data: ["Dia": 4, "Mes": 11, "Ano": 2015],
-                                         local: ["Estado": "Rio de Janeiro", "Pais": "Brazil"],
-                                         fotos: [URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
-                                                 URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
-                                                 URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!]
-)
-
-//Albums
-let allAlbums: [PhotoAlbum] = [otherAlbum1, otherAlbum2]
-
-//Todos albuns secundarios
-let allSecondaryPhotoAlbums: [PhotoAlbum] = [secondaryTestAlbum1, secondaryTestAlbum2]
-
-
-//Class ficticia que representa o servidor que puxa os dados dos atores de um banco de dados atraves de requests
 class PhotoAlbumServer {
     static func takeSecondaryAlbum(by artistId: Int, onCompletion completionHandler: @escaping (PhotoAlbum?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
             let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
             
             if sucesso {
                 
-                for album in allSecondaryPhotoAlbums {
-                    
+                for album in allSecondaryAlbums {
                     if album.fotografadoId == artistId {
-                        
                         completionHandler(album)
                     }
-                    
                 }
-                
             } else {
-                
                 completionHandler(nil)
-                
             }
-            
         }
-        
     }
     
     static func takeotherAlbums(by artistId: Int, onCompletion completionHandler: @escaping ([PhotoAlbum]?) -> Void) {
@@ -111,18 +127,11 @@ class PhotoAlbumServer {
                         outrosAlbuns.append(album)
                         
                     }
-                    
                 }
                 completionHandler(outrosAlbuns)
-                
             } else {
-                
                 completionHandler(nil)
-                
             }
         }
-        
     }
-    
 }
-

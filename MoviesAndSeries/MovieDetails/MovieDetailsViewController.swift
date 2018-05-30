@@ -31,6 +31,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var screenActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var movieDetailsTableView: FilmList!
     @IBOutlet weak var movieDetailsCollectionView: UICollectionView!
+    @IBOutlet weak var contentActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     
     var backWithColor: FilmDetailsBackColor!
     var idToRequest: Int!
@@ -42,6 +44,8 @@ class MovieDetailsViewController: UIViewController {
     var contentMoreLoaded = 0
     var contentReviewsLoaded = false
     var artistas: [Artist] = []
+    var writeReviewViewControllerReference: WriteReviewViewController!
+    let tableViewHeightDefaultAppear: CGFloat = UIScreen.main.bounds.size.height - 531
     
     @IBAction func playVideoButton(_ sender: Any) {
         
@@ -57,21 +61,19 @@ class MovieDetailsViewController: UIViewController {
             
             (alert: UIAlertAction!) -> Void  in
             
-            if let writeReviewViewControllerReference = self.storyboard?.instantiateViewController(withIdentifier: "writeReviewVC") as? WriteReviewViewController {
+            if let _ = self.film {
                 
-                if let sendFilm = self.film {
-                    
-                    writeReviewViewControllerReference.filmReview = sendFilm
-                    
-                } else {
-                    
-                    writeReviewViewControllerReference.serieReview = self.serie
-                    
-                }
+                self.writeReviewViewControllerReference.filmeSerieId = self.film.identifier
+                self.writeReviewViewControllerReference.filmSerieType = .filme
                 
-                self.navigationController?.pushViewController(writeReviewViewControllerReference, animated: true)
+            } else {
+                
+                self.writeReviewViewControllerReference.filmeSerieId = self.serie.identifier
+                self.writeReviewViewControllerReference.filmSerieType = .serie
                 
             }
+            
+            self.navigationController?.pushViewController(self.writeReviewViewControllerReference, animated: true)
             
         })
         
@@ -106,14 +108,17 @@ class MovieDetailsViewController: UIViewController {
         segmentedBar.insertSegment(withTitle: "Cast", at: 0, animated: false)
         segmentedBar.insertSegment(withTitle: "Reviews", at: 1, animated: false)
         segmentedBar.insertSegment(withTitle: "More", at: 2, animated: false)
-        segmentedBar.selectedSegmentIndex = 0
-        indexChanged(self.segmentedBar)
         
         scrollView.contentInsetAdjustmentBehavior = .never
         
         contentView.isHidden = true
         screenActivityIndicator.startAnimating()
         movieDetailsCollectionView.backgroundColor = UIColor(red: 234, green: 234, blue: 234, alpha: 1.0)
+
+        
+        if let writeReviewViewController = self.storyboard?.instantiateViewController(withIdentifier: "writeReviewVC") as? WriteReviewViewController {
+            self.writeReviewViewControllerReference = writeReviewViewController
+        }
         
         switch requestType {
             
@@ -135,7 +140,7 @@ class MovieDetailsViewController: UIViewController {
                     //Implementando pod ExpandableLabel
                     let attributedStringColor = [NSAttributedStringKey.foregroundColor : UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)];
                     self.descriptionLabel.collapsedAttributedLink =  NSAttributedString(string: "show all", attributes: attributedStringColor)
-                    self.descriptionLabel.setLessLinkWith(lessLink: "hide", attributes: [.foregroundColor: UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)], position: .left)
+                    self.descriptionLabel.setLessLinkWith(lessLink: "hide", attributes: [.foregroundColor: UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)], position: .right)
                     self.descriptionLabel.shouldCollapse = true
                     self.descriptionLabel.textReplacementType = .word
                     self.descriptionLabel.numberOfLines = 3
@@ -154,10 +159,13 @@ class MovieDetailsViewController: UIViewController {
                     self.navigationController?.navigationBar.tintColor = .white
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                     self.screenActivityIndicator.stopAnimating()
-                    
-                    self.film = film
                     self.artistas = film.atores
                     self.movieDetailsCollectionView.reloadData()
+                    self.scrollViewHeight.constant = self.movieDetailsCollectionView.frame.height - self.tableViewHeightDefaultAppear //TESTE
+                    self.movieDetailsTableView.reviewsByFilm = film.avaliacoes
+                    self.writeReviewViewControllerReference.sendReview = film.avaliacoes[0]
+                    self.film = film
+                    self.contentReviewsLoaded = true
                     
                 } else {
                     
@@ -187,7 +195,7 @@ class MovieDetailsViewController: UIViewController {
                     //Implementando pod ExpandableLabel
                     let attributedStringColor = [NSAttributedStringKey.foregroundColor : UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)];
                     self.descriptionLabel.collapsedAttributedLink =  NSAttributedString(string: "show all", attributes: attributedStringColor)
-                    self.descriptionLabel.setLessLinkWith(lessLink: "hide", attributes: [.foregroundColor: UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)], position: .left)
+                    self.descriptionLabel.setLessLinkWith(lessLink: "hide", attributes: [.foregroundColor: UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)], position: .right)
                     self.descriptionLabel.shouldCollapse = true
                     self.descriptionLabel.textReplacementType = .word
                     self.descriptionLabel.numberOfLines = 3
@@ -208,9 +216,14 @@ class MovieDetailsViewController: UIViewController {
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                     self.screenActivityIndicator.stopAnimating()
                     
-                    self.serie = serie
                     self.artistas = serie.atores
                     self.movieDetailsCollectionView.reloadData()
+                    self.scrollViewHeight.constant = self.movieDetailsCollectionView.frame.height - self.tableViewHeightDefaultAppear //TESTE
+        
+                    self.movieDetailsTableView.reviewsByFilm = serie.avaliacoes
+                    self.writeReviewViewControllerReference.sendReview = serie.avaliacoes[0]
+                    self.serie = serie
+                    self.contentReviewsLoaded = true
                     
                 } else {
                     
@@ -247,6 +260,21 @@ class MovieDetailsViewController: UIViewController {
             
         }
         
+        segmentedBar.selectedSegmentIndex = 0
+        indexChanged(segmentedBar)
+        
+        if contentReviewsLoaded {
+            if let _ = self.film {
+                if film.avaliacoes[0].identifier != writeReviewViewControllerReference.sendReview.identifier {
+                    movieDetailsTableView.reviewsByFilm.append(self.writeReviewViewControllerReference.sendReview)
+                }
+            } else {
+                if serie.avaliacoes[0].identifier != writeReviewViewControllerReference.sendReview.identifier {
+                    movieDetailsTableView.reviewsByFilm.append(self.writeReviewViewControllerReference.sendReview)
+                }
+            }
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -271,10 +299,10 @@ class MovieDetailsViewController: UIViewController {
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         
         UIView.animate(withDuration: 0.3) {
-            
             self.segmentedBarBottomView.frame.origin.x = (self.segmentedBar.frame.width / 3) * CGFloat(self.segmentedBar.selectedSegmentIndex)
-            
         }
+        
+        //self.scrollViewHeight.constant = 0 //TESTE
         
         switch segmentedBar.selectedSegmentIndex {
             
@@ -282,78 +310,27 @@ class MovieDetailsViewController: UIViewController {
             //ABA CAST SELECIONADA
             movieDetailsTableView.isHidden = true
             movieDetailsCollectionView.isHidden = false
+            //scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
             
             break
             
         case 1:
             //ABA REVIEW SELECIONADA
-            movieDetailsCollectionView.isHidden = true
             movieDetailsTableView.tbvType = .reviews
-            
-            if contentReviewsLoaded == false {
-                if let _ = film {
-                    //Request reviews
-                    ReviewsServer.takeReviewsToFilm(by: self.film.identifier, filmType: .filme) { reviewsToFilm in
-                        
-                        if let todasReviews = reviewsToFilm {
-                            
-                            for review in todasReviews {
-                                
-                                self.movieDetailsTableView.reviewsByFilm.append(review)
-                                
-                            }
-                            
-                            self.movieDetailsTableView.reloadData()
-                            self.movieDetailsTableView.isHidden = false
-                            self.contentReviewsLoaded = true
-                            
-                        } else {
-                            
-                            print("Erro - Request de reviews da série retornou nil")
-                            
-                        }
-                        
-                    }
-                    
-                } else {
-                    //Request reviews
-                    ReviewsServer.takeReviewsToFilm(by: self.serie.identifier, filmType: .serie) { reviewsToSerie in
-                        
-                        if let todasReviews = reviewsToSerie {
-                            
-                            for review in todasReviews {
-                                
-                                self.movieDetailsTableView.reviewsByFilm.append(review)
-                                
-                            }
-                            
-                            self.movieDetailsTableView.reloadData()
-                            self.movieDetailsTableView.isHidden = false
-                            self.contentReviewsLoaded = true
-                            
-                        } else {
-                            
-                            print("Erro - Request de reviews da série retornou nil")
-                            
-                        }
-                        
-                    }
-                    
-                }
-                
-            } else {
-                movieDetailsCollectionView.isHidden = true
-                movieDetailsTableView.reloadData()
-                movieDetailsTableView.isHidden = false
-            }
-            
+            movieDetailsCollectionView.isHidden = true
+            movieDetailsTableView.reloadData()
+            movieDetailsTableView.isHidden = false
+            scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
+    
             break
             
         case 2:
             //ABA MORE SELECIONADA
             movieDetailsCollectionView.isHidden = true
+            movieDetailsTableView.isHidden = true
             var categoriaToSearch: String!
             movieDetailsTableView.tbvType = .movies
+            contentActivityIndicator.startAnimating()
             movieDetailsTableView.rowHeight = 200
             
             if let _ = film {
@@ -387,7 +364,9 @@ class MovieDetailsViewController: UIViewController {
                         self.contentMoreLoaded += 1
                         
                         if self.contentMoreLoaded == 3 {
+                            self.contentActivityIndicator.stopAnimating()
                             self.movieDetailsTableView.isHidden = false
+                            self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
                         }
                         
                     } else {
@@ -422,7 +401,9 @@ class MovieDetailsViewController: UIViewController {
                     self.contentMoreLoaded += 2
                     
                     if self.contentMoreLoaded == 3 {
+                        self.contentActivityIndicator.stopAnimating()
                         self.movieDetailsTableView.isHidden = false
+                        self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
                     }
                     
                 } else {
@@ -436,6 +417,8 @@ class MovieDetailsViewController: UIViewController {
         if self.contentMoreLoaded == 3 {
             self.movieDetailsTableView.isHidden = false
             self.movieDetailsTableView.reloadData()
+            self.contentActivityIndicator.stopAnimating()
+            self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
         }
         
     break
@@ -514,7 +497,7 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtistsCollectionViewCell.identifier, for: indexPath) as? ArtistsCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistsCVC", for: indexPath) as? ArtistsCollectionViewCell else {
             
             print("Erro - Retornando célula não configurada")
             return UICollectionViewCell()

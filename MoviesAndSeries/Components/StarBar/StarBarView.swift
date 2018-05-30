@@ -83,39 +83,17 @@ class StarBarView: UIView {
     
     func fillStars(_ value: Int ) {
         
-        print("VALUE - \(value)")
-        
-//        let realIndex = value - 1
-        
-//        for (index, button) in stars.enumerated() {
-//            if realIndex <= index {
-//                DispatchQueue.main.async { button.setBackgroundImage(imageOff, for: .normal) }
-//            } else {
-//                DispatchQueue.main.async { button.setBackgroundImage(imageOn, for: .normal) }
-//            }
-//        }
-        
-        var idx = 0
-        stars.forEach { (button) in
-            if value > idx {
-                DispatchQueue.main.async { button.setBackgroundImage(imageOn, for: .normal) }
+        for (index, button) in stars.enumerated() {
+
+            if value > index {
+                button.setBackgroundImage(imageOn, for: .normal)
             } else {
-                DispatchQueue.main.async { button.setBackgroundImage(imageOff, for: .normal) }
+                button.setBackgroundImage(imageOff, for: .normal)
             }
-            idx += 1
+
         }
         
-//        for (index, button) in stars.enumerated() {
-//
-//            if value > index {
-//                DispatchQueue.main.async { button.setBackgroundImage(imageOn, for: .normal) }
-//            } else {
-//                DispatchQueue.main.async { button.setBackgroundImage(imageOff, for: .normal) }
-//            }
-//
-//        }
-        
-//        filledStars = value
+        filledStars = value
         
     }
     

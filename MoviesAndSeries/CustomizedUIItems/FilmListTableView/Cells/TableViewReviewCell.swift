@@ -3,6 +3,10 @@ import UIKit
 import SDWebImage
 import ExpandableLabel
 
+protocol CellReviewTypeDelegate: class {
+    func didPressLikeButton(atIndex index: Int?)
+}
+
 class CellReviewType: UITableViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
@@ -13,17 +17,15 @@ class CellReviewType: UITableViewCell {
     @IBOutlet weak var likeAmount: UILabel!
     @IBOutlet weak var likeButtonOutlet: UIButton!
     
+    weak var delegate: CellReviewTypeDelegate?
+    private(set) var cellIndex: Int?
+    
     var likes: Int = 0
     var reviewAct: Review!
     var tableView: UITableView!
     
     @IBAction func likeButton(_ sender: UIButton) {
-        if reviewAct.userLike {
-            reviewAct.userLike = false
-        } else {
-            reviewAct.userLike = true
-        }
-        likeUnlike()
+        delegate?.didPressLikeButton(atIndex: cellIndex)
     }
     
     override func prepareForReuse() {
@@ -37,20 +39,21 @@ class CellReviewType: UITableViewCell {
     }
     
     func configure(_ review: Review) {
+        
         likeButtonOutlet.setBackgroundImage(UIImage(imageLiteralResourceName: "unlike"), for: .normal)
         likeButtonOutlet.setBackgroundImage(UIImage(imageLiteralResourceName: "unlike"), for: .highlighted)
         likeButtonOutlet.adjustsImageWhenHighlighted = false
         var mes = Utils.numberToMonth(review.dataReview["Mes"])
         var chars = Array(mes)
         mes = "\(chars[0])\(chars[1])\(chars[2])"
-        
+
         userImage.sd_setImage(with: review.fotoUsuario, completed: nil)
         userName.text = review.nomeUsuario
         
-        dateReview.text = "\(mes) \(review.dataReview["Dia"]!) \(review.dataReview["Ano"]!)"
+        dateReview.text = "\(mes) \(review.dataReview["Dia"]!)th \(review.dataReview["Ano"]!)"
         likeAmount.text = "\(review.likes) helpful votes"
-        
-        //Implementado ExpandableLabel
+
+        //Implementado ExpandableLabel - ARRUMAR
         let attributedStringColor = [NSAttributedStringKey.foregroundColor : UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)];
         comment.collapsedAttributedLink =  NSAttributedString(string: "show all", attributes: attributedStringColor)
         comment.setLessLinkWith(lessLink: "hide", attributes: [.foregroundColor: UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)], position: .right)
@@ -62,20 +65,26 @@ class CellReviewType: UITableViewCell {
         comment.collapsed = true
         
         likes = review.likes
-        reviewAct = review
         
         selectionStyle = .none
-        
+      
         guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
         starBarView.addSubview(starBarReference)
-        starBarReference.translatesAutoresizingMaskIntoConstraints = true
+        starBarReference.translatesAutoresizingMaskIntoConstraints = false
         starBarReference.topAnchor.constraint(equalTo: starBarView.topAnchor, constant: 0).isActive = true
         starBarReference.bottomAnchor.constraint(equalTo: starBarView.bottomAnchor, constant: 0).isActive = true
         starBarReference.leadingAnchor.constraint(equalTo: starBarView.leadingAnchor, constant: 0).isActive = true
         starBarReference.trailingAnchor.constraint(equalTo: starBarView.trailingAnchor, constant: 0).isActive = true
         starBarReference.fillStars(review.estrelas)
         
+        reviewAct = review
         
+        likeUnlike()
+
+    }
+    
+    func setIndex(_ index: Int) {
+        cellIndex = index
     }
     
     private func likeUnlike() {
@@ -94,7 +103,7 @@ class CellReviewType: UITableViewCell {
     
 }
 
-//Atendendo ao protocolo ExpandableLabelDelegate
+//Atendendo ao protocolo ExpandableLabelDelegate - ARRUMAR
 
 extension CellReviewType: ExpandableLabelDelegate {
     func willExpandLabel(_ label: ExpandableLabel) {
