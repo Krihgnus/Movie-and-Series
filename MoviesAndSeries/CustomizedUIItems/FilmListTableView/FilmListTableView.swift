@@ -6,8 +6,6 @@ enum TableViewType {
     case summary
     case movies
     case more
-    case reviews
-    
 }
 
 class FilmList: UITableView {
@@ -17,6 +15,7 @@ class FilmList: UITableView {
     var seriesByArtist: [Serie] = []
     var filmsByArtist: [Film] = []
     var reviewsByFilm: [Review] = []
+    var trueHeight: CGFloat = 0.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,10 +45,10 @@ extension FilmList: UITableViewDataSource {
             return 1
             
         case .movies:
+            if filmsByArtist.count + seriesByArtist.count > 5 {
+                return 5
+            }
             return filmsByArtist.count + seriesByArtist.count
-            
-        case .reviews:
-            return reviewsByFilm.count
             
         case .more:
             return 0
@@ -89,6 +88,8 @@ extension FilmList: UITableViewDataSource {
                 
             }
             
+            cell.tableView = self
+            
             if filmsByArtist.count + seriesByArtist.count == 0 {
                 
                 return UITableViewCell()
@@ -98,7 +99,6 @@ extension FilmList: UITableViewDataSource {
                 
             } else {
                 cell.configureSerie(seriesByArtist[indexPath.row - filmsByArtist.count])
-                    
             }
             
             return cell
@@ -106,46 +106,9 @@ extension FilmList: UITableViewDataSource {
         case .more:
             
             return UITableViewCell()
-        
-        case .reviews:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell") as? CellReviewType else {
-                print("Erro - Retornando célula não configurada")
-                return UITableViewCell()
-            
-            }
-            
-            if reviewsByFilm.count == 0 {
-                return UITableViewCell()
-            } else {
-                cell.delegate = self
-                cell.tableView = self
-                cell.setIndex(indexPath.row)
-                cell.configure(reviewsByFilm[indexPath.row])
-                return cell
-            }
             
         }
-    
+        
     }
 
-}
-
-extension FilmList: CellReviewTypeDelegate {
-    
-    func didPressLikeButton(atIndex index: Int?) {
-        guard let index = index else { return }
-        
-        var reviewChanged: Review = reviewsByFilm[index]
-        
-        reviewChanged.userLike = !reviewChanged.userLike
-        
-        reviewsByFilm[index] = reviewChanged
-        self.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
-        
-        ReviewsServer.updateReview(reviewChanged) { success in
-            if success == false {
-                //TRATAR O ERRO POIS A ATUALIZACAO DA REVIEW NAO OBTEVE SUCESSO
-            }
-        }
-    }
 }

@@ -10,6 +10,8 @@ class CellMoviesType: UITableViewCell {
     @IBOutlet weak var movieCategories: UILabel!
     @IBOutlet weak var stars: UIView!
     
+    var tableView: FilmList!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -60,6 +62,8 @@ class CellMoviesType: UITableViewCell {
         
         self.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
         self.selectionStyle = .none
+        
+        tableView.trueHeight += self.frame.height
     }
     
 }

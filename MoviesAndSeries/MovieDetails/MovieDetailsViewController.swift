@@ -29,10 +29,14 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var screenActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var movieDetailsTableView: FilmList!
     @IBOutlet weak var movieDetailsCollectionView: UICollectionView!
     @IBOutlet weak var contentActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    //@IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+//    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottonSpaceStackViewBetweenContentView: NSLayoutConstraint!
+    @IBOutlet weak var seeAllView: UIView!
+    @IBOutlet weak var reviewsStackView: UIStackView!
     
     var backWithColor: FilmDetailsBackColor!
     var idToRequest: Int!
@@ -45,11 +49,20 @@ class MovieDetailsViewController: UIViewController {
     var contentReviewsLoaded = false
     var artistas: [Artist] = []
     var writeReviewViewControllerReference: WriteReviewViewController!
-    let tableViewHeightDefaultAppear: CGFloat = UIScreen.main.bounds.size.height - 531
+    var reviewsContentLoad: Bool = false
+    var trueStackViewHeight: CGFloat = 0.0
+    var labelHeight: CGFloat = 0
     
     @IBAction func playVideoButton(_ sender: Any) {
         
         playVideo()
+        
+    }
+    
+    @IBAction func viewAllButton(_ sender: UIButton) {
+        guard let filmListReference = storyboard?.instantiateViewController(withIdentifier: "listOfFIlmsVC") as? ListOfFilms else { return }
+        
+        navigationController?.pushViewController(filmListReference, animated: true)
         
     }
     
@@ -88,16 +101,16 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieDetailsTableView.delegate = self
         movieDetailsCollectionView.dataSource = self
         movieDetailsCollectionView.delegate = self
+        descriptionLabel.delegate = self
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
         navigationItem.title = " "
         (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
-        
+    
         let threePointsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         threePointsButton.setImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .normal)
         threePointsButton.setImage(UIImage(imageLiteralResourceName: "threePointsIcon"), for: .highlighted)
@@ -110,11 +123,18 @@ class MovieDetailsViewController: UIViewController {
         segmentedBar.insertSegment(withTitle: "More", at: 2, animated: false)
         
         scrollView.contentInsetAdjustmentBehavior = .never
+        reviewsStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        reviewsStackView.bounds.origin.y = 525
+//        reviewsStackView.layoutIfNeeded()
+        //collectionViewHeight.constant = 530 //SUPOSTA ALTURA QUE SUPORTA ATE 3 LINHAS + BOTAO (1 LINHA = 2 ATORES, MAX. 6 ATORES)
+        //stackViewHeight.constant = 500 //SUPOSTA ALTURA QUE SUPORTA ATE 5 VIEWS + BOTAO
+//        contentView.layoutIfNeeded() //TESTE
         
         contentView.isHidden = true
         screenActivityIndicator.startAnimating()
         movieDetailsCollectionView.backgroundColor = UIColor(red: 234, green: 234, blue: 234, alpha: 1.0)
-
+        
         
         if let writeReviewViewController = self.storyboard?.instantiateViewController(withIdentifier: "writeReviewVC") as? WriteReviewViewController {
             self.writeReviewViewControllerReference = writeReviewViewController
@@ -148,7 +168,7 @@ class MovieDetailsViewController: UIViewController {
                     
                     guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
                     self.starsView.addSubview(starBarReference)
-                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
+                    self.starsView.translatesAutoresizingMaskIntoConstraints = false
                     starBarReference.topAnchor.constraint(equalTo: self.starsView.topAnchor, constant: 0).isActive = true
                     starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
                     starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
@@ -158,11 +178,19 @@ class MovieDetailsViewController: UIViewController {
                     self.contentView.isHidden = false
                     self.navigationController?.navigationBar.tintColor = .white
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
+                    
                     self.screenActivityIndicator.stopAnimating()
                     self.artistas = film.atores
                     self.movieDetailsCollectionView.reloadData()
-                    self.scrollViewHeight.constant = self.movieDetailsCollectionView.frame.height - self.tableViewHeightDefaultAppear //TESTE
-                    self.movieDetailsTableView.reviewsByFilm = film.avaliacoes
+                    
+                    if film.atores.count > 6 {
+                        self.seeAllView.isHidden = false
+                        //self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height + 99) - UIScreen.main.bounds.size.height
+                    } else {
+                        self.seeAllView.isHidden = true
+                        //self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height) - UIScreen.main.bounds.size.height
+                    }
+                    
                     self.writeReviewViewControllerReference.sendReview = film.avaliacoes[0]
                     self.film = film
                     self.contentReviewsLoaded = true
@@ -203,8 +231,7 @@ class MovieDetailsViewController: UIViewController {
                     
                     guard let starBarReference = UINib(nibName: "StarBarView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? StarBarView else { return }
                     self.starsView.addSubview(starBarReference)
-                    
-                    self.starsView.translatesAutoresizingMaskIntoConstraints = true
+                    self.starsView.translatesAutoresizingMaskIntoConstraints = false
                     starBarReference.topAnchor.constraint(equalTo: self.starsView.topAnchor, constant: 0).isActive = true
                     starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
                     starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
@@ -216,11 +243,18 @@ class MovieDetailsViewController: UIViewController {
                     (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                     self.screenActivityIndicator.stopAnimating()
                     
+                    self.screenActivityIndicator.stopAnimating()
                     self.artistas = serie.atores
                     self.movieDetailsCollectionView.reloadData()
-                    self.scrollViewHeight.constant = self.movieDetailsCollectionView.frame.height - self.tableViewHeightDefaultAppear //TESTE
-        
-                    self.movieDetailsTableView.reviewsByFilm = serie.avaliacoes
+                    
+                    if self.artistas.count > 6 {
+                        self.seeAllView.isHidden = false
+                        //self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height + 99) - UIScreen.main.bounds.size.height
+                    } else {
+                        self.seeAllView.isHidden = true
+                        //self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height) - UIScreen.main.bounds.size.height
+                    }
+                    
                     self.writeReviewViewControllerReference.sendReview = serie.avaliacoes[0]
                     self.serie = serie
                     self.contentReviewsLoaded = true
@@ -251,49 +285,36 @@ class MovieDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(true)
         
         if runningVideo == true {
-            
             runningVideo = false
+        }
+        
+        if let writtenReview = writeReviewViewControllerReference.sendReview {
+            
+            if let _ = self.film {
+                self.film.avaliacoes.append(writtenReview)
+            } else {
+                self.serie.avaliacoes.append(writtenReview)
+            }
             
         }
         
         segmentedBar.selectedSegmentIndex = 0
         indexChanged(segmentedBar)
-        
-        if contentReviewsLoaded {
-            if let _ = self.film {
-                if film.avaliacoes[0].identifier != writeReviewViewControllerReference.sendReview.identifier {
-                    movieDetailsTableView.reviewsByFilm.append(self.writeReviewViewControllerReference.sendReview)
-                }
-            } else {
-                if serie.avaliacoes[0].identifier != writeReviewViewControllerReference.sendReview.identifier {
-                    movieDetailsTableView.reviewsByFilm.append(self.writeReviewViewControllerReference.sendReview)
-                }
-            }
-        }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
         super.viewWillDisappear(true)
         
         if backWithColor == .white || runningVideo == true {
-            
             navigationController?.navigationBar.tintColor = .white
             (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
-            
         } else {
-            
             navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
             (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
-            
         }
-        
-        
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
@@ -302,36 +323,114 @@ class MovieDetailsViewController: UIViewController {
             self.segmentedBarBottomView.frame.origin.x = (self.segmentedBar.frame.width / 3) * CGFloat(self.segmentedBar.selectedSegmentIndex)
         }
         
-        //self.scrollViewHeight.constant = 0 //TESTE
-        
         switch segmentedBar.selectedSegmentIndex {
             
         case 0:
             //ABA CAST SELECIONADA
-            movieDetailsTableView.isHidden = true
             movieDetailsCollectionView.isHidden = false
-            //scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
+            reviewsStackView.isHidden = true
+            seeAllView.isHidden = true
+            
+            if contentReviewsLoaded { //TIRAR
+                if let _ = self.film {
+                    if film.atores.count > 6 {
+                        seeAllView.isHidden = false
+//                        self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height + 99) - UIScreen.main.bounds.size.height
+                    } else {
+                        seeAllView.isHidden = true
+//                        self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height) - UIScreen.main.bounds.size.height
+                    }
+                    
+                } else {
+                    if serie.atores.count > 6 {
+                        seeAllView.isHidden = false
+//                        self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height + 99) - UIScreen.main.bounds.size.height
+                    } else {
+                        seeAllView.isHidden = true
+//                        self.scrollViewHeight.constant = (525 + self.movieDetailsCollectionView.frame.height) - UIScreen.main.bounds.size.height
+                    }
+                }
+            }
             
             break
             
         case 1:
             //ABA REVIEW SELECIONADA
-            movieDetailsTableView.tbvType = .reviews
             movieDetailsCollectionView.isHidden = true
-            movieDetailsTableView.reloadData()
-            movieDetailsTableView.isHidden = false
-            scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
-    
+            reviewsStackView.isHidden = false
+            trueStackViewHeight = 0
+            
+            for view in reviewsStackView.arrangedSubviews {
+//                reviewsStackView.addArrangedSubview(view)
+                view.removeFromSuperview()
+            }
+
+//            contentView.layoutIfNeeded()
+            
+            if let _ = self.film {
+                for review in self.film.avaliacoes {
+                    
+                    if reviewsStackView.arrangedSubviews.count < 5 {
+                        guard let viewReviewTypeReference = UINib(nibName: "ViewReviewType", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ViewReviewType else { return }
+                    
+                        reviewsStackView.addArrangedSubview(viewReviewTypeReference)
+                        
+                        viewReviewTypeReference.delegate = self
+                        viewReviewTypeReference.configure(review, index: reviewsStackView.arrangedSubviews.count)
+                        
+                        viewReviewTypeReference.translatesAutoresizingMaskIntoConstraints = false
+                        viewReviewTypeReference.leadingAnchor.constraint(equalTo: reviewsStackView.leadingAnchor, constant: 0).isActive = true
+                        viewReviewTypeReference.trailingAnchor.constraint(equalTo: reviewsStackView.trailingAnchor, constant: 0).isActive = true
+                        
+                        trueStackViewHeight += viewReviewTypeReference.frame.size.height
+                    }
+                    
+                }
+                
+            } else {
+                for review in self.serie.avaliacoes {
+                    
+                    if reviewsStackView.arrangedSubviews.count < 5 {
+                        guard let viewReviewTypeReference = UINib(nibName: "ViewReviewType", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ViewReviewType else { return }
+                        reviewsStackView.addArrangedSubview(viewReviewTypeReference)
+                        
+                        viewReviewTypeReference.delegate = self
+                        viewReviewTypeReference.configure(review, index: reviewsStackView.arrangedSubviews.count)
+                        
+                        viewReviewTypeReference.translatesAutoresizingMaskIntoConstraints = false
+                        viewReviewTypeReference.leadingAnchor.constraint(equalTo: reviewsStackView.leadingAnchor, constant: 0).isActive = true
+                        viewReviewTypeReference.trailingAnchor.constraint(equalTo: reviewsStackView.trailingAnchor, constant: 0).isActive = true
+                        
+                        trueStackViewHeight += viewReviewTypeReference.frame.size.height
+                    }
+                }
+            }
+            
+            if reviewsStackView.arrangedSubviews.count == 5 {
+                seeAllView.isHidden = false
+                trueStackViewHeight += 50
+                bottonSpaceStackViewBetweenContentView.constant = 100
+//                scrollViewHeight.constant = trueStackViewHeight / 2
+            } else if reviewsStackView.arrangedSubviews.count <= 2 {
+                seeAllView.isHidden = true
+                bottonSpaceStackViewBetweenContentView.constant = 50
+//                scrollViewHeight.constant = trueStackViewHeight / 1.95
+            } else {
+                seeAllView.isHidden = true
+                bottonSpaceStackViewBetweenContentView.constant = 50
+//                scrollViewHeight.constant = trueStackViewHeight / 2
+            }
+            contentView.layoutIfNeeded()
+            
             break
             
         case 2:
             //ABA MORE SELECIONADA
             movieDetailsCollectionView.isHidden = true
-            movieDetailsTableView.isHidden = true
+            reviewsStackView.isHidden = true
             var categoriaToSearch: String!
-            movieDetailsTableView.tbvType = .movies
-            contentActivityIndicator.startAnimating()
-            movieDetailsTableView.rowHeight = 200
+            seeAllView.isHidden = true
+            reviewsContentLoad = false
             
             if let _ = film {
                 categoriaToSearch = film.categorias[0]
@@ -347,26 +446,23 @@ class MovieDetailsViewController: UIViewController {
                         
                         for film in todosFilmes {
                             for categoria in film.categorias {
-                                if categoria == categoriaToSearch {
-                                    self.movieDetailsTableView.filmsByArtist.append(film)
+                                if categoria == categoriaToSearch && film.identifier != self.film.identifier {
+                                    //PEGAR XIB, CONFIGURAR, ETC
+                                    //self.movieDetailsTableView.filmsByArtist.append(film)
                                 }
                             }
                             
                             if let _ = self.film {
                                 if self.film.identifier == film.identifier {
-                                    self.movieDetailsTableView.filmsByArtist.removeLast()
+                                    //self.movieDetailsTableView.filmsByArtist.removeLast()
                                 }
                             }
-                        
+                            
                         }
-                        
-                        self.movieDetailsTableView.reloadData()
                         self.contentMoreLoaded += 1
                         
                         if self.contentMoreLoaded == 3 {
-                            self.contentActivityIndicator.stopAnimating()
-                            self.movieDetailsTableView.isHidden = false
-                            self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
+                            
                         }
                         
                     } else {
@@ -377,52 +473,46 @@ class MovieDetailsViewController: UIViewController {
                 
             }
             
-        if contentMoreLoaded < 2 {
-            //Request todas series
-            SeriesServer.takeAllSeries { allSeries in
-                
-                if let todasSeries = allSeries {
+            if contentMoreLoaded < 2 {
+                //Request todas series
+                SeriesServer.takeAllSeries { allSeries in
                     
-                    for serie in todasSeries {
-                        for categoria in serie.categorias {
-                            if categoria == categoriaToSearch {
-                                self.movieDetailsTableView.seriesByArtist.append(serie)
+                    if let todasSeries = allSeries {
+                        
+                        for serie in todasSeries {
+                            for categoria in serie.categorias {
+                                if categoria == categoriaToSearch {
+                                    //self.movieDetailsTableView.seriesByArtist.append(serie)
+                                }
+                            }
+                            
+                            if let _ = self.serie {
+                                if self.serie.identifier == serie.identifier {
+                                    //self.movieDetailsTableView.seriesByArtist.removeLast()
+                                }
                             }
                         }
                         
-                        if let _ = self.serie {
-                            if self.serie.identifier == serie.identifier {
-                                self.movieDetailsTableView.seriesByArtist.removeLast()
-                            }
+                        self.contentMoreLoaded += 2
+                        
+                        if self.contentMoreLoaded == 3 {
+                            
                         }
+                        
+                    } else {
+                        print("Erro - Request de todos as séries retornou nil")
                     }
                     
-                    self.movieDetailsTableView.reloadData()
-                    self.contentMoreLoaded += 2
+                }
+                
+                if self.contentMoreLoaded == 3 {
                     
-                    if self.contentMoreLoaded == 3 {
-                        self.contentActivityIndicator.stopAnimating()
-                        self.movieDetailsTableView.isHidden = false
-                        self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
-                    }
-                    
-                } else {
-                    print("Erro - Request de todos as séries retornou nil")
                 }
                 
             }
             
-        }
+            break
             
-        if self.contentMoreLoaded == 3 {
-            self.movieDetailsTableView.isHidden = false
-            self.movieDetailsTableView.reloadData()
-            self.contentActivityIndicator.stopAnimating()
-            self.scrollViewHeight.constant = self.movieDetailsTableView.frame.height - self.tableViewHeightDefaultAppear //TESTE
-        }
-        
-    break
-    
         default:
             break
             
@@ -441,38 +531,6 @@ class MovieDetailsViewController: UIViewController {
         self.present(playerViewController, animated: true) {
             
             playerViewController.player!.play()
-            
-        }
-        
-    }
-    
-}
-
-//Atendendo ao protocolo UITableViewDelegate
-extension MovieDetailsViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if movieDetailsTableView.tbvType == .movies {
-            
-            if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
-                
-                if indexPath.row < movieDetailsTableView.filmsByArtist.count {
-                    
-                    movieDetailsReference.idToRequest = movieDetailsTableView.filmsByArtist[indexPath.row].identifier
-                    movieDetailsReference.requestType = .filme
-                    
-                } else {
-                    
-                    movieDetailsReference.idToRequest = movieDetailsTableView.seriesByArtist[indexPath.row - movieDetailsTableView.filmsByArtist.count].identifier
-                    movieDetailsReference.requestType = .serie
-                    
-                }
-                
-                movieDetailsReference.backWithColor = .white
-                navigationController?.pushViewController(movieDetailsReference, animated: true)
-                
-            }
             
         }
         
@@ -529,3 +587,63 @@ extension MovieDetailsViewController: UICollectionViewDelegate {
     }
     
 }
+
+//Atendendo ao protocolo ReviewViewDelegate
+extension MovieDetailsViewController: ReviewViewDelegate {
+    func didPressLikeButton(atIndex index: Int?) {
+        guard let index = index else { return }
+        
+        var reviewChanged: Review
+        
+        if let _ = self.film {
+            reviewChanged = film.avaliacoes[index]
+            reviewChanged.userLike = !reviewChanged.userLike
+            film.avaliacoes[index] = reviewChanged
+            
+        } else {
+            reviewChanged = serie.avaliacoes[index]
+            reviewChanged.userLike = !reviewChanged.userLike
+            serie.avaliacoes[index] = reviewChanged
+
+        }
+        
+        segmentedBar.selectedSegmentIndex = 1
+        indexChanged(segmentedBar)
+        
+        ReviewsServer.updateReview(reviewChanged) { success in
+            if success == false {
+                //TRATAR O ERRO POIS A ATUALIZACAO DA REVIEW NAO OBTEVE SUCESSO
+            }
+        }
+    }
+}
+
+//Atendendo ao protocolo ExpandableLabelDelegate
+extension MovieDetailsViewController: ExpandableLabelDelegate {
+    func willExpandLabel(_ label: ExpandableLabel) { //IRA EXPANDIR
+        labelHeight = label.frame.height
+    }
+    
+    func didExpandLabel(_ label: ExpandableLabel) { //EXPANDIU
+        label.layoutIfNeeded()
+//        scrollViewHeight.constant += label.frame.height - labelHeight
+        contentView.layoutIfNeeded()
+    }
+    
+    func willCollapseLabel(_ label: ExpandableLabel) { //IRA "RECOLHER"
+         labelHeight = label.frame.height
+    }
+    
+    func didCollapseLabel(_ label: ExpandableLabel) { //"RECOLHEU"
+//        scrollViewHeight.constant -= labelHeight - label.frame.height
+        contentView.layoutIfNeeded()
+    }
+    
+    
+}
+
+
+
+
+
+
