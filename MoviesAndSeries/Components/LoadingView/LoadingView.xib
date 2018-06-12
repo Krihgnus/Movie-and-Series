@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingView" customModule="MoviesAndSeries" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syF-Zc-MBU" userLabel="Background View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YUD-w3-jDN">
+                            <rect key="frame" x="177" y="90" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="YUD-w3-jDN" firstAttribute="centerX" secondItem="syF-Zc-MBU" secondAttribute="centerX" id="O2S-nS-mWa"/>
+                        <constraint firstAttribute="height" constant="200" id="ZMV-Fv-dDf"/>
+                        <constraint firstItem="YUD-w3-jDN" firstAttribute="centerY" secondItem="syF-Zc-MBU" secondAttribute="centerY" id="k5O-oX-MuE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="syF-Zc-MBU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="86e-jS-tGQ"/>
+                <constraint firstItem="syF-Zc-MBU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Vo4-Or-E1C"/>
+                <constraint firstItem="syF-Zc-MBU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bFA-lK-tzc"/>
+                <constraint firstItem="syF-Zc-MBU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="iuC-yI-VLy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="activityIndicator" destination="YUD-w3-jDN" id="dG7-Wq-NZG"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="-182"/>
+        </view>
+    </objects>
+</document>

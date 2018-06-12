@@ -7,6 +7,7 @@ class ListOfFilms: UIViewController {
 
     var genreFilms: [Film] = []
     var genreSeries: [Serie] = []
+    var backWithColor: FilmDetailsBackColor!
     
     override func viewDidLoad() {
         
@@ -19,6 +20,19 @@ class ListOfFilms: UIViewController {
         listFilmsTableView.delegate = self
         
         navigationItem.title = " "
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if backWithColor == .blue {
+            (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .default
+            navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+        } else {
+            (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
+            navigationController?.navigationBar.tintColor = .white
+        }
         
     }
     

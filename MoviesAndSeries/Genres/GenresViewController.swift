@@ -216,6 +216,7 @@ extension GenresViewController: UITableViewDelegate {
                 
             }
             
+            listOfGenreReference.backWithColor = .blue
             navigationController?.pushViewController(listOfGenreReference, animated: true)
             
         }
