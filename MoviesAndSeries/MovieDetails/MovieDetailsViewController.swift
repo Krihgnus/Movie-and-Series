@@ -595,7 +595,7 @@ extension MovieDetailsViewController: ArtistViewDelegate {
 
 //Atendendo ao protocolo SeeAllButtonClicked
 extension MovieDetailsViewController: SeeAllButtonClicked {
-    func seeAllClicked() {
+    func seeAllClicked(index: Int?) {
         guard let allReviewsActorsReference = storyboard?.instantiateViewController(withIdentifier: "allRAVC") as? AllReviewsAndActors else { return }
         
         if seeAllContent == .reviews {

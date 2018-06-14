@@ -30,6 +30,8 @@
 		19B90F5120758001003C5811 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F5020758001003C5811 /* PhotoAlbum.swift */; };
 		19B90F532075802D003C5811 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F522075802D003C5811 /* Artist.swift */; };
 		19B90F55207581D4003C5811 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B90F54207581D4003C5811 /* Film.swift */; };
+		19C15C8120D182EC0082B109 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C15C8020D182EC0082B109 /* DiscoverTableViewCell.swift */; };
+		19C15C8320D1874C0082B109 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C15C8220D1874C0082B109 /* DiscoverCollectionViewCell.swift */; };
 		19CB0ACE207BDF480045A16C /* AlertNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CB0ACD207BDF480045A16C /* AlertNetworkError.swift */; };
 		19CB0AD1207C02DC0045A16C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CB0AD0207C02DC0045A16C /* Utils.swift */; };
 		19CC3AD020CEE96C00EC4DD2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC3ACF20CEE96C00EC4DD2 /* LoadingView.swift */; };
@@ -84,6 +86,8 @@
 		19B90F5020758001003C5811 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
 		19B90F522075802D003C5811 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		19B90F54207581D4003C5811 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		19C15C8020D182EC0082B109 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		19C15C8220D1874C0082B109 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		19CB0ACD207BDF480045A16C /* AlertNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertNetworkError.swift; path = ../CustomizedUIItems/AlertNetworkError.swift; sourceTree = "<group>"; };
 		19CB0AD0207C02DC0045A16C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		19CC3ACF20CEE96C00EC4DD2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				190B630120742E4C006E2D3D /* DiscoverViewController.swift */,
+				19B444D220D2ED2B00500BC4 /* Cells */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -253,6 +258,15 @@
 				198AC165208A94B900AD0225 /* ListOfFilmsViewController.swift */,
 			);
 			path = ListOfFilms;
+			sourceTree = "<group>";
+		};
+		19B444D220D2ED2B00500BC4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19C15C8220D1874C0082B109 /* DiscoverCollectionViewCell.swift */,
+				19C15C8020D182EC0082B109 /* DiscoverTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		19B90F4F20757FDC003C5811 /* Backend */ = {
@@ -531,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C15C8120D182EC0082B109 /* DiscoverTableViewCell.swift in Sources */,
 				19F3800120C9C87B00F24EDE /* SeeAllView.swift in Sources */,
 				190C1327206431F60027E452 /* IconsPageViewControlerProtocol.swift in Sources */,
 				19FB4F27206BF8D40040DF69 /* TableViewSummaryCell.swift in Sources */,
@@ -540,6 +555,7 @@
 				190B62FD207402DD006E2D3D /* SearchViewController.swift in Sources */,
 				1970FA9C2062D81B009BE4B4 /* InitialViewController.swift in Sources */,
 				19F93651206AB4FF00E02A93 /* ButtonWithRadius.swift in Sources */,
+				19C15C8320D1874C0082B109 /* DiscoverCollectionViewCell.swift in Sources */,
 				19FD60DD20767F3600CD47B7 /* Review.swift in Sources */,
 				19613C1D207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift in Sources */,
 				19E2B6A9206D9674009061B5 /* FilmListTableView.swift in Sources */,
