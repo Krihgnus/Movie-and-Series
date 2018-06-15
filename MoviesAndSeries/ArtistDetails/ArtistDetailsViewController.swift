@@ -22,8 +22,10 @@ class ArtistDetailsViewController: UIViewController {
     @IBOutlet weak var tableViewActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var spaceBetweenSegmentedBarAndMainImageConstraint: NSLayoutConstraint!
-    var contentTableViewMoviesLoad = 0
+
     var backWithColor: FilmDetailsBackColor!
+    var sumaryCellHeight: CGFloat = 0
+    var contentTableViewMoviesLoad = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,8 +125,6 @@ class ArtistDetailsViewController: UIViewController {
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                 
                 self.artistDetailsTableView.artistToTableView = artista
-                self.segmentedBar.selectedSegmentIndex = 0
-                self.indexChanged(self.segmentedBar)
                 
                 //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
                     artistNamePhotoAlbums = artista.nome
@@ -132,6 +132,10 @@ class ArtistDetailsViewController: UIViewController {
                 //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
                     //VAR GLOBAL OTHERALBUMSARTIST = ARTISTA.OUTROSALBUNS
                 //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
+                
+                self.sumaryCellHeight = self.artistDetailsTableView.frame.height
+                self.segmentedBar.selectedSegmentIndex = 0
+                self.indexChanged(self.segmentedBar)
                 
             } else {
                 
@@ -144,6 +148,13 @@ class ArtistDetailsViewController: UIViewController {
             
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        segmentedBar.selectedSegmentIndex = 0
+        indexChanged(segmentedBar)
     }
 
     override func viewDidLayoutSubviews() {
@@ -187,7 +198,7 @@ class ArtistDetailsViewController: UIViewController {
             
         case 0:
             //Primeira aba selecionada
-            artistDetailsTableView.rowHeight = artistDetailsTableView.frame.height
+            artistDetailsTableView.rowHeight = sumaryCellHeight
             artistDetailsTableView.tbvType = .summary
             artistDetailsTableView.reloadData()
             artistDetailsTableView.isHidden = false
@@ -199,19 +210,7 @@ class ArtistDetailsViewController: UIViewController {
             artistDetailsTableView.rowHeight = 150
             artistDetailsTableView.tbvType = .movies
             artistDetailsTableView.isHidden = true
-            artistDetailsTableView.reloadData()
-            
-            if artistDetailsTableView.filmsByArtist.count == artistDetailsTableView.artistToTableView.filmesId.count &&
-                artistDetailsTableView.seriesByArtist.count == artistDetailsTableView.artistToTableView.seriesId.count {
-                    
-                artistDetailsTableView.isHidden = false
-                tableViewActivityIndicator.stopAnimating()
-        
-            } else {
-                
-                requestFilmsAndSeries()
-                
-            }
+            requestFilmsAndSeries()
             
         case 2:
             //Terceira aba selecionada
@@ -228,79 +227,46 @@ class ArtistDetailsViewController: UIViewController {
     }
     
     func requestFilmsAndSeries() {
+        contentTableViewMoviesLoad = 0
         
-        if artistDetailsTableView.artistToTableView.seriesId.count != artistDetailsTableView.seriesByArtist.count {
-            
-            //Request Series
-            SeriesServer.takeSeries(by: artistDetailsTableView.artistToTableView.seriesId) { seriesOptional in
-                
-                if let series = seriesOptional {
-                    
-                    self.artistDetailsTableView.seriesByArtist = series
-                    self.contentTableViewMoviesLoad += 1
-                    
-                    if self.contentTableViewMoviesLoad == 2 {
-                        
-                        self.artistDetailsTableView.reloadData()
-                        self.artistDetailsTableView.isHidden = false
-                        self.tableViewActivityIndicator.stopAnimating()
-                        
-                    }
-                    
-                } else {
-                    
-                    if self.artistDetailsTableView.tbvType == .movies {
-                        
-                        self.presentNetworkErrorAlert()
-                        self.tableViewActivityIndicator.stopAnimating()
-                        
-                        print("Erro - Array de séries retornou nil do backend")
-                        
-                    }
-                    
+        //Request Series
+        SeriesServer.takeSeries(by: artistDetailsTableView.artistToTableView.seriesId) { seriesOptional in
+            if let series = seriesOptional {
+                self.artistDetailsTableView.seriesByArtist = series
+                self.contentTableViewMoviesLoad += 1
+                if self.contentTableViewMoviesLoad == 2 {
+                    self.artistDetailsTableView.reloadData()
+                    self.artistDetailsTableView.isHidden = false
+                    self.tableViewActivityIndicator.stopAnimating()
                 }
-    
+            } else {
+                if self.artistDetailsTableView.tbvType == .movies {
+                    self.presentNetworkErrorAlert()
+                    self.tableViewActivityIndicator.stopAnimating()
+                    print("Erro - Array de séries retornou nil do backend")
+                }
             }
-            
         }
         
-        if artistDetailsTableView.artistToTableView.filmesId.count != artistDetailsTableView.filmsByArtist.count {
-            
-            //Request Filmes
-            FilmsSever.takeFilms(by: artistDetailsTableView.artistToTableView.filmesId) { filmsOptional in
-                
-                if let films = filmsOptional {
-                    
-                    self.artistDetailsTableView.filmsByArtist = films
-                    self.contentTableViewMoviesLoad += 1
-                    
-                    if self.contentTableViewMoviesLoad == 2 {
-                        
-                        self.artistDetailsTableView.reloadData()
-                        self.artistDetailsTableView.isHidden = false
-                        self.tableViewActivityIndicator.stopAnimating()
-                        
-                    }
-                    
-                } else {
-                    
-                    if self.artistDetailsTableView.tbvType == .movies {
-                        
-                        self.presentNetworkErrorAlert()
-                        self.tableViewActivityIndicator.stopAnimating()
-                        
-                        print("Erro - Array de filmes retornou nil do backend")
-                        
-                    }
-                    
+        //Request Filmes
+        FilmsSever.takeFilms(by: artistDetailsTableView.artistToTableView.filmesId) { filmsOptional in
+            if let films = filmsOptional {
+                self.artistDetailsTableView.filmsByArtist = films
+                self.contentTableViewMoviesLoad += 1
+                if self.contentTableViewMoviesLoad == 2 {
+                    self.artistDetailsTableView.reloadData()
+                    self.artistDetailsTableView.isHidden = false
+                    self.tableViewActivityIndicator.stopAnimating()
                 }
-                
+            } else {
+                if self.artistDetailsTableView.tbvType == .movies {
+                    self.presentNetworkErrorAlert()
+                    self.tableViewActivityIndicator.stopAnimating()
+                    print("Erro - Array de filmes retornou nil do backend")
+                }
             }
-            
         }
-
     }
-    
 }
 
 extension ArtistDetailsViewController: UITableViewDelegate {

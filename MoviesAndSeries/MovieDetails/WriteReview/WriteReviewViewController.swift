@@ -90,14 +90,8 @@ class WriteReviewViewController: UIViewController {
         sendReview.comentario = textInTextField
         sendReview.likes = 0
         sendReview.userLike = false
-        
-        if filmSerieType == .filme {
-            sendReview.tipoFilmeSerie = .filme
-            sendReview.filmeSerieIdentifier = filmeSerieId
-        } else {
-            sendReview.tipoFilmeSerie = .serie
-            sendReview.filmeSerieIdentifier = filmeSerieId
-        }
+        sendReview.tipoFilmeSerie = filmSerieType
+        sendReview.filmeSerieIdentifier = filmeSerieId
         
         ReviewsServer.addReview(sendReview) { success in
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)

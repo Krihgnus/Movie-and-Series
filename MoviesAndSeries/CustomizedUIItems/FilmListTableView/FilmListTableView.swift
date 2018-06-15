@@ -6,6 +6,7 @@ enum TableViewType {
     case summary
     case movies
     case more
+    case unlimitedMovies
 }
 
 class FilmList: UITableView {
@@ -50,6 +51,9 @@ extension FilmList: UITableViewDataSource {
             }
             return filmsByArtist.count + seriesByArtist.count
             
+        case .unlimitedMovies:
+            return filmsByArtist.count + seriesByArtist.count
+            
         case .more:
             return 0
             
@@ -79,7 +83,7 @@ extension FilmList: UITableViewDataSource {
             cell.configure(artistToTableView)
             return cell
             
-        case .movies:
+        case .movies, .unlimitedMovies:
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? CellMoviesType else {
                 

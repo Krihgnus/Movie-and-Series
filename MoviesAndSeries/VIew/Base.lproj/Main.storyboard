@@ -409,17 +409,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZrX-8Q-DFW">
+                                <rect key="frame" x="177" y="333.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eha-NW-Eop" firstAttribute="top" secondItem="cZV-6t-wzM" secondAttribute="top" id="7FV-OX-CeR"/>
                             <constraint firstItem="eha-NW-Eop" firstAttribute="leading" secondItem="cZV-6t-wzM" secondAttribute="leading" id="AbI-BW-iz1"/>
+                            <constraint firstItem="ZrX-8Q-DFW" firstAttribute="centerX" secondItem="cZV-6t-wzM" secondAttribute="centerX" id="CPs-pw-OSR"/>
                             <constraint firstItem="eha-NW-Eop" firstAttribute="bottom" secondItem="cZV-6t-wzM" secondAttribute="bottom" id="H6g-6G-3YT"/>
+                            <constraint firstItem="ZrX-8Q-DFW" firstAttribute="centerY" secondItem="cZV-6t-wzM" secondAttribute="centerY" id="S36-9F-O4r"/>
                             <constraint firstItem="eha-NW-Eop" firstAttribute="trailing" secondItem="cZV-6t-wzM" secondAttribute="trailing" id="msp-bD-sLu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cZV-6t-wzM"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZrX-8Q-DFW" id="Ho8-Tq-oYO"/>
                         <outlet property="listFilmsTableView" destination="eha-NW-Eop" id="g0n-5Z-ds3"/>
                     </connections>
                 </viewController>
@@ -2187,6 +2193,6 @@
         <image name="searchNavigationBarIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UQT-fk-bdf"/>
+        <segue reference="PZX-bY-i6w"/>
     </inferredMetricsTieBreakers>
 </document>

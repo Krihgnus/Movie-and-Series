@@ -46,6 +46,7 @@ class MovieDetailsViewController: UIViewController {
     var artistsToDelegate: [Artist] = []
     var numberOfCells = 0
     var seeAllContent: SeeAllContent = .reviews
+    var starBarReference: StarBarView?
     
     @IBAction func playVideoButton(_ sender: Any) {
         
@@ -148,8 +149,8 @@ class MovieDetailsViewController: UIViewController {
                     starBarReference.bottomAnchor.constraint(equalTo: self.starsView.bottomAnchor, constant: 0).isActive = true
                     starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
                     starBarReference.trailingAnchor.constraint(equalTo: self.starsView.trailingAnchor, constant: 0).isActive = true
-                    
                     starBarReference.fillStars(Utils.reviewsToAverageStar(film.avaliacoes))
+                    self.starBarReference = starBarReference
                     
                     self.contentStackView.isHidden = false
                     self.navigationController?.navigationBar.tintColor = .white
@@ -207,6 +208,7 @@ class MovieDetailsViewController: UIViewController {
                     starBarReference.leadingAnchor.constraint(equalTo: self.starsView.leadingAnchor, constant: 0).isActive = true
                     starBarReference.trailingAnchor.constraint(equalTo: self.starsView.trailingAnchor, constant: 0).isActive = true
                     starBarReference.fillStars(Utils.reviewsToAverageStar(serie.avaliacoes))
+                    self.starBarReference = starBarReference
                     
                     self.contentStackView.isHidden = false
                     self.navigationController?.navigationBar.tintColor = .white
@@ -255,10 +257,14 @@ class MovieDetailsViewController: UIViewController {
         
         if let writtenReview = writeReviewViewControllerReference.sendReview {
             
-            if let _ = self.film {
-                self.film.avaliacoes.append(writtenReview)
+            if let _ = film {
+                film.avaliacoes.append(writtenReview)
+                mediaAndTotalReviewsLabel.text = "\(Utils.reviewsToAverageStar(film.avaliacoes)).0  /  \(film.avaliacoes.count)"
+                starBarReference?.fillStars(Utils.reviewsToAverageStar(film.avaliacoes))
             } else {
-                self.serie.avaliacoes.append(writtenReview)
+                serie.avaliacoes.append(writtenReview)
+                mediaAndTotalReviewsLabel.text = "\(Utils.reviewsToAverageStar(serie.avaliacoes)).0  /  \(serie.avaliacoes.count)"
+                starBarReference?.fillStars(Utils.reviewsToAverageStar(serie.avaliacoes))
             }
             
         }
@@ -622,13 +628,13 @@ extension MovieDetailsViewController: SeeAllButtonClicked {
 extension MovieDetailsViewController: MovieClicked {
     func cellClicked(film: Film?, serie: Serie?) {
         if let _ = film {
-            guard let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsReference") as? MovieDetailsViewController else { return }
+            guard let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController else { return }
             movieDetailsReference.idToRequest = film?.identifier
             movieDetailsReference.requestType = .filme
             movieDetailsReference.backWithColor = .white
             navigationController?.pushViewController(movieDetailsReference, animated: true)
         } else {
-            guard let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsReference") as? MovieDetailsViewController else { return }
+            guard let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController else { return }
             movieDetailsReference.idToRequest = serie?.identifier
             movieDetailsReference.requestType = .serie
             movieDetailsReference.backWithColor = .white

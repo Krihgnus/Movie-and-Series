@@ -87,7 +87,7 @@ private var allFilmsMock: [FilmMock] = [
          categorias: ["Suspense", "Horror"],
          linguagemOriginal: "English",
          duracao: "2h 56m",
-         dataLancamento: ["Dia": 15, "Mes": 6, "Ano": 2018],
+         dataLancamento: ["Dia": 16, "Mes": 6, "Ano": 2018],
          siglaPaisLancamento: "USA",
          descricao: "Description The other, Description The other, Description The other, Description The other, Description The other, Description The other, Description The other",
          capa: URL(string: "https://cdn-images-1.medium.com/max/2000/1*gd1Ol3uoy7v-q1MqPF-3Xw.jpeg")!,

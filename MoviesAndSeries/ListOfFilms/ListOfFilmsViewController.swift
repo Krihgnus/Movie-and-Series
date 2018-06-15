@@ -4,22 +4,71 @@ import UIKit
 class ListOfFilms: UIViewController {
     
     @IBOutlet weak var listFilmsTableView: FilmList!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var genreFilms: [Film] = []
     var genreSeries: [Serie] = []
     var backWithColor: FilmDetailsBackColor!
+    var ids: [Int] = []
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        super.viewDidLoad()
+        var contentLoad: Int = 0
         
-        navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
-        listFilmsTableView.filmsByArtist = genreFilms
-        listFilmsTableView.seriesByArtist = genreSeries
-        listFilmsTableView.tbvType = .movies
-        listFilmsTableView.delegate = self
+        activityIndicator.startAnimating()
+        listFilmsTableView.isHidden = true
+        
+        ids = []
+        for actFilm in genreFilms {
+            ids.append(actFilm.identifier)
+        }
+        
+        //Request filmes especificos
+        FilmsSever.takeFilms(by: ids) { films in
+            if let filmes = films {
+                self.genreFilms = filmes
+                
+                contentLoad += 1
+                if contentLoad == 2 {
+                    self.listFilmsTableView.filmsByArtist = self.genreFilms
+                    self.listFilmsTableView.seriesByArtist = self.genreSeries
+                    self.listFilmsTableView.reloadData()
+                    self.listFilmsTableView.isHidden = false
+                    self.activityIndicator.stopAnimating()
+                }
+            } else {
+                //REQUEST RETORNOU NIL
+            }
+        }
+        
+        ids = []
+        for actSerie in genreSeries {
+            ids.append(actSerie.identifier)
+        }
+        
+        //Rwquest series especificas
+        SeriesServer.takeSeries(by: ids) { series in
+            if let seriesC = series {
+                self.genreSeries = seriesC
+                
+                contentLoad += 1
+                if contentLoad == 2 {
+                    self.listFilmsTableView.filmsByArtist = self.genreFilms
+                    self.listFilmsTableView.seriesByArtist = self.genreSeries
+                    self.listFilmsTableView.reloadData()
+                    self.listFilmsTableView.isHidden = false
+                    self.activityIndicator.stopAnimating()
+                }
+            } else {
+                //REQUEST RETORNOU NIL
+            }
+        }
         
         navigationItem.title = " "
+        navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+        listFilmsTableView.tbvType = .unlimitedMovies
+        listFilmsTableView.delegate = self
         
     }
     

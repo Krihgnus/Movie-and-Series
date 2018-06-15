@@ -294,14 +294,15 @@ extension DiscoverViewController: SeeAllButtonClicked {
         
         switch index {
         case 0:
-            filmListReference.genreFilms = mostPopularsFilms
-            filmListReference.genreSeries = mostRecentSeries
+            filmListReference.genreFilms.append(contentsOf: mostPopularsFilms)
+            filmListReference.genreSeries.append(contentsOf: mostPopularSeries)
         case 1:
-            filmListReference.genreFilms = mostRecentFilms
-            filmListReference.genreSeries = mostRecentSeries
+            filmListReference.genreFilms.append(contentsOf: mostRecentFilms)
+            filmListReference.genreSeries.append(contentsOf: mostRecentSeries)
         case 2:
-            filmListReference.genreFilms = commingSoonFilms
-            filmListReference.genreSeries = commingSoonSeries
+            filmListReference.genreFilms.append(contentsOf: commingSoonFilms)
+            filmListReference.genreSeries.append(contentsOf: commingSoonSeries)
+            //navigationController?.pushViewController(filmListReference, animated: true)
         default:
             break
         }

@@ -89,7 +89,7 @@ private var allSeriesMock: [SerieMock] = [
               trailer: URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!,
               categorias: ["Action", "Romance", "Fantasy"],
               linguagemOriginal: "English",
-              dataLancamento: ["Dia": 15, "Mes": 6, "Ano": 2018],
+              dataLancamento: ["Dia": 16, "Mes": 6, "Ano": 2018],
               siglaPaisLancamento: "USA",
               descricao: "Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1, Description SOTC Season 1",
               capa: URL(string: "https://static1.squarespace.com/static/54bfc46be4b0a0e8a51ebbf6/t/59ee3a42ec4eb7210abbcba7/1506956074525/tourback.jpg?format=2500w")!,
