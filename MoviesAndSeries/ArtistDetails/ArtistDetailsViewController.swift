@@ -126,13 +126,6 @@ class ArtistDetailsViewController: UIViewController {
                 
                 self.artistDetailsTableView.artistToTableView = artista
                 
-                //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                    artistNamePhotoAlbums = artista.nome
-                //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                    //VAR GLOBAL OTHERALBUMSARTIST = ARTISTA.OUTROSALBUNS
-                //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                
                 self.sumaryCellHeight = self.artistDetailsTableView.frame.height
                 self.segmentedBar.selectedSegmentIndex = 0
                 self.indexChanged(self.segmentedBar)

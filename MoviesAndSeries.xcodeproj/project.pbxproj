@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19028FA720D43E9C00B94385 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19028FA620D43E9C00B94385 /* PhotoAlbumViewController.swift */; };
 		190B62F92073E35E006E2D3D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B62F82073E35E006E2D3D /* CategoryCell.swift */; };
 		190B62FD207402DD006E2D3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B62FC207402DD006E2D3D /* SearchViewController.swift */; };
 		190B630220742E4C006E2D3D /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B630120742E4C006E2D3D /* DiscoverViewController.swift */; };
@@ -18,7 +19,6 @@
 		192F8B86209A2CB60099EC33 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F8B85209A2CB60099EC33 /* WriteReviewViewController.swift */; };
 		194F7742208E78E30009E87F /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F7741208E78E30009E87F /* MovieDetailsViewController.swift */; };
 		19613C1A207E833700F3DA41 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19613C19207E833700F3DA41 /* CustomNavigationController.swift */; };
-		19613C1D207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */; };
 		1970FA9A2062D81B009BE4B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970FA992062D81B009BE4B4 /* AppDelegate.swift */; };
 		1970FA9C2062D81B009BE4B4 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970FA9B2062D81B009BE4B4 /* InitialViewController.swift */; };
 		1970FA9F2062D81B009BE4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1970FA9D2062D81B009BE4B4 /* Main.storyboard */; };
@@ -61,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		05BC9472CB7F424AA2DD0F42 /* Pods_MoviesAndSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesAndSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19028FA620D43E9C00B94385 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		190B62F82073E35E006E2D3D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		190B62FC207402DD006E2D3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		190B630120742E4C006E2D3D /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		192F8B85209A2CB60099EC33 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		194F7741208E78E30009E87F /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		19613C19207E833700F3DA41 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavigationController.swift; path = ../CustomizedUIItems/CustomNavigationController.swift; sourceTree = "<group>"; };
-		19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsViewController.swift; sourceTree = "<group>"; };
 		1970FA962062D81B009BE4B4 /* MoviesAndSeries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesAndSeries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1970FA992062D81B009BE4B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1970FA9B2062D81B009BE4B4 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		19613C1B207E8E4D00F3DA41 /* PhotoAlbums */ = {
 			isa = PBXGroup;
 			children = (
-				19613C1C207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift */,
+				19028FA620D43E9C00B94385 /* PhotoAlbumViewController.swift */,
 			);
 			path = PhotoAlbums;
 			sourceTree = "<group>";
@@ -548,6 +548,7 @@
 				19C15C8120D182EC0082B109 /* DiscoverTableViewCell.swift in Sources */,
 				19F3800120C9C87B00F24EDE /* SeeAllView.swift in Sources */,
 				190C1327206431F60027E452 /* IconsPageViewControlerProtocol.swift in Sources */,
+				19028FA720D43E9C00B94385 /* PhotoAlbumViewController.swift in Sources */,
 				19FB4F27206BF8D40040DF69 /* TableViewSummaryCell.swift in Sources */,
 				190F8CDA2069829E00696645 /* ArtistsCollectionViewCell.swift in Sources */,
 				19F37FFC20C9AEB200F24EDE /* ArtistsView.swift in Sources */,
@@ -557,7 +558,6 @@
 				19F93651206AB4FF00E02A93 /* ButtonWithRadius.swift in Sources */,
 				19C15C8320D1874C0082B109 /* DiscoverCollectionViewCell.swift in Sources */,
 				19FD60DD20767F3600CD47B7 /* Review.swift in Sources */,
-				19613C1D207E8E9C00F3DA41 /* PhotoAlbumsViewController.swift in Sources */,
 				19E2B6A9206D9674009061B5 /* FilmListTableView.swift in Sources */,
 				19FD60DB20767DF900CD47B7 /* Series.swift in Sources */,
 				198AC160208A454D00AD0225 /* ClearSegmentedBar.swift in Sources */,
