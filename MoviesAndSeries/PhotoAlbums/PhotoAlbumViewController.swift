@@ -18,6 +18,15 @@ class PhotoAlbumViewController: UIViewController {
         layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width * 0.245, height: UIScreen.main.bounds.size.width * 0.245)
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 2
+        
+        navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.tintColor = .white
+        (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
     }
 }
 
