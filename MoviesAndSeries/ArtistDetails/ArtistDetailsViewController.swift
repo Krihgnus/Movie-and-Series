@@ -52,62 +52,62 @@ class ArtistDetailsViewController: UIViewController {
         //Request
         ArtistsServer.takeArtist(byId: clickedartistId) { artistOptional in
             
-            if let artista = artistOptional {
+            if let artist = artistOptional {
                 
-                self.mainArtistPhoto.sd_setImage(with: artista.imagemCapa, completed: nil)
-                self.artistName.text = artista.nome
-                self.artistJobAndBornDate.text = "\(artista.profissao) | \(Utils.numberToMonth(artista.dataNascimento["Mes"])) \(artista.dataNascimento["Dia"]!), \(artista.dataNascimento["Ano"]!)"
-                let numberOfMorePhotos = Utils.photoCount(artista.outrosAlbuns)
+                self.mainArtistPhoto.sd_setImage(with: artist.imagemCapa, completed: nil)
+                self.artistName.text = artist.nome
+                self.artistJobAndBornDate.text = "\(artist.profissao) | \(Utils.numberToMonth(artist.dataNascimento["Mes"])) \(artist.dataNascimento["Dia"]!), \(artist.dataNascimento["Ano"]!)"
+                let numberOfMorePhotos = Utils.photoCount(artist.outrosAlbuns)
                 let textNumberOfMorePhotos = (numberOfMorePhotos < 10) ? "0\(numberOfMorePhotos)+" : "\(numberOfMorePhotos)+"
                 
                 //Mosaicos de fotos
-                if artista.albumSecundario.fotos.count >= 6 {
+                if artist.albumSecundario.fotos.count >= 6 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[0])
                     self.mosaics[0].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...5 {
                         
-                        self.mosaicSixPhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicSixPhotos[indx].sd_setImage(with: artist.albumSecundario.fotos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[3].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 5 {
+                } else if artist.albumSecundario.fotos.count == 5 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[1])
                     self.mosaics[1].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...4 {
                         
-                        self.mosaicFivePhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicFivePhotos[indx].sd_setImage(with: artist.albumSecundario.fotos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[2].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 4 {
+                } else if artist.albumSecundario.fotos.count == 4 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[2])
                     self.mosaics[2].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...3 {
                         
-                        self.mosaicFourPhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicFourPhotos[indx].sd_setImage(with: artist.albumSecundario.fotos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[1].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 3 {
+                } else if artist.albumSecundario.fotos.count == 3 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[3])
                     self.mosaics[3].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...2 {
                         
-                        self.mosaicThreePhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicThreePhotos[indx].sd_setImage(with: artist.albumSecundario.fotos[indx], completed: nil)
                         
                     }
                     
@@ -124,7 +124,7 @@ class ArtistDetailsViewController: UIViewController {
                 self.contentView.isHidden = false
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                 
-                self.artistDetailsTableView.artistToTableView = artista
+                self.artistDetailsTableView.artistToTableView = artist
                 
                 self.sumaryCellHeight = self.artistDetailsTableView.frame.height
                 self.segmentedBar.selectedSegmentIndex = 0

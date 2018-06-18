@@ -190,8 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				19028FA620D43E9C00B94385 /* PhotoAlbumViewController.swift */,
-				19028FA820D45E7C00B94385 /* AlbunsTableViewCell.swift */,
-				19028FAA20D45E8B00B94385 /* AlbunsCollectionViewCell.swift */,
+				19FAE53B20D83490004E313B /* Cells */,
 			);
 			path = PhotoAlbums;
 			sourceTree = "<group>";
@@ -368,6 +367,15 @@
 				19FB4F28206C034C0040DF69 /* FilmListTableView */,
 			);
 			path = CustomizedUIItems;
+			sourceTree = "<group>";
+		};
+		19FAE53B20D83490004E313B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19028FAA20D45E8B00B94385 /* AlbunsCollectionViewCell.swift */,
+				19028FA820D45E7C00B94385 /* AlbunsTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		19FB4F28206C034C0040DF69 /* FilmListTableView */ = {
