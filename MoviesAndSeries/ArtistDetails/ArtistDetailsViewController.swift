@@ -169,14 +169,11 @@ class ArtistDetailsViewController: UIViewController {
     }
     
     @IBAction func toPhotoAlbum(_ sender: UIButton) {
-        
-        //APEAS CHAMAR A VIEW DE PHOTO ALBUMS
-        if let photoAlbunsViewController = storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController {
+        if let photoAlbunsReference = storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController {
+            photoAlbunsReference.albuns = artistDetailsTableView.artistToTableView.outrosAlbuns
             
-            navigationController?.pushViewController(photoAlbunsViewController, animated: true)
-            
+            navigationController?.pushViewController(photoAlbunsReference, animated: true)
         }
-        
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {

@@ -72,7 +72,6 @@ private var allPhotoAlbumsMocks: [PhotoAlbumMock] = [
                            URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
                            URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
                            URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
-                           URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!,
                            URL(string: "https://st.depositphotos.com/1892835/3966/i/950/depositphotos_39668349-stock-photo-cyan-background-wallpaper-texture-or.jpg")!]
     ),
     PhotoAlbumMock(fotografo: "Outro Alguem2",
@@ -82,12 +81,30 @@ private var allPhotoAlbumsMocks: [PhotoAlbumMock] = [
                    local: ["Estado": "Rio de Janeiro", "Pais": "Brazil"],
                    fotos: [URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
                            URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
+                           URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
+                           URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
+                           URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!,
                            URL(string: "https://images.pexels.com/photos/6406/sun-moon-eclipse-march-2015.jpg?auto=compress&cs=tinysrgb&h=350")!]
+    ),
+    PhotoAlbumMock(fotografo: "Outro Alguem3",
+                   fotografado: "Maria Silva",
+                   fotografadoId: 2,
+                   data: ["Dia": 4, "Mes": 12, "Ano": 2016],
+                   local: ["Estado": "Rio Grande do Sul", "Pais": "Brazil"],
+                   fotos: [URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!,
+                           URL(string: "https://pbs.twimg.com/profile_images/830236324967821312/RaZogipo_400x400.jpg")!]
     )
 ]
 
 var allAlbums: [PhotoAlbum] {
-    return [PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[1]), PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[3])]
+    return [PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[1]), PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[3]), PhotoAlbum(withPhotoAlbum: allPhotoAlbumsMocks[4])]
 }
 
 var allSecondaryAlbums: [PhotoAlbum] {

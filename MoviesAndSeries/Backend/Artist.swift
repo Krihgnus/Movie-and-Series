@@ -97,7 +97,7 @@ private var allArtistsMock: [ArtistMock] = [
                imagemCollection: URL(string: "https://thumbs.dreamstime.com/b/%C3%ADcone-executivo-novo-do-perfil-da-mulher-81933600.jpg")!,
                descricao: "Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva, Description Maria Silva",
                albumSecundario: allSecondaryAlbums[1],
-               outrosAlbuns: [allAlbums[1]]
+               outrosAlbuns: [allAlbums[1], allAlbums[2]]
     )
 ]
 

@@ -1916,11 +1916,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="311" id="Kl0-ez-7m0">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="311"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albunsTVCell" rowHeight="266" id="Kl0-ez-7m0" customClass="AlbunsTableViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="266"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kl0-ez-7m0" id="0HH-kI-RRk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="310.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="265.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xu9-Ll-71F" userLabel="Data Stack View">
@@ -1943,25 +1943,97 @@
                                                         <constraint firstAttribute="height" constant="34" id="5dd-sj-UYx"/>
                                                     </constraints>
                                                 </stackView>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lun-F8-gBq" userLabel="Photos Collection View">
-                                                    <rect key="frame" x="0.0" y="59" width="375" height="251.5"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lun-F8-gBq" userLabel="Photos Collection View">
+                                                    <rect key="frame" x="0.0" y="59" width="375" height="206.5"/>
                                                     <color key="backgroundColor" red="0.93325155973434448" green="0.93338567018508911" blue="0.93322223424911499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="en9-Fh-Cbc">
-                                                        <size key="itemSize" width="93" height="93"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="2" id="A7I-hw-g6v">
+                                                        <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H4V-fm-hio" userLabel="Photo Collection View Cell">
-                                                            <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="albunsCVCell" id="Kly-4R-uqN" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-DW-wlq" userLabel="Photo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="RRg-DW-wlq" firstAttribute="top" secondItem="Kly-4R-uqN" secondAttribute="top" id="MQD-Jh-gYC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RRg-DW-wlq" secondAttribute="trailing" id="Ob9-Lz-Vvh"/>
+                                                                <constraint firstAttribute="bottom" secondItem="RRg-DW-wlq" secondAttribute="bottom" id="T0I-bC-1RT"/>
+                                                                <constraint firstItem="RRg-DW-wlq" firstAttribute="leading" secondItem="Kly-4R-uqN" secondAttribute="leading" id="Wdl-5V-Qw3"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="D6U-5k-NYZ"/>
+                                                            <size key="customSize" width="89" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="RRg-DW-wlq" id="Rqe-Su-Kwv"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="kWb-2j-Plc" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="91" y="0.0" width="82" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qL9-l3-FHG" userLabel="Photo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="qL9-l3-FHG" secondAttribute="trailing" id="FVr-wm-EVE"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qL9-l3-FHG" secondAttribute="bottom" id="ObQ-Of-KeH"/>
+                                                                <constraint firstItem="qL9-l3-FHG" firstAttribute="top" secondItem="kWb-2j-Plc" secondAttribute="top" id="snK-Pb-tV2"/>
+                                                                <constraint firstItem="qL9-l3-FHG" firstAttribute="leading" secondItem="kWb-2j-Plc" secondAttribute="leading" id="zZb-jT-XRx"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="hpf-jQ-dYV"/>
+                                                            <size key="customSize" width="82" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="qL9-l3-FHG" id="uCf-Rx-z50"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="VcL-0o-QHk" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="175" y="0.0" width="80" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-a2-dgr" userLabel="Photo">
+                                                                        <rect key="frame" x="-0.5" y="0.0" width="80" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="rqI-a2-dgr" firstAttribute="leading" secondItem="VcL-0o-QHk" secondAttribute="leading" id="9Sb-0Z-yZM"/>
+                                                                <constraint firstItem="rqI-a2-dgr" firstAttribute="top" secondItem="VcL-0o-QHk" secondAttribute="top" id="SFz-F4-3cQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rqI-a2-dgr" secondAttribute="trailing" id="gni-vG-Zn8"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rqI-a2-dgr" secondAttribute="bottom" id="haR-uj-tgY"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="Qqt-t5-gLs"/>
+                                                            <size key="customSize" width="80" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="rqI-a2-dgr" id="Oea-RX-aPx"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="H4V-fm-hio" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="257" y="0.0" width="80" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JaA-Jw-ViC" userLabel="Photo">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>
@@ -1971,6 +2043,10 @@
                                                                 <constraint firstItem="JaA-Jw-ViC" firstAttribute="top" secondItem="H4V-fm-hio" secondAttribute="top" id="UOM-cU-b5C"/>
                                                                 <constraint firstItem="JaA-Jw-ViC" firstAttribute="leading" secondItem="H4V-fm-hio" secondAttribute="leading" id="f3A-iC-2EV"/>
                                                             </constraints>
+                                                            <size key="customSize" width="80" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="JaA-Jw-ViC" id="pt9-Sy-iaz"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -1986,6 +2062,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="lun-F8-gBq" secondAttribute="trailing" id="zTx-FG-I3N"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albunsCollectionView" destination="lun-F8-gBq" id="oSr-yB-kCW"/>
+                                            <outlet property="dateAndLocation" destination="wGK-3x-1bU" id="fwf-Zn-L2v"/>
+                                            <outlet property="names" destination="RxM-uC-g6Y" id="8dO-Oz-jFD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1999,10 +2080,59 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mOF-20-DhT"/>
                     </view>
+                    <connections>
+                        <outlet property="albumTableView" destination="jmj-pk-8Ux" id="hdI-Bq-kEJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVg-PZ-ak5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4221.6000000000004" y="309.89505247376314"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="guX-3y-gaW">
+            <objects>
+                <viewController id="KOw-d6-m7t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bFa-TH-0Ud">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vxI-6q-bIp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-SQ-hgN">
+                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="150"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0093617555430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpD-RB-WWm">
+                                        <rect key="frame" x="94.5" y="0.0" width="92" height="150"/>
+                                        <color key="backgroundColor" red="1" green="0.75538915259999995" blue="0.15316488019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72f-e0-H1A">
+                                        <rect key="frame" x="188.5" y="0.0" width="92.5" height="150"/>
+                                        <color key="backgroundColor" red="0.2508017421" green="0.67441463469999996" blue="0.72139972450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-vK-dL7">
+                                        <rect key="frame" x="283" y="0.0" width="92" height="150"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.26975434700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="gwj-m2-wtE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vxI-6q-bIp" firstAttribute="top" secondItem="JFT-Jn-E1m" secondAttribute="top" id="HJu-UW-EEg"/>
+                            <constraint firstItem="vxI-6q-bIp" firstAttribute="trailing" secondItem="JFT-Jn-E1m" secondAttribute="trailing" id="kIK-Rw-TFn"/>
+                            <constraint firstItem="vxI-6q-bIp" firstAttribute="leading" secondItem="JFT-Jn-E1m" secondAttribute="leading" id="nYf-Tl-IdV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JFT-Jn-E1m"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sr2-Br-0S3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5245.6000000000004" y="325.18740629685158"/>
         </scene>
         <!--Discover View Controller-->
         <scene sceneID="FBL-jP-EVA">
