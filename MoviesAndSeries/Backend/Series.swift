@@ -168,4 +168,19 @@ class SeriesServer {
             }
         }
     }
+    
+    static func filterSeries(by string: String, onCompletion completionHandler: @escaping ([Serie]?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            var series: [Serie] = []
+            
+            if sucesso {
+                series = allSeries.filter({ $0.nome.contains(string) })
+                completionHandler(series)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
 }

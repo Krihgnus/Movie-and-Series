@@ -772,7 +772,65 @@
                     <view key="view" contentMode="scaleToFill" id="Re8-Xz-HUe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eVy-AF-Zvx" userLabel="Results Table View" customClass="FilmList" customModule="MoviesAndSeries" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="170" id="VbD-3n-9PZ" userLabel="Category Table View Cell" customClass="CategoryCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VbD-3n-9PZ" id="TXb-Tc-iuz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hil-uQ-jhF" userLabel="Background Image View">
+                                                    <rect key="frame" x="0.0" y="5" width="375" height="159.5"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-Lp-JPt" userLabel="White View">
+                                                    <rect key="frame" x="0.0" y="129" width="375" height="35.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd3-q8-HP7" userLabel="Category">
+                                                            <rect key="frame" x="8" y="4" width="358" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <color key="textColor" red="0.082597620790000006" green="0.1097417846" blue="0.1489600837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.89796036479999997" green="0.89808970690000001" blue="0.89793211220000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Sd3-q8-HP7" firstAttribute="centerY" secondItem="Krt-Lp-JPt" secondAttribute="centerY" id="Agk-hp-3rK"/>
+                                                        <constraint firstItem="Sd3-q8-HP7" firstAttribute="leading" secondItem="Krt-Lp-JPt" secondAttribute="leading" constant="8.5" id="N02-xR-1Bm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Sd3-q8-HP7" secondAttribute="trailing" constant="8.5" id="deJ-tD-9sR"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Krt-Lp-JPt" firstAttribute="top" secondItem="Hil-uQ-jhF" secondAttribute="top" constant="124" id="GzY-V6-HCn"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hil-uQ-jhF" secondAttribute="bottom" constant="5" id="O9C-tZ-GgF"/>
+                                                <constraint firstItem="Hil-uQ-jhF" firstAttribute="leading" secondItem="TXb-Tc-iuz" secondAttribute="leading" id="Wrf-oc-lOS"/>
+                                                <constraint firstItem="Krt-Lp-JPt" firstAttribute="leading" secondItem="Hil-uQ-jhF" secondAttribute="leading" id="bvh-ja-UrE"/>
+                                                <constraint firstItem="Hil-uQ-jhF" firstAttribute="top" secondItem="TXb-Tc-iuz" secondAttribute="top" constant="5" id="gnL-dR-aaM"/>
+                                                <constraint firstItem="Krt-Lp-JPt" firstAttribute="trailing" secondItem="Hil-uQ-jhF" secondAttribute="trailing" id="may-jb-QXu"/>
+                                                <constraint firstItem="Krt-Lp-JPt" firstAttribute="bottom" secondItem="Hil-uQ-jhF" secondAttribute="bottom" id="nyE-wc-XBb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hil-uQ-jhF" secondAttribute="trailing" id="tih-JY-T1t"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryImage" destination="Hil-uQ-jhF" id="2SN-Yq-hZz"/>
+                                            <outlet property="categoryName" destination="Sd3-q8-HP7" id="UFr-jq-F8q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="trailing" secondItem="ieO-Od-UoL" secondAttribute="trailing" id="WLQ-mx-DlL"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="bottom" secondItem="ieO-Od-UoL" secondAttribute="bottom" id="f9P-1N-OwT"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="top" secondItem="ieO-Od-UoL" secondAttribute="top" id="kDy-Hn-xW6"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="leading" secondItem="ieO-Od-UoL" secondAttribute="leading" id="w5s-Op-d9H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ieO-Od-UoL"/>
                     </view>
                     <navigationItem key="navigationItem" id="50H-4h-8D4" userLabel="Content Navigation">
@@ -780,6 +838,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentNavigationBar" destination="50H-4h-8D4" id="Ejx-1P-8Cz"/>
+                        <outlet property="resultsTableView" destination="eVy-AF-Zvx" id="LOQ-zf-sR3"/>
                         <outlet property="searchBar" destination="3Ss-LE-Cky" id="7VS-u0-VaH"/>
                         <outlet property="titleNavigationBarView" destination="FP8-Gs-FEE" id="hi6-aT-aag"/>
                     </connections>
@@ -805,7 +864,7 @@
                     <viewLayoutGuide key="safeArea" id="itL-FA-KJ8"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3329" y="-1899"/>
+            <point key="canvasLocation" x="3328.8000000000002" y="-1899.400299850075"/>
         </scene>
         <!--Initial3 View Controller-->
         <scene sceneID="JxA-p6-P5l">

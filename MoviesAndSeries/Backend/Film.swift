@@ -164,4 +164,19 @@ class FilmsSever {
             }
         }
     }
+    
+    static func filterFilms(by string: String, onCompletion completionHandler: @escaping ([Film]?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            var filmes: [Film] = []
+            
+            if sucesso {
+                filmes = allFilms.filter({ $0.nome.contains(string) })
+                completionHandler(filmes)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
 }

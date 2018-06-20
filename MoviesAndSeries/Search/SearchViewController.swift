@@ -6,10 +6,21 @@ class SearchViewController: UIViewController {
     @IBOutlet var titleNavigationBarView: UIView!
     @IBOutlet weak var contentNavigationBar: UINavigationItem!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var resultsTableView: FilmList!
+    
+    var movies: [Film] = []
+    var series: [Serie] = []
+    var genres: [String: URL] = [:]
+    var artists: [Artist] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchBar()
+        updateContent()
+    }
+    
+    func setupSearchBar() {
         titleNavigationBarView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
         titleNavigationBarView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
@@ -19,5 +30,8 @@ class SearchViewController: UIViewController {
         
         contentNavigationBar.titleView = titleNavigationBarView
     }
+    
+    func updateContent() {}
+
 }
 

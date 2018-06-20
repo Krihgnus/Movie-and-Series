@@ -136,4 +136,19 @@ class ArtistsServer {
             }
         }
     }
+    
+    static func filterArtists(by string: String, onCompletion completionHandler: @escaping ([Artist]?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            
+            let sucesso = (shouldRandomizeResults) ? arc4random_uniform(2) == 0 : true
+            var artistas: [Artist] = []
+            
+            if sucesso {
+                artistas = allArtists.filter({ $0.nome.contains(string) })
+                completionHandler(artistas)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
 }
