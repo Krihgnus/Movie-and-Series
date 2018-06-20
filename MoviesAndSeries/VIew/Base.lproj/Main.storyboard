@@ -773,8 +773,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Cl-gw9" userLabel="Search Bar Scope Buttons">
+                                <rect key="frame" x="0.0" y="64" width="375" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="5Of-Ym-Ijd"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Series"/>
+                                    <segment title="Genres"/>
+                                    <segment title="Artists"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="UAe-Ws-jDT" eventType="valueChanged" id="K7J-RQ-wly"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eVy-AF-Zvx" userLabel="Results Table View" customClass="FilmList" customModule="MoviesAndSeries" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="170" id="VbD-3n-9PZ" userLabel="Category Table View Cell" customClass="CategoryCell" customModule="MoviesAndSeries" customModuleProvider="target">
@@ -823,13 +838,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2J-Lv-3TS" userLabel="Segment Selected Index View">
+                                <rect key="frame" x="0.0" y="100" width="94" height="3"/>
+                                <color key="backgroundColor" red="0.024422621354460716" green="0.58026111125946045" blue="0.64688342809677124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="dif-A4-9mb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="trailing" secondItem="ieO-Od-UoL" secondAttribute="trailing" id="WLQ-mx-DlL"/>
-                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="bottom" secondItem="ieO-Od-UoL" secondAttribute="bottom" id="f9P-1N-OwT"/>
-                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="top" secondItem="ieO-Od-UoL" secondAttribute="top" id="kDy-Hn-xW6"/>
-                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="leading" secondItem="ieO-Od-UoL" secondAttribute="leading" id="w5s-Op-d9H"/>
+                            <constraint firstItem="QZQ-Cl-gw9" firstAttribute="leading" secondItem="ieO-Od-UoL" secondAttribute="leading" id="5oc-SR-5h5"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="top" secondItem="QZQ-Cl-gw9" secondAttribute="bottom" constant="3" id="CJi-xP-xVH"/>
+                            <constraint firstItem="QZQ-Cl-gw9" firstAttribute="top" secondItem="ieO-Od-UoL" secondAttribute="top" id="QPl-uj-Exa"/>
+                            <constraint firstItem="F2J-Lv-3TS" firstAttribute="width" secondItem="QZQ-Cl-gw9" secondAttribute="width" multiplier="0.25" id="RSr-DZ-BIZ"/>
+                            <constraint firstItem="QZQ-Cl-gw9" firstAttribute="trailing" secondItem="ieO-Od-UoL" secondAttribute="trailing" id="eev-av-l98"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="trailing" secondItem="ieO-Od-UoL" secondAttribute="trailing" id="mlM-eW-r52"/>
+                            <constraint firstItem="F2J-Lv-3TS" firstAttribute="leading" secondItem="ieO-Od-UoL" secondAttribute="leading" id="nQf-jJ-44t"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="leading" secondItem="ieO-Od-UoL" secondAttribute="leading" id="paS-78-pfz"/>
+                            <constraint firstItem="eVy-AF-Zvx" firstAttribute="bottom" secondItem="ieO-Od-UoL" secondAttribute="bottom" id="tqs-mc-tn2"/>
+                            <constraint firstItem="F2J-Lv-3TS" firstAttribute="top" secondItem="QZQ-Cl-gw9" secondAttribute="bottom" id="wch-qc-fbn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ieO-Od-UoL"/>
                     </view>
@@ -837,32 +865,12 @@
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="6q1-Nx-qQe"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="contentNavigationBar" destination="50H-4h-8D4" id="Ejx-1P-8Cz"/>
+                        <outlet property="bottomSegmentBarView" destination="F2J-Lv-3TS" id="FeU-sY-nHz"/>
                         <outlet property="resultsTableView" destination="eVy-AF-Zvx" id="LOQ-zf-sR3"/>
-                        <outlet property="searchBar" destination="3Ss-LE-Cky" id="7VS-u0-VaH"/>
-                        <outlet property="titleNavigationBarView" destination="FP8-Gs-FEE" id="hi6-aT-aag"/>
+                        <outlet property="segmentBar" destination="QZQ-Cl-gw9" id="aSZ-Rf-9gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMu-3H-zrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="FP8-Gs-FEE" userLabel="Navigation Title View">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-LE-Cky">
-                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
-                            <color key="tintColor" red="0.024422621354460716" green="0.58026111125946045" blue="0.64688342809677124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="3Ss-LE-Cky" firstAttribute="bottom" secondItem="itL-FA-KJ8" secondAttribute="bottom" id="BTl-1J-lq2"/>
-                        <constraint firstItem="3Ss-LE-Cky" firstAttribute="top" secondItem="itL-FA-KJ8" secondAttribute="top" id="NiD-vN-QA1"/>
-                        <constraint firstItem="3Ss-LE-Cky" firstAttribute="leading" secondItem="itL-FA-KJ8" secondAttribute="leading" id="azJ-fj-Spb"/>
-                        <constraint firstItem="3Ss-LE-Cky" firstAttribute="trailing" secondItem="itL-FA-KJ8" secondAttribute="trailing" id="yAN-2w-GKd"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="itL-FA-KJ8"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="3328.8000000000002" y="-1899.400299850075"/>
         </scene>
@@ -2252,6 +2260,6 @@
         <image name="searchNavigationBarIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PZX-bY-i6w"/>
+        <segue reference="UQT-fk-bdf"/>
     </inferredMetricsTieBreakers>
 </document>

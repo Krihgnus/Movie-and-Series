@@ -3,10 +3,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet var titleNavigationBarView: UIView!
-    @IBOutlet weak var contentNavigationBar: UINavigationItem!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultsTableView: FilmList!
+    @IBOutlet weak var segmentBar: UISegmentedControl!
+    @IBOutlet weak var bottomSegmentBarView: UIView!
     
     var movies: [Film] = []
     var series: [Serie] = []
@@ -17,21 +16,35 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupSearchBar()
+        setupSegmentedBar()
         updateContent()
     }
     
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        UIView.animate(withDuration: 0.3) {
+            self.bottomSegmentBarView.frame.origin.x = (self.segmentBar.frame.width / 4) * CGFloat(self.segmentBar.selectedSegmentIndex)
+        }
+    }
+    
     func setupSearchBar() {
-        titleNavigationBarView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
-        titleNavigationBarView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        searchBar.layer.cornerRadius = 4
-        searchBar.placeholder = "Search"
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.layer.cornerRadius = 4
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.titleView = searchController.searchBar
         navigationController?.navigationBar.tintColor = UIColor(red: 2 / 255, green: 149 / 255, blue: 165 / 255, alpha: 100)
-        
-        contentNavigationBar.titleView = titleNavigationBarView
+    }
+    
+    func setupSegmentedBar() {
+        segmentBar.clearSegmentedBar()
+        segmentBar.insertSegment(withTitle: "Movies", at: 0, animated: false)
+        segmentBar.insertSegment(withTitle: "Series", at: 1, animated: false)
+        segmentBar.insertSegment(withTitle: "Genres", at: 2, animated: false)
+        segmentBar.insertSegment(withTitle: "Artists", at: 3, animated: false)
+        segmentBar.selectedSegmentIndex = 0
+        indexChanged(segmentBar)
     }
     
     func updateContent() {}
 
 }
-
