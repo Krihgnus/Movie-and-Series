@@ -18,8 +18,8 @@ class CellSummaryType: UITableViewCell {
     
     func configure(_ artista: Artist) {
         
-        bornData.text = "\(artista.localNascimento["Cidade"] ?? "Unknown"), \(artista.localNascimento["Estado"] ?? "Unknown"), \(artista.localNascimento["Pais"] ?? "Unknown")"
-        artistHistory.text = artista.descricao
+        bornData.text = "\(artista.hometown["Cidade"] ?? "Unknown"), \(artista.hometown["Estado"] ?? "Unknown"), \(artista.hometown["Pais"] ?? "Unknown")"
+        artistHistory.text = artista.description
         
         self.backgroundColor = UIColor(red: 238 / 255.0, green: 238 / 255.0, blue: 238 / 255.0, alpha: 1.0)
         self.selectionStyle = .none

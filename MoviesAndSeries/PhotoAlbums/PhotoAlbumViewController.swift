@@ -7,19 +7,15 @@ class PhotoAlbumViewController: UIViewController {
     @IBOutlet weak var albumTableView: UITableView!
     
     var albuns: [PhotoAlbum] = []
-    var actRowInTableView = 0
+    var currentTableViewCell = 0
     let layout = UICollectionViewFlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        albumTableView.dataSource = self
-        albumTableView.separatorStyle = .none
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width * 0.245, height: UIScreen.main.bounds.size.width * 0.245)
-        layout.minimumInteritemSpacing = 2
-        layout.minimumLineSpacing = 2
-        
-        navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+        setupLayout()
+        setupNavigation()
+        setupTableView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -27,6 +23,34 @@ class PhotoAlbumViewController: UIViewController {
         
         navigationController?.navigationBar.tintColor = .white
         (navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
+    }
+    
+    func setupLayout() {
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width * 0.245, height: UIScreen.main.bounds.size.width * 0.245)
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 2
+    }
+    
+    func setupNavigation() {
+        navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
+        self.title = "Photo Album"
+    }
+    
+    func setupTableView() {
+        albumTableView.dataSource = self
+        albumTableView.separatorStyle = .none
+    }
+    
+    func takecollectionViewHeight(_ album: PhotoAlbum) -> CGFloat {
+        var height: CGFloat = 64
+        
+        if album.fotos.count > 4 {
+            height += ((UIScreen.main.bounds.size.width * 0.245) * ((CGFloat(album.fotos.count / 4)) + 1))
+        } else {
+            height += ((UIScreen.main.bounds.size.width * 0.245))
+        }
+        
+        return height
     }
 }
 
@@ -38,30 +62,14 @@ extension PhotoAlbumViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        actRowInTableView = indexPath.row
+        currentTableViewCell = indexPath.row
         
-        if let tableViewCellReference = tableView.dequeueReusableCell(withIdentifier: "albunsTVCell") as? AlbunsTableViewCell {
-            let month = Array(Utils.numberToMonth(albuns[indexPath.row].data["Mes"]!))
-            let initials = "\(month[0])\(month[1])\(month[2])"
-            
-            tableViewCellReference.names.text = "\(albuns[indexPath.row].fotografado) - Photoshoot for \(albuns[indexPath.row].fotografo)"
-            tableViewCellReference.dateAndLocation.text = "\(initials) \(albuns[indexPath.row].data["Dia"]!), \(albuns[indexPath.row].data["Ano"]!) | \(albuns[indexPath.row].local["Estado"]!), \(albuns[indexPath.row].local["Pais"]!)"
-            
-            albumTableView.rowHeight = 64
-            if albuns[indexPath.row].fotos.count > 4 {
-                albumTableView.rowHeight += ((UIScreen.main.bounds.size.width * 0.245) * ((CGFloat(albuns[indexPath.row].fotos.count / 4)) + 1))
-            } else {
-                albumTableView.rowHeight += ((UIScreen.main.bounds.size.width * 0.245))
-            }
-            
-            tableViewCellReference.albunsCollectionView.dataSource = self
-            tableViewCellReference.albunsCollectionView.collectionViewLayout = layout
-            tableViewCellReference.selectionStyle = .none
-            
-            return tableViewCellReference
-        }
-        
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "albunsTVCell") as? AlbunsTableViewCell else { return UITableViewCell() }
+        cell.albunsCollectionView.dataSource = self
+        cell.albunsCollectionView.collectionViewLayout = layout
+        cell.configure(albuns[indexPath.row])
+        albumTableView.rowHeight = takecollectionViewHeight(albuns[indexPath.row])
+        return cell
     }
 }
 
@@ -69,15 +77,12 @@ extension PhotoAlbumViewController: UITableViewDataSource {
 
 extension PhotoAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albuns[actRowInTableView].fotos.count
+        return albuns[currentTableViewCell].fotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let collectionViewCellReference = collectionView.dequeueReusableCell(withReuseIdentifier: "albunsCVCell", for: indexPath) as? AlbunsCollectionViewCell else { return UICollectionViewCell() }
-        
-        collectionViewCellReference.photo.sd_setImage(with: albuns[actRowInTableView].fotos[indexPath.row], completed: nil)
-        
-        return collectionViewCellReference
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albunsCVCell", for: indexPath) as? AlbunsCollectionViewCell else { return UICollectionViewCell() }
+        cell.photo.sd_setImage(with: albuns[currentTableViewCell].fotos[indexPath.row], completed: nil)
+        return cell
     }
 }
-
