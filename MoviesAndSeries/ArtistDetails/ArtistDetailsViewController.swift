@@ -52,62 +52,62 @@ class ArtistDetailsViewController: UIViewController {
         //Request
         ArtistsServer.takeArtist(byId: clickedartistId) { artistOptional in
             
-            if let artista = artistOptional {
+            if let artist = artistOptional {
                 
-                self.mainArtistPhoto.sd_setImage(with: artista.imagemCapa, completed: nil)
-                self.artistName.text = artista.nome
-                self.artistJobAndBornDate.text = "\(artista.profissao) | \(Utils.numberToMonth(artista.dataNascimento["Mes"])) \(artista.dataNascimento["Dia"]!), \(artista.dataNascimento["Ano"]!)"
-                let numberOfMorePhotos = Utils.photoCount(artista.outrosAlbuns)
+                self.mainArtistPhoto.sd_setImage(with: artist.coverImage, completed: nil)
+                self.artistName.text = artist.name
+                self.artistJobAndBornDate.text = "\(artist.work) | \(Utils.numberToMonth(artist.birthDate["Mes"])) \(artist.birthDate["Dia"]!), \(artist.birthDate["Ano"]!)"
+                let numberOfMorePhotos = Utils.photoCount(artist.otherAlbums)
                 let textNumberOfMorePhotos = (numberOfMorePhotos < 10) ? "0\(numberOfMorePhotos)+" : "\(numberOfMorePhotos)+"
                 
                 //Mosaicos de fotos
-                if artista.albumSecundario.fotos.count >= 6 {
+                if artist.secondaryAlbum.photos.count >= 6 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[0])
                     self.mosaics[0].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...5 {
                         
-                        self.mosaicSixPhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicSixPhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[3].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 5 {
+                } else if artist.secondaryAlbum.photos.count == 5 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[1])
                     self.mosaics[1].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...4 {
                         
-                        self.mosaicFivePhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicFivePhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[2].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 4 {
+                } else if artist.secondaryAlbum.photos.count == 4 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[2])
                     self.mosaics[2].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...3 {
                         
-                        self.mosaicFourPhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicFourPhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[1].text = textNumberOfMorePhotos
                     
-                } else if artista.albumSecundario.fotos.count == 3 {
+                } else if artist.secondaryAlbum.photos.count == 3 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[3])
                     self.mosaics[3].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...2 {
                         
-                        self.mosaicThreePhotos[indx].sd_setImage(with: artista.albumSecundario.fotos[indx], completed: nil)
+                        self.mosaicThreePhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
@@ -124,14 +124,7 @@ class ArtistDetailsViewController: UIViewController {
                 self.contentView.isHidden = false
                 (self.navigationController as? CustomNavigationController)?.overridenPreferredStatusBarStyle = .lightContent
                 
-                self.artistDetailsTableView.artistToTableView = artista
-                
-                //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                    artistNamePhotoAlbums = artista.nome
-                //DELETAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
-                    //VAR GLOBAL OTHERALBUMSARTIST = ARTISTA.OUTROSALBUNS
-                //ADICIONAR QUANDO A VIEW PHOTOALBUMS FOR CRIADA
+                self.artistDetailsTableView.artistToTableView = artist
                 
                 self.sumaryCellHeight = self.artistDetailsTableView.frame.height
                 self.segmentedBar.selectedSegmentIndex = 0
@@ -176,26 +169,17 @@ class ArtistDetailsViewController: UIViewController {
     }
     
     @IBAction func toPhotoAlbum(_ sender: UIButton) {
-        
-        //APEAS CHAMAR A VIEW DE PHOTO ALBUMS
-        if let photoAlbunsViewController = storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController {
-            
-            navigationController?.pushViewController(photoAlbunsViewController, animated: true)
-            
-        }
-        
+        guard let photoAlbunsReference = storyboard?.instantiateViewController(withIdentifier: "photoAlbumsVC") as? PhotoAlbumViewController else { return }
+        photoAlbunsReference.albuns = artistDetailsTableView.artistToTableView.otherAlbums
+        navigationController?.pushViewController(photoAlbunsReference, animated: true)
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
-        
         UIView.animate(withDuration: 0.3) {
-            
             self.buttonBar.frame.origin.x = (self.segmentedBar.frame.width / 3) * CGFloat(self.segmentedBar.selectedSegmentIndex)
-            
         }
         
         switch segmentedBar.selectedSegmentIndex {
-            
         case 0:
             //Primeira aba selecionada
             artistDetailsTableView.rowHeight = sumaryCellHeight
@@ -221,9 +205,7 @@ class ArtistDetailsViewController: UIViewController {
             
         default:
             return
-            
         }
-        
     }
     
     func requestFilmsAndSeries() {
@@ -249,7 +231,7 @@ class ArtistDetailsViewController: UIViewController {
         }
         
         //Request Filmes
-        FilmsSever.takeFilms(by: artistDetailsTableView.artistToTableView.filmesId) { filmsOptional in
+        FilmsSever.takeFilms(by: artistDetailsTableView.artistToTableView.moviesId) { filmsOptional in
             if let films = filmsOptional {
                 self.artistDetailsTableView.filmsByArtist = films
                 self.contentTableViewMoviesLoad += 1
@@ -270,32 +252,19 @@ class ArtistDetailsViewController: UIViewController {
 }
 
 extension ArtistDetailsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if artistDetailsTableView.tbvType == .movies {
-            
             if let movieDetailsReference = storyboard?.instantiateViewController(withIdentifier: "movieDetailsVC") as? MovieDetailsViewController {
-                
                 if indexPath.row < artistDetailsTableView.filmsByArtist.count {
-                    
                     movieDetailsReference.idToRequest = artistDetailsTableView.filmsByArtist[indexPath.row].identifier
                     movieDetailsReference.requestType = .filme
-                    
                 } else {
-                    
                     movieDetailsReference.idToRequest = artistDetailsTableView.seriesByArtist[indexPath.row - artistDetailsTableView.filmsByArtist.count].identifier
                     movieDetailsReference.requestType = .serie
-                    
                 }
-                
                 movieDetailsReference.backWithColor = .white
                 navigationController?.pushViewController(movieDetailsReference, animated: true)
-                
             }
-            
         }
-        
     }
-    
 }

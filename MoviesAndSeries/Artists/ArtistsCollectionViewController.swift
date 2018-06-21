@@ -79,8 +79,8 @@ extension ArtistsViewController: UICollectionViewDataSource {
         }
         
         cell.layer.cornerRadius = 4
-        cell.artistImage.sd_setImage(with: todosArtistas[indexPath.row].imagemCollection, completed: nil)
-        cell.artistName.text = todosArtistas[indexPath.row].nome
+        cell.artistImage.sd_setImage(with: todosArtistas[indexPath.row].artistCollectionImage, completed: nil)
+        cell.artistName.text = todosArtistas[indexPath.row].name
         return cell
         
     }

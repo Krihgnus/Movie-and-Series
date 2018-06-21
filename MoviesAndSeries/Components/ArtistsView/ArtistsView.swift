@@ -59,14 +59,14 @@ class ArtistsView: UIView {
     private func setArtist(_ artista: Artist, inSpace: Int) {
         switch inSpace {
         case 0:
-            artist1Image.sd_setImage(with: artista.imagemCollection, completed: nil)
-            artist1Name.text = artista.nome
+            artist1Image.sd_setImage(with: artista.artistCollectionImage, completed: nil)
+            artist1Name.text = artista.name
         case 1:
-            artist2Image.sd_setImage(with: artista.imagemCollection, completed: nil)
-            artist2Name.text = artista.nome
+            artist2Image.sd_setImage(with: artista.artistCollectionImage, completed: nil)
+            artist2Name.text = artista.name
         case 2:
-            artist3Image.sd_setImage(with: artista.imagemCollection, completed: nil)
-            artist3Name.text = artista.nome
+            artist3Image.sd_setImage(with: artista.artistCollectionImage, completed: nil)
+            artist3Name.text = artista.name
         default:
             break
         }

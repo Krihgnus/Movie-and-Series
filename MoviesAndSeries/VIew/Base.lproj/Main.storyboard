@@ -1912,28 +1912,181 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALBUM DE FOTOS DE ALGUEM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuM-bH-DNQ" userLabel="Artist Name">
-                                <rect key="frame" x="0.0" y="307.5" width="375" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jmj-pk-8Ux">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albunsTVCell" rowHeight="266" id="Kl0-ez-7m0" customClass="AlbunsTableViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="266"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kl0-ez-7m0" id="0HH-kI-RRk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="265.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xu9-Ll-71F" userLabel="Data Stack View">
+                                                    <rect key="frame" x="10" y="20" width="360" height="34"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist - Photographer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxM-uC-g6Y">
+                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="15.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date | Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGK-3x-1bU" userLabel="Date | Location">
+                                                            <rect key="frame" x="0.0" y="18.5" width="360" height="15.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="5dd-sj-UYx"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lun-F8-gBq" userLabel="Photos Collection View">
+                                                    <rect key="frame" x="0.0" y="59" width="375" height="206.5"/>
+                                                    <color key="backgroundColor" red="0.93325155973434448" green="0.93338567018508911" blue="0.93322223424911499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="2" id="A7I-hw-g6v">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="albunsCVCell" id="Kly-4R-uqN" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-DW-wlq" userLabel="Photo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="RRg-DW-wlq" firstAttribute="top" secondItem="Kly-4R-uqN" secondAttribute="top" id="MQD-Jh-gYC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RRg-DW-wlq" secondAttribute="trailing" id="Ob9-Lz-Vvh"/>
+                                                                <constraint firstAttribute="bottom" secondItem="RRg-DW-wlq" secondAttribute="bottom" id="T0I-bC-1RT"/>
+                                                                <constraint firstItem="RRg-DW-wlq" firstAttribute="leading" secondItem="Kly-4R-uqN" secondAttribute="leading" id="Wdl-5V-Qw3"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="D6U-5k-NYZ"/>
+                                                            <size key="customSize" width="89" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="RRg-DW-wlq" id="Rqe-Su-Kwv"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="kWb-2j-Plc" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="91" y="0.0" width="82" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qL9-l3-FHG" userLabel="Photo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="qL9-l3-FHG" secondAttribute="trailing" id="FVr-wm-EVE"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qL9-l3-FHG" secondAttribute="bottom" id="ObQ-Of-KeH"/>
+                                                                <constraint firstItem="qL9-l3-FHG" firstAttribute="top" secondItem="kWb-2j-Plc" secondAttribute="top" id="snK-Pb-tV2"/>
+                                                                <constraint firstItem="qL9-l3-FHG" firstAttribute="leading" secondItem="kWb-2j-Plc" secondAttribute="leading" id="zZb-jT-XRx"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="hpf-jQ-dYV"/>
+                                                            <size key="customSize" width="82" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="qL9-l3-FHG" id="uCf-Rx-z50"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="VcL-0o-QHk" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="175" y="0.0" width="80" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-a2-dgr" userLabel="Photo">
+                                                                        <rect key="frame" x="-0.5" y="0.0" width="80" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="rqI-a2-dgr" firstAttribute="leading" secondItem="VcL-0o-QHk" secondAttribute="leading" id="9Sb-0Z-yZM"/>
+                                                                <constraint firstItem="rqI-a2-dgr" firstAttribute="top" secondItem="VcL-0o-QHk" secondAttribute="top" id="SFz-F4-3cQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rqI-a2-dgr" secondAttribute="trailing" id="gni-vG-Zn8"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rqI-a2-dgr" secondAttribute="bottom" id="haR-uj-tgY"/>
+                                                            </constraints>
+                                                            <viewLayoutGuide key="safeArea" id="Qqt-t5-gLs"/>
+                                                            <size key="customSize" width="80" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="rqI-a2-dgr" id="Oea-RX-aPx"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="H4V-fm-hio" userLabel="Photo Collection View Cell" customClass="AlbunsCollectionViewCell" customModule="MoviesAndSeries" customModuleProvider="target">
+                                                            <rect key="frame" x="257" y="0.0" width="80" height="93"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JaA-Jw-ViC" userLabel="Photo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="JaA-Jw-ViC" secondAttribute="bottom" id="5fn-oJ-wae"/>
+                                                                <constraint firstAttribute="trailing" secondItem="JaA-Jw-ViC" secondAttribute="trailing" id="7K4-l0-DOY"/>
+                                                                <constraint firstItem="JaA-Jw-ViC" firstAttribute="top" secondItem="H4V-fm-hio" secondAttribute="top" id="UOM-cU-b5C"/>
+                                                                <constraint firstItem="JaA-Jw-ViC" firstAttribute="leading" secondItem="H4V-fm-hio" secondAttribute="leading" id="f3A-iC-2EV"/>
+                                                            </constraints>
+                                                            <size key="customSize" width="80" height="93"/>
+                                                            <connections>
+                                                                <outlet property="photo" destination="JaA-Jw-ViC" id="pt9-Sy-iaz"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="xu9-Ll-71F" firstAttribute="leading" secondItem="0HH-kI-RRk" secondAttribute="leading" constant="10" id="0Xp-dY-MbD"/>
+                                                <constraint firstItem="lun-F8-gBq" firstAttribute="top" secondItem="xu9-Ll-71F" secondAttribute="bottom" constant="5" id="QcA-5m-9Bj"/>
+                                                <constraint firstAttribute="trailing" secondItem="xu9-Ll-71F" secondAttribute="trailing" constant="5" id="Uaz-2b-7AA"/>
+                                                <constraint firstAttribute="bottom" secondItem="lun-F8-gBq" secondAttribute="bottom" id="WHK-ni-vRW"/>
+                                                <constraint firstItem="lun-F8-gBq" firstAttribute="leading" secondItem="0HH-kI-RRk" secondAttribute="leading" id="cQF-Pf-L2e"/>
+                                                <constraint firstItem="xu9-Ll-71F" firstAttribute="top" secondItem="0HH-kI-RRk" secondAttribute="top" constant="20" id="eke-7N-d6S"/>
+                                                <constraint firstAttribute="trailing" secondItem="lun-F8-gBq" secondAttribute="trailing" id="zTx-FG-I3N"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumTitle" destination="RxM-uC-g6Y" id="Mk6-42-dx0"/>
+                                            <outlet property="albunsCollectionView" destination="lun-F8-gBq" id="oSr-yB-kCW"/>
+                                            <outlet property="dateAndLocation" destination="wGK-3x-1bU" id="fwf-Zn-L2v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XuM-bH-DNQ" firstAttribute="leading" secondItem="MJc-fy-XXc" secondAttribute="leading" id="7af-xi-QeW"/>
-                            <constraint firstAttribute="trailing" secondItem="XuM-bH-DNQ" secondAttribute="trailing" id="MfI-2G-vhX"/>
-                            <constraint firstItem="XuM-bH-DNQ" firstAttribute="centerY" secondItem="mOF-20-DhT" secondAttribute="centerY" id="Xhv-CY-Yed"/>
+                            <constraint firstItem="jmj-pk-8Ux" firstAttribute="leading" secondItem="mOF-20-DhT" secondAttribute="leading" id="E3C-3S-Egm"/>
+                            <constraint firstItem="jmj-pk-8Ux" firstAttribute="top" secondItem="mOF-20-DhT" secondAttribute="top" id="L4e-pm-Fkr"/>
+                            <constraint firstItem="jmj-pk-8Ux" firstAttribute="trailing" secondItem="mOF-20-DhT" secondAttribute="trailing" id="cNW-Vb-OvS"/>
+                            <constraint firstItem="jmj-pk-8Ux" firstAttribute="bottom" secondItem="mOF-20-DhT" secondAttribute="bottom" id="nO6-Ha-Kc6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mOF-20-DhT"/>
                     </view>
                     <connections>
-                        <outlet property="nome" destination="XuM-bH-DNQ" id="aDK-Ld-bHL"/>
+                        <outlet property="albumTableView" destination="jmj-pk-8Ux" id="hdI-Bq-kEJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVg-PZ-ak5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4222" y="310"/>
+            <point key="canvasLocation" x="4221.6000000000004" y="309.89505247376314"/>
         </scene>
         <!--Discover View Controller-->
         <scene sceneID="FBL-jP-EVA">
@@ -2193,6 +2346,6 @@
         <image name="searchNavigationBarIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PZX-bY-i6w"/>
+        <segue reference="UQT-fk-bdf"/>
     </inferredMetricsTieBreakers>
 </document>

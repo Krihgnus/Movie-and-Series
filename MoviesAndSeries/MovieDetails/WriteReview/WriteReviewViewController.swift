@@ -39,6 +39,7 @@ class WriteReviewViewController: UIViewController {
         starBarReference.backgroundColor = UIColor(red: 234.0 / 255.0, green: 234.0 / 255.0, blue: 234.0 / 255.0, alpha: 1)
         
         self.tabBarController?.tabBar.isHidden = true
+        self.title = "Write a Review"
         
     }
     
