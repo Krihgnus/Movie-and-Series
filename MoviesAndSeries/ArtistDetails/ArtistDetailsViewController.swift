@@ -61,53 +61,53 @@ class ArtistDetailsViewController: UIViewController {
                 let textNumberOfMorePhotos = (numberOfMorePhotos < 10) ? "0\(numberOfMorePhotos)+" : "\(numberOfMorePhotos)+"
                 
                 //Mosaicos de fotos
-                if artist.secondaryAlbum.fotos.count >= 6 {
+                if artist.secondaryAlbum.photos.count >= 6 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[0])
                     self.mosaics[0].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...5 {
                         
-                        self.mosaicSixPhotos[indx].sd_setImage(with: artist.secondaryAlbum.fotos[indx], completed: nil)
+                        self.mosaicSixPhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[3].text = textNumberOfMorePhotos
                     
-                } else if artist.secondaryAlbum.fotos.count == 5 {
+                } else if artist.secondaryAlbum.photos.count == 5 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[1])
                     self.mosaics[1].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...4 {
                         
-                        self.mosaicFivePhotos[indx].sd_setImage(with: artist.secondaryAlbum.fotos[indx], completed: nil)
+                        self.mosaicFivePhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[2].text = textNumberOfMorePhotos
                     
-                } else if artist.secondaryAlbum.fotos.count == 4 {
+                } else if artist.secondaryAlbum.photos.count == 4 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[2])
                     self.mosaics[2].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...3 {
                         
-                        self.mosaicFourPhotos[indx].sd_setImage(with: artist.secondaryAlbum.fotos[indx], completed: nil)
+                        self.mosaicFourPhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     
                     self.numberOfMorePhotos[1].text = textNumberOfMorePhotos
                     
-                } else if artist.secondaryAlbum.fotos.count == 3 {
+                } else if artist.secondaryAlbum.photos.count == 3 {
                     
                     self.mainPhotoAlbum.addSubview(self.mosaics[3])
                     self.mosaics[3].frame = self.mainPhotoAlbum.bounds
                     
                     for indx in 0...2 {
                         
-                        self.mosaicThreePhotos[indx].sd_setImage(with: artist.secondaryAlbum.fotos[indx], completed: nil)
+                        self.mosaicThreePhotos[indx].sd_setImage(with: artist.secondaryAlbum.photos[indx], completed: nil)
                         
                     }
                     

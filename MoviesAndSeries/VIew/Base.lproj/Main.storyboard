@@ -2063,9 +2063,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="albumTitle" destination="RxM-uC-g6Y" id="Mk6-42-dx0"/>
                                             <outlet property="albunsCollectionView" destination="lun-F8-gBq" id="oSr-yB-kCW"/>
                                             <outlet property="dateAndLocation" destination="wGK-3x-1bU" id="fwf-Zn-L2v"/>
-                                            <outlet property="names" destination="RxM-uC-g6Y" id="8dO-Oz-jFD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

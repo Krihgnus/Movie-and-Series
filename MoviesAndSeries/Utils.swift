@@ -5,7 +5,7 @@ class Utils {
     static func photoCount(_ photoAlbumsArray: [PhotoAlbum]) -> Int {
         var photos = 0
         for (_, photoAlbum) in photoAlbumsArray.enumerated() {
-            photos += photoAlbum.fotos.count
+            photos += photoAlbum.photos.count
         }
         return photos
     }

@@ -33,19 +33,26 @@ class PhotoAlbumViewController: UIViewController {
     
     func setupNavigation() {
         navigationController?.navigationBar.tintColor = UIColor(red: 2/255.0, green: 148/255.0, blue: 165/255.0, alpha: 1.0)
-        self.title = "Photo Album"
+        title = "Photo Album"
     }
     
     func setupTableView() {
         albumTableView.dataSource = self
         albumTableView.separatorStyle = .none
+        albumTableView.backgroundColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1.0)
     }
     
-    func takecollectionViewHeight(_ album: PhotoAlbum) -> CGFloat {
+    func takeCollectionViewHeight(_ album: PhotoAlbum) -> CGFloat {
         var height: CGFloat = 64
         
-        if album.fotos.count > 4 {
-            height += ((UIScreen.main.bounds.size.width * 0.245) * ((CGFloat(album.fotos.count / 4)) + 1))
+        if album.photos.count > 4 {
+            
+            if album.photos.count % 4 == 0 {
+                height += ((UIScreen.main.bounds.size.width * 0.245) * ((CGFloat(album.photos.count / 4))))
+            } else {
+                height += ((UIScreen.main.bounds.size.width * 0.245) * ((CGFloat(album.photos.count / 4)) + 1))
+            }
+            
         } else {
             height += ((UIScreen.main.bounds.size.width * 0.245))
         }
@@ -68,7 +75,7 @@ extension PhotoAlbumViewController: UITableViewDataSource {
         cell.albunsCollectionView.dataSource = self
         cell.albunsCollectionView.collectionViewLayout = layout
         cell.configure(albuns[indexPath.row])
-        albumTableView.rowHeight = takecollectionViewHeight(albuns[indexPath.row])
+        albumTableView.rowHeight = takeCollectionViewHeight(albuns[indexPath.row])
         return cell
     }
 }
@@ -77,12 +84,12 @@ extension PhotoAlbumViewController: UITableViewDataSource {
 
 extension PhotoAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albuns[currentTableViewCell].fotos.count
+        return albuns[currentTableViewCell].photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albunsCVCell", for: indexPath) as? AlbunsCollectionViewCell else { return UICollectionViewCell() }
-        cell.photo.sd_setImage(with: albuns[currentTableViewCell].fotos[indexPath.row], completed: nil)
+        cell.photo.sd_setImage(with: albuns[currentTableViewCell].photos[indexPath.row], completed: nil)
         return cell
     }
 }
